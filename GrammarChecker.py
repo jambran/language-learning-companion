@@ -2,12 +2,11 @@ from collections import defaultdict
 from Lexeme import Lexeme
 
 def load_lexicon(filename):
-    # todo add check for comments in txtfiles, will start with'#'
     lexicon = defaultdict(lambda: [])  # maps POS to the Lexemes
     vocab = []  # holds all lexemes
     with open(filename) as f:
         for line in f:
-            if line.startswith('#') or line == "":  # ignore comment lines or empty lines in files
+            if line.startswith('#') or line == "\n":  # ignore comment lines or empty lines in files
                 continue
             line = line.split()
             word = line[0]
@@ -43,7 +42,7 @@ def load_grammar(filename):
     with open(filename) as f:
 
         for line in f:
-            if line.startswith('#') or line == "":  # ignore comment lines or empty lines in files
+            if line.startswith('#') or line == "\n":  # ignore comment lines or empty lines in files
                 continue
             line = line.split()
             lhs = line[0].split("-")
@@ -63,9 +62,9 @@ class GrammarChecker():
         self.grammar = load_grammar(filename='grammar.txt')  # dict of POS to rewrite rule
         # self.vocab = [word[0] for word in self.lexicon[symbol]]
 
-    def check_grammar(self, sentence):
+    def check_grammar(self, sentence, debug=False):
         sentence = sentence.split()
-        return self.recursive_parse(sentence, "S", 0)
+        return self.recursive_parse(sentence, "S", 0, debug=debug)
 
     def recursive_parse(self, sentence, symbol, index, debug=False):
         if debug: print(symbol, index)
@@ -90,7 +89,7 @@ class GrammarChecker():
             tempchildren = []
             failure = False
             for element in rule:
-                return_value = self.recursive_parse(sentence, element[0], tempindex)
+                return_value = self.recursive_parse(sentence, element[0], tempindex, debug=debug)
                 if type(return_value) == str: # "YIKES" occured
                     failure = True
                     break
@@ -104,11 +103,12 @@ class GrammarChecker():
         return "YIKES"
 
     def is_grammatical(self, sentence):
-        return type(self.check_grammar(sentence))
+        return type(self.check_grammar(sentence)) == tuple
 
 
 if __name__ == '__main__':
-    sentence = "Elaine admired a platypus"
+    sentence = "que hora es"
     gc = GrammarChecker()
-    tree = gc.check_grammar(sentence)
+    tree = gc.check_grammar(sentence, debug=True)
+    print(gc.is_grammatical(sentence))
 
