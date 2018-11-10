@@ -1,6 +1,7 @@
 import unittest
 from GrammarChecker import GrammarChecker
 
+
 class GrammarCheckerTest(unittest.TestCase):
 
     def test_grammatical(self):
@@ -9,7 +10,9 @@ class GrammarCheckerTest(unittest.TestCase):
         grammatical_file = "good_sentences.txt"
         with open(grammatical_file) as f:
             for line in f:
-                print(line)
+                line = line.strip()
+                truth_val = gc.is_grammatical(line)
+                print(line + ': ' + str(truth_val))
                 self.assertTrue(gc.is_grammatical(line))
 
     def test_ungrammatical(self):
@@ -18,8 +21,10 @@ class GrammarCheckerTest(unittest.TestCase):
         ungrammatical_file = "bad_sentences.txt"
         with open(ungrammatical_file) as f:
             for line in f:
-                print(line)
-                self.assertFalse(gc.is_grammatical(line))
+                line = line.strip()
+                truth_val = gc.is_grammatical(line)
+                print(line + ': '+ str(truth_val))
+                self.assertFalse(truth_val)
 
 if __name__ == '__main__':
     gc = GrammarChecker()

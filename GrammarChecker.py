@@ -62,9 +62,20 @@ class GrammarChecker():
         self.grammar = load_grammar(filename='grammar.txt')  # dict of POS to rewrite rule
         # self.vocab = [word[0] for word in self.lexicon[symbol]]
 
-    def check_grammar(self, sentence, debug=False):
+    def get_parse(self, sentence):
         sentence = sentence.split()
-        return self.recursive_parse(sentence, "S", 0, debug=debug)
+        result = self.recursive_parse(sentence, "S", 0, debug=False)
+        return result[0]
+
+    def is_grammatical(self, sentence, debug=False):
+        sentence = sentence.split()
+        result = self.recursive_parse(sentence, "S", 0, debug=debug)
+        if type(result) == str:
+            return False
+        if result[1] == len(sentence):
+            return True
+        # we didn't complete a rule - stopped early
+        return False
 
     def recursive_parse(self, sentence, symbol, index, debug=False):
         if debug: print(symbol, index)
@@ -109,6 +120,7 @@ class GrammarChecker():
 if __name__ == '__main__':
     sentence = "que hora es"
     gc = GrammarChecker()
-    tree = gc.check_grammar(sentence, debug=True)
     print(gc.is_grammatical(sentence))
+
+    print(gc.recursive_parse("Alexa dime que hora es".split(), "S", 0, debug=True))
 
