@@ -1,47 +1,149 @@
-Jerry NNP num:sg
-Kramer NNP num:sg
-Elaine NNP num:sg
-George NNP num:sg
-Newman NNP num:sg
-saw VBD comp:np num:sg num:pl
-admired VBD comp:np num:sg num:pl
-imitated VBD comp:np num:sg num:pl
-befriended VBD comp:np num:sg num:pl
-wept VBD comp:null num:sg num:pl
-laughed VBD comp:null num:sg num:pl
-believed VBD comp:np comp:s num:sg num:pl
-said VBD comp:s num:sg num:pl
-sees VB comp:np num:sg
-admires VB comp:np num:sg
-imitates VB comp:np num:sg
-befriends VB comp:np num:sg
-weeps VB comp:null num:sg
-laughs VB comp:null num:sg
-believes VB comp:np comp:s num:sg
-says VB comp:s num:sg
-see VB comp:np num:pl
-admire VB comp:np num:pl
-imitate VB comp:np num:pl
-befriend VB comp:np num:pl
-weep VB comp:null num:pl
-laugh VB comp:null num:pl
-believe VB comp:np comp:s num:pl
-say VB comp:s num:pl
-a DT num:sg
-the DT num:sg num:pl
-dog NN num:sg
-cat NN num:sg
-squid NN num:sg num:pl
-platypus NN num:sg
-dogs NN num:pl
-cats NN num:pl
-platypi NN num:pl
-happy JJ
-friendly JJ
-magnanimous JJ
-sleepy JJ
-and CC
-or CC
-obviously ADV
-swiftly ADV
-necessarily ADV
+Alexa ALEXA num:sg
+
+que WH1 num:sg num:pl
+cual WH2 num:sg num:pl
+#cuanto WH num:sg
+#cuando WH num:sg
+#como
+#quien WH num:sg
+#quienes WH num:pl
+
+muestrame VB comp:np num:sg
+enseñame VB comp:np num:sg
+dime VB comp:s num:sg
+enciende VB comp:np num:sg
+apaga VB comp:np num:sg
+recomiendame VB comp:np num:sg
+escribe VB comp:np num:sg
+pon VB comp:np num:sg
+crea VB comp:np num:sg
+
+#for "cual es el tiempo en XX"
+es VBes comp:null num:sg
+
+alarma NN num:sg gen:fem
+nota NN num:sg gen:fem
+tiempo NN num:sg gen:masc
+hora NN num:sg gen:fem
+luz NN num:sg gen:fem
+luces NN num:pl gen:fem
+restaurantes NN num:sg gen:masc
+
+
+las DT num:pl gen:fem
+la DT num:sg gen:fem
+los DT num:pl DT num:masc
+el DT num:sg gen:masc
+
+uno Num num:sg gen:masc
+una Num num:sg gen:fem
+dos Num num:pl gen:fem
+tres Num num:pl gen:fem
+cuatro Num num:pl gen:fem
+cinco Num num:pl gen:fem
+seis Num num:pl gen:fem
+siete Num num:pl gen:fem
+ocho Num num:pl gen:fem
+nueve Num num:pl gen:fem
+diez Num num:pl gen:fem
+once Num num:pl gen:fem
+doce Num num:pl gen:fem
+trece Num num:pl gen:fem
+catorce Num num:pl gen:fem
+quince Num num:pl gen:fem
+dieciseis Num num:pl gen:fem
+diecisiete Num num:pl gen:fem
+dieciocho Num num:pl gen:fem
+diecinueve Num num:pl gen:fem
+veinte Num num:pl gen:fem
+veintiuno Num num:pl gen:fem
+veintidos Num num:pl gen:fem
+veintitres Num num:pl gen:fem
+veinticuatro Num num:pl gen:fem
+veinticinco Num num:pl gen:fem
+veintiseis Num num:pl gen:fem
+veintisiete Num num:pl gen:fem
+veintiocho Num num:pl gen:fem
+veintinueve Num num:pl gen:fem
+treinta Num num:pl gen:fem
+cuarenta Num num:pl gen:fem
+cincuenta Num num:pl gen:fem
+sesenta Num num:pl gen:fem
+
+mil Mil
+
+y CC
+
+media Num3 num:sg gen:fem
+cuarto Num3 num:sg gen:masc
+
+en Pin
+de Pof
+a Pfor
+para Pfor
+
+menos ADVMin
+mas ADV
+
+enero NMonth num:sg
+febrero NMonth num:sg
+marzo NMonth num:sg
+abril NMonth num:sg
+mayo NMonth num:sg
+junio NMonth num:sg
+julio NMonth num:sg
+agosto NMonth num:sg
+septiembre NMonth num:sg
+octubre NMonth num:sg
+noviembre NMonth num:sg
+diciembre NMonth num:sg
+
+Waltham NNP num:sg
+Boston NNP num:sg
+Cambridge NNP num:sg
+Lexington NNP num:sg
+
+
+
+#saw VBD comp:np num:sg num:pl
+#admired VBD comp:np num:sg num:pl
+#imitated VBD comp:np num:sg num:pl
+#befriended VBD comp:np num:sg num:pl
+#wept VBD comp:null num:sg num:pl
+#laughed VBD comp:null num:sg num:pl
+#believed VBD comp:np comp:s num:sg num:pl
+#said VBD comp:s num:sg num:pl
+#sees VB comp:np num:sg
+#admires VB comp:np num:sg
+#imitates VB comp:np num:sg
+#befriends VB comp:np num:sg
+#weeps VB comp:null num:sg
+#laughs VB comp:null num:sg
+#believes VB comp:np comp:s num:sg
+#says VB comp:s num:sg
+#see VB comp:np num:pl
+#admire VB comp:np num:pl
+#imitate VB comp:np num:pl
+#befriend VB comp:np num:pl
+#weep VB comp:null num:pl
+#laugh VB comp:null num:pl
+#believe VB comp:np comp:s num:pl
+#say VB comp:s num:pl
+#a DT num:sg
+#the DT num:sg num:pl
+#dog NN num:sg
+#cat NN num:sg
+#squid NN num:sg num:pl
+#platypus NN num:sg
+#dogs NN num:pl
+#cats NN num:pl
+#platypi NN num:pl
+#happy JJ
+#friendly JJ
+#magnanimous JJ
+#sleepy JJ
+#and CC
+#or CC
+#obviously ADV
+#swiftly ADV
+#necessarily ADV
