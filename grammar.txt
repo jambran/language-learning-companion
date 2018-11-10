@@ -10,12 +10,13 @@ S > WH2 VBes NP PP
 NP-num:~x > CNP-num:~x
 NP-num:~x > NNP-num:~x-num:sg
 NP-num:~x > CNP-num:~x PP
+NP-num:~x > UCNP-num:~x
 
 CNP-num:~x > DT-num:~x NN-num:~x
 CNP-num:~x > DT-num:~x AP NN-num:~x
 CNP-num:~x > DT-num:~x NPMonth PP
 #que hora es
-CNP-num:~x > NN-num:~x
+UCNP-num:~x > NN-num:~x
 
 VP > VBD-comp:s S
 VP-num:~x > VB-comp:np-num:~x NP
