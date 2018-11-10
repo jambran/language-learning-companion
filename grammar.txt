@@ -4,7 +4,7 @@ S > NP-num:~x VP-num:~x
 S > NP VP CC S
 S > VP
 
-S > WH1 NP VP
+S > WH1 NP VBes
 S > WH2 VBes NP PP
 
 NP-num:~x > CNP-num:~x
