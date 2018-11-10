@@ -32,7 +32,7 @@ restaurantes NN num:sg gen:masc
 
 las DT num:pl gen:fem
 la DT num:sg gen:fem
-los DT num:pl DT num:masc
+los DT num:pl num:masc
 el DT num:sg gen:masc
 
 uno Num num:sg gen:masc
