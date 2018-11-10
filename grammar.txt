@@ -5,6 +5,7 @@ S > NP VP CC S
 S > VP
 
 S > WH1 NP VBes
+S > WH1 NP VBhace
 S > WH2 VBes NP PP
 
 NP-num:~x > CNP-num:~x

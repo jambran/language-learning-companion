@@ -20,6 +20,7 @@ crea VB comp:np num:sg
 
 #for "cual es el tiempo en XX"
 es VBes comp:null num:sg
+hace VBhace comp:null num:sg
 
 alarma NN num:sg gen:fem
 nota NN num:sg gen:fem
