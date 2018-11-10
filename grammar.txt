@@ -19,15 +19,13 @@ CNP-num:~x > DT-num:~x NPMonth PP
 #que hora es
 UCNP-num:~x > NN-num:~x
 
-VP > VBD-comp:s S
 VP-num:~x > VB-comp:np-num:~x NP
 VP-num:~x > VB-comp:null-num:~x
 VP-num:~x > VB-comp:s-num:~x S
 
 VP > VB-comp:np-num:~x NP PP
 
-VP > VBD-comp:null
-VP > ADV VP
+
 
 PP > Pin NP
 PP > Pfor NPHour
@@ -46,17 +44,17 @@ NPYear > NB1 Mil NB1
 #####
 
 #las tres (y) treinta y cinco
-NPHour > Det NB1 NB2
-NPHour > Det NB1 CC NB2
-NPHour > Det NB1 ADVMin NB2
+NPHour > DT NB1 NB2
+NPHour > DT NB1 CC NB2
+NPHour > DT NB1 ADVMin NB2
 
 #las dos y veinte
-NPHour > Det NB1 CC NB1
-NPHour > Det NB1 ADVMin NB1
+NPHour > DT NB1 CC NB1
+NPHour > DT NB1 ADVMin NB1
 
 #las dos y/menos cuarto
-NPHour > Det NB1 CC NB3
-NPHour > Det NB1 ADVMin NB3
+NPHour > DT NB1 CC NB3
+NPHour > DT NB1 ADVMin NB3
 
 NB1 >  Num
 NB2 > Num CC Num
@@ -69,3 +67,5 @@ NB3 > Num3
 ####
 #AP > JJ
 #AP > JJ AP
+#VP > VBD-comp:null
+#VP > ADV VP
