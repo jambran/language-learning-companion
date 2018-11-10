@@ -14,6 +14,8 @@ NP-num:~x > CNP-num:~x PP
 CNP-num:~x > DT-num:~x NN-num:~x
 CNP-num:~x > DT-num:~x AP NN-num:~x
 CNP-num:~x > DT-num:~x NPMonth PP
+#que hora es
+CNP-num:~x > NN-num:~x
 
 VP > VBD-comp:s S
 VP-num:~x > VB-comp:np-num:~x NP
