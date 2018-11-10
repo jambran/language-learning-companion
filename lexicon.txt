@@ -1,0 +1,47 @@
+Jerry NNP num:sg
+Kramer NNP num:sg
+Elaine NNP num:sg
+George NNP num:sg
+Newman NNP num:sg
+saw VBD comp:np num:sg num:pl
+admired VBD comp:np num:sg num:pl
+imitated VBD comp:np num:sg num:pl
+befriended VBD comp:np num:sg num:pl
+wept VBD comp:null num:sg num:pl
+laughed VBD comp:null num:sg num:pl
+believed VBD comp:np comp:s num:sg num:pl
+said VBD comp:s num:sg num:pl
+sees VB comp:np num:sg
+admires VB comp:np num:sg
+imitates VB comp:np num:sg
+befriends VB comp:np num:sg
+weeps VB comp:null num:sg
+laughs VB comp:null num:sg
+believes VB comp:np comp:s num:sg
+says VB comp:s num:sg
+see VB comp:np num:pl
+admire VB comp:np num:pl
+imitate VB comp:np num:pl
+befriend VB comp:np num:pl
+weep VB comp:null num:pl
+laugh VB comp:null num:pl
+believe VB comp:np comp:s num:pl
+say VB comp:s num:pl
+a DT num:sg
+the DT num:sg num:pl
+dog NN num:sg
+cat NN num:sg
+squid NN num:sg num:pl
+platypus NN num:sg
+dogs NN num:pl
+cats NN num:pl
+platypi NN num:pl
+happy JJ
+friendly JJ
+magnanimous JJ
+sleepy JJ
+and CC
+or CC
+obviously ADV
+swiftly ADV
+necessarily ADV

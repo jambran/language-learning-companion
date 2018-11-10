@@ -1,0 +1,16 @@
+4 S > NP-num:~x VP-num:~x
+2 VP > VBD-comp:s S
+7 CNP-num:~x > DT-num:~x NN-num:~x
+3 CNP-num:~x > DT-num:~x AP NN-num:~x
+7 VP-num:~x > VB-comp:np-num:~x NP
+7 VP-num:~x > VB-comp:null-num:~x
+2 VP-num:~x > VB-comp:s-num:~x S
+7 VP > VBD-comp:np NP
+7 VP > VBD-comp:null
+3 VP > ADV VP
+9 NP-num:~x > CNP-num:~x
+9 NP-num:~x > NNP-num:~x-num:sg
+2 NP-num:~x > CNP-num:~x NP-num:~y VBD-comp:np-num:~y
+9 AP > JJ
+1 AP > JJ AP
+1 S > NP VP CC S

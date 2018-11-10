@@ -1,0 +1,17 @@
+start NULL subj
+subj np verb
+verb VBD obj
+obj np end cc
+cc CC start
+end NULL
+np NULL rel nnp dt
+rel relp end
+nnp NNP end
+dt DT nn jj
+nn NN end
+jj JJ nn jj
+relp NULL rdt
+rdt DT rnn
+rnn NN rnp
+rnp np rvbd
+rvbd VBD end
