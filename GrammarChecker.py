@@ -7,6 +7,8 @@ def load_lexicon(filename):
     vocab = []  # holds all lexemes
     with open(filename) as f:
         for line in f:
+            if line.startswith('#') or line == "":  # ignore comment lines or empty lines in files
+                continue
             line = line.split()
             word = line[0]
             POS = line[1]
@@ -31,13 +33,18 @@ def load_templates(filename):
     with open(filename) as f:
         templates=[]
         for line in f:
+            if line.startswith('#') or line == "":  # ignore comment lines or empty lines in files
+                continue
             templates.append(line.split())
     return templates
 
 def load_grammar(filename):
     grammar = defaultdict(list)
     with open(filename) as f:
+
         for line in f:
+            if line.startswith('#') or line == "":  # ignore comment lines or empty lines in files
+                continue
             line = line.split()
             lhs = line[0].split("-")
             nonterminal = lhs[0]
