@@ -25,6 +25,7 @@ def get_intent():
 @app.route("/", methods=['POST'])
 def manage_request():
     """Main method that determines how to proceed based on the kind of intent detected"""
+    print("THIS IS IN THE HEROKU LOGS", file=sys.stdout)
 
     response = "You're in llc.py!"
     # try:
