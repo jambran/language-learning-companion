@@ -92,7 +92,7 @@ def give_corrected_response(intent):
 
 
 def get_language(req):
-    return req.get('queryResult').get('intent').get('languageCode')
+    return req.get('queryResult').get('languageCode')
 
 
 def handle_english_intent(intent):
