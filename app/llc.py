@@ -9,10 +9,12 @@ ASR PA5
 import os
 import sys
 from flask import Flask, request, jsonify, make_response
+from GrammarChecker import GrammarChecker
 
 app = Flask(__name__)
 
-fulfillmentText = 'final_response'
+gc = GrammarChecker()
+
 
 def get_intent(req):
     """Returns the intent name as defined in the DialogFlow app"""
@@ -20,7 +22,12 @@ def get_intent(req):
 
 
 def get_utterance(req):
-    return req.get('queryResult').get('arguments')[0].get('rawText')
+    return req.get('originalDetectionConfidence').get('payload').get('inputs')[0].get('rawInputs')[0].get('query')
+
+
+def give_grammatical_utterance(intent):
+    if intent ==
+    pass
 
 
 @app.route("/", methods=['POST'])
