@@ -43,6 +43,42 @@ def handle_intent(intent):
         response += ""
     return response
 
+
+def give_corrected_response(intent):
+    if intent == 'Alarmas':
+        response = "That was almost correct!\n"
+        response += "A better way would be: 'Pon la alarma a las diez y media'.\n"
+        response += "Or: 'Crea una alarma a las cuatro menos veinticinco'.\n"
+        response += "Please try again! :)"
+
+    elif intent == 'Calendario':
+        response = "That was almost correct!\n"
+        response += "A better way would be: 'Pon una nota para el cinco de marzo'.\n"
+        response += "Please try again! :)"
+
+    elif intent == 'ElTiempo':
+        response = "That was almost correct!\n"
+        response += "A better way would be: 'Dime que tiempo hace en Waltham'\n"
+        response += "Or: 'Cual es el tiempo en Boston'.\n"
+        response += "Please try again! :)"
+
+    elif intent == 'LaHora':
+        response = "That was almost correct!\n"
+        response += "A better way would be: 'Que hora es'\n"
+        response += "Or: 'Me dices la hora'.\n"
+        response += "Please try again! :)"
+
+    elif intent == 'Luces':
+        response = "That was almost correct!\n"
+        response += "A better way would be: 'Enciende las luces'\n"
+        response += "Or: 'Apaga la luz'.\n"
+        response += "Please try again! :)"
+
+    elif intent == 'Restaurantes':
+        response = "That was almost correct!\n"
+        response += "A better way would be: 'Muestrame restaurantes en Waltham'\n"
+        response += "Please try again! :)"
+
 @app.route("/", methods=['POST'])
 def manage_request():
     """Main method that determines how to proceed based on the kind of intent detected"""
@@ -61,24 +97,9 @@ def manage_request():
         #if grammatical, congratulate and proceed with success message
         if gc.is_grammatical(user_utterance):
             response = handle_intent(intent)
-
-        #if ungrammatical, say how they should have said it
-        #begin ungrammatical part:
-        if intent == 'Alarmas':
-            response = "That was almost correct!\n"
-            response += "A better way would be: 'Pon la alarma a las diez y media'\n"
-            response += "Or: 'Crea una alarma a las cuatro menos veinticinco'.\n"
-            response += "Please try again! :)"
-
-        elif intent == 'Calendario':
-
-        elif intent == 'ElTiempo':
-
-        elif intent == 'LaHora':
-
-        elif intent == 'Luces':
-
-        elif intent == 'Restaurantes':
+        else:
+            #if ungrammatical, say how they should have said it
+            give_corrected_response(intent)
 
     except:  # in case something goes wrong, give a response to let the user know to try again
         response = "Hmm. Something went wrong. What would you like to do?"
