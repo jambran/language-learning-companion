@@ -10,6 +10,8 @@ class GrammarCheckerTest(unittest.TestCase):
         grammatical_file = "good_sentences.txt"
         with open(grammatical_file) as f:
             for line in f:
+                if line.startswith('#'):
+                    continue
                 line = line.strip()
                 truth_val = gc.is_grammatical(line)
                 print(line + ': ' + str(truth_val))
@@ -21,6 +23,8 @@ class GrammarCheckerTest(unittest.TestCase):
         ungrammatical_file = "bad_sentences.txt"
         with open(ungrammatical_file) as f:
             for line in f:
+                if line.startswith('#'):
+                    continue
                 line = line.strip()
                 truth_val = gc.is_grammatical(line)
                 print(line + ': '+ str(truth_val))

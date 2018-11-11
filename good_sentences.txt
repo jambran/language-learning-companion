@@ -1,24 +1,9 @@
-Alexa que hora es
-que hora es
-Alexa dime que hora es
-dime que hora es
-Alexa que tiempo hace en Waltham
 que tiempo hace en Waltham
-Alexa cual es el tiempo en Waltham
 cual es el tiempo en Waltham
-Alexa enciende las luces
 enciende las luces
-Alexa dime que tiempo hace
-dime que tiempo hace
-Alexa muestrame restaurantes en Cambridge
 muestrame restaurantes en Cambridge
-Alexa enseñame restaurantes en Boston
 enseñame restaurantes en Boston
-Alexa pon la alarma para las dos
 pon la alarma para las dos
-Alexa pon una alarma a las tres cincuenta y dos
-pon una alarma a las tres cincuenta y dos
-Alexa crea una nota
-crea una nota
-Alexa crea una nota para el cinco de marzo de dos mil diecinueve
-crea una nota para el cinco de marzo de dos mil diecinueve
+#pon una alarma a las tres cincuenta y dos
+#crea una nota
+#crea una nota para el cinco de marzo de dos mil diecinueve

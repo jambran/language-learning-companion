@@ -1,16 +1,18 @@
-S > ALEXA S
+#S > ALEXA S
+TOP > S
 
+#S > NP VP CC S
 S > NP-num:~x VP-num:~x
-S > NP VP CC S
 S > VP
 
-S > WH1 NP VBes
-S > WH1 NP VBhace
 S > WH2 VBes NP PP
+S > WH1 NP VBes
+S > WH1 NP VBhace PP
 
 NP-num:~x > CNP-num:~x
 NP-num:~x > NNP-num:~x-num:sg
 NP-num:~x > CNP-num:~x PP
+NP-num:~x > UCNP-num:~x PP
 NP-num:~x > UCNP-num:~x
 
 CNP-num:~x > DT-num:~x NN-num:~x
@@ -21,13 +23,14 @@ UCNP-num:~x > NN-num:~x
 
 VP-num:~x > VB-comp:np-num:~x NP
 VP-num:~x > VB-comp:null-num:~x
-VP-num:~x > VB-comp:s-num:~x S
+#VP-num:~x > VB-comp:s-num:~x S
 
 VP > VB-comp:np-num:~x NP PP
 
 
 
 PP > Pin NP
+PP > Pin NNP
 PP > Pfor NPHour
 PP > Pof NPYear
 PP > Pof NMonth
@@ -45,6 +48,7 @@ NPYear > NB1 Mil NB1
 
 #las tres (y) treinta y cinco
 NPHour > DT NB1 NB2
+NPHour > DT NB1
 NPHour > DT NB1 CC NB2
 NPHour > DT NB1 ADVMin NB2
 

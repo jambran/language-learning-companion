@@ -1,5 +1,3 @@
-Alexa como tiempo hace
-Alexa cual tiempo hace
 como tiempo hace
 cual tiempo hace
 enciende luces las
@@ -8,4 +6,3 @@ alarma pon a las dos
 pon alarma a dos
 pon alarma para dos
 crea nota en diciembre
-crea nota

@@ -64,12 +64,12 @@ class GrammarChecker():
 
     def get_parse(self, sentence):
         sentence = sentence.split()
-        result = self.recursive_parse(sentence, "S", 0, debug=False)
+        result = self.recursive_parse(sentence, "TOP", 0, debug=False)
         return result[0]
 
     def is_grammatical(self, sentence, debug=False):
         sentence = sentence.split()
-        result = self.recursive_parse(sentence, "S", 0, debug=debug)
+        result = self.recursive_parse(sentence, "TOP", 0, debug=debug)
         if type(result) == str:
             return False
         if result[1] == len(sentence):
@@ -77,8 +77,8 @@ class GrammarChecker():
         # we didn't complete a rule - stopped early
         return False
 
-    def recursive_parse(self, sentence, symbol, index, debug=False):
-        if debug: print(symbol, index)
+    def recursive_parse(self, sentence, symbol, index, debug=False, tabs=""):
+        if debug: print(tabs, symbol, index)
 
         # base case: we have a terminal node, e.g. NNP > Elaine
         if symbol in self.lexicon:  # if this is a POS, terminal node, no rewrite rule
@@ -100,7 +100,7 @@ class GrammarChecker():
             tempchildren = []
             failure = False
             for element in rule:
-                return_value = self.recursive_parse(sentence, element[0], tempindex, debug=debug)
+                return_value = self.recursive_parse(sentence, element[0], tempindex, debug=debug, tabs=tabs+'\t')
                 if type(return_value) == str: # "YIKES" occured
                     failure = True
                     break
@@ -108,19 +108,27 @@ class GrammarChecker():
                     subtree, tempindex = return_value
                     tempchildren.append(subtree)
 
+            if symbol == 'CNP':
+                x='hello'
             if not failure:
+                if symbol == 'TOP' and tempindex == len(sentence): # we've finished parsing the whole sentence!
+                    tree.extend(tempchildren)
+                    return (tree, tempindex)
+                if  symbol == 'TOP':
+                    # "YIKES: we ended parsing too soon"
+                    continue  # try another rule
+
                 tree.extend(tempchildren)
                 return (tree, tempindex)
-        return "YIKES"
 
-    def is_grammatical(self, sentence):
-        return type(self.check_grammar(sentence)) == tuple
+         # we tried all the rules, and none of them worked. No good
+        return "YIKES"
 
 
 if __name__ == '__main__':
-    sentence = "que hora es"
+    # sentence = "que hora es"
     gc = GrammarChecker()
-    print(gc.is_grammatical(sentence))
+    # print(gc.is_grammatical(sentence))
 
-    print(gc.recursive_parse("Alexa dime que hora es".split(), "S", 0, debug=True))
+    print(gc.recursive_parse("pon la alarma para las dos".split(), "TOP", 0, debug=True))
 
