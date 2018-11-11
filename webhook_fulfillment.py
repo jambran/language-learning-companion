@@ -44,7 +44,7 @@ def handle_intent(intent):
     elif intent == 'LaHora':
         response += "Ahora son las:\n"
         print("EN INTENT LaHora", file=sys.stdout)
-        response += datetime.datetime.time(datetime.datetime.now())
+        response += str(datetime.datetime.time(datetime.datetime.now()))[:5]
         print("THE ERROR IS NOT WIITH DATETIME", file=sys.stdout)
 
     elif intent == 'Luces':
