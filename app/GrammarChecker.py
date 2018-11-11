@@ -1,5 +1,5 @@
 from collections import defaultdict
-from .Lexeme import Lexeme
+from Lexeme import Lexeme
 import os
 
 def load_lexicon(filename):

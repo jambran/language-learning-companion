@@ -11,7 +11,7 @@ import sys
 import random
 import datetime
 from flask import Flask, request, jsonify, make_response
-from .GrammarChecker import GrammarChecker
+from GrammarChecker import GrammarChecker
 
 app = Flask(__name__)
 
