@@ -24,7 +24,7 @@ def get_intent(req):
 
 
 def get_utterance(req):
-    return req.get('originalDetectionConfidence').get('payload').get('inputs')[0].get('rawInputs')[0].get('query')
+    return req.get('originalDetectIntentRequest').get('payload').get('inputs')[0].get('rawInputs')[0].get('query')
 
 
 
