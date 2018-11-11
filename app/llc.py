@@ -43,7 +43,7 @@ def manage_request():
                 "items": [
                   {
                     "simpleResponse": {
-                      "textToSpeech": "this is a simple response"
+                      "textToSpeech": response
                     }
                   }
                 ]
