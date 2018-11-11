@@ -43,6 +43,10 @@ def manage_request():
         #if ungrammatical, say how they should have said it
         #begin ungrammatical part:
         if intent == 'Alarmas':
+            response = "That was almost correct!\n"
+            response += "A better way would be: 'Pon la alarma a las diez y media'\n"
+            response += "Or: 'Crea una alarma a las cuatro menos veinticinco'.\n"
+            response += "Please try again! :)"
 
         elif intent == 'Calendario':
 
