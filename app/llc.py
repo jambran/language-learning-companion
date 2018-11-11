@@ -82,7 +82,7 @@ def manage_request():
         #if grammatical, congratulate and proceed with success message
 
         #if ungrammatical, say how they should have said it
-        give_corrected_response()
+        give_corrected_response(intent)
 
 
        
