@@ -112,7 +112,7 @@ def manage_request():
             response = give_corrected_response(intent)
 
     except:  # in case something goes wrong, give a response to let the user know to try again
-        response = "Hmm. Something went wrong. What would you like to do?"
+        response = "No te he entendido. Por favor intentalo de nuevo."
     dct = {
           "fulfillmentText": response,
           "source": "example.com",
