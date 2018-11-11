@@ -25,10 +25,23 @@ def get_utterance(req):
     return req.get('originalDetectionConfidence').get('payload').get('inputs')[0].get('rawInputs')[0].get('query')
 
 
-def give_grammatical_utterance(intent):
-    if intent ==
-    pass
 
+def handle_intent(intent):
+    response = ""
+    if intent == 'Alarmas':
+        response += "Bien.  "
+
+    elif intent == 'Calendario':
+
+    elif intent == 'ElTiempo':
+
+    elif intent == 'LaHora':
+
+    elif intent == 'Luces':
+
+    elif intent == 'Restaurantes':
+        response += ""
+    return response
 
 @app.route("/", methods=['POST'])
 def manage_request():
@@ -46,6 +59,8 @@ def manage_request():
         print("USER UTT: ", user_utterance, file=sys.stdout)
 
         #if grammatical, congratulate and proceed with success message
+        if gc.is_grammatical(user_utterance):
+            response = handle_intent(intent)
 
         #if ungrammatical, say how they should have said it
         #begin ungrammatical part:
