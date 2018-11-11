@@ -30,6 +30,7 @@ def manage_request():
 
     response = "You're in llc.py!"
     try:
+
         req = request.get_json(silent=True, force=True)
         print((req), file=sys.stdout)
         intent = get_intent(req)
@@ -37,6 +38,10 @@ def manage_request():
         print("INTENT: ", intent, file=sys.stdout)
         print("USER UTT: ", user_utterance, file=sys.stdout)
 
+        #if grammatical, congratulate and proceed with success message
+
+        #if ungrammatical, say how they should have said it
+        #begin ungrammatical part:
         if intent == 'Alarmas':
 
         elif intent == 'Calendario':
