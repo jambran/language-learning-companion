@@ -9,10 +9,12 @@ ASR PA5
 import os
 import sys
 from flask import Flask, request, jsonify, make_response
+from GrammarChecker import GrammarChecker
 
 app = Flask(__name__)
 
-fulfillmentText = 'final_response'
+gc = GrammarChecker()
+
 
 def get_intent(req):
     """Returns the intent name as defined in the DialogFlow app"""
@@ -20,13 +22,17 @@ def get_intent(req):
 
 
 def get_utterance(req):
-    return req.get('queryResult').get('arguments')[0].get('rawText')
+    return req.get('originalDetectionConfidence').get('payload').get('inputs')[0].get('rawInputs')[0].get('query')
+
+
+def give_grammatical_utterance(intent):
+    if intent ==
+    pass
 
 
 @app.route("/", methods=['POST'])
 def manage_request():
     """Main method that determines how to proceed based on the kind of intent detected"""
-    print("THIS IS IN THE HEROKU LOGS", file=sys.stdout)
 
     response = "You're in llc.py!"
     try:
@@ -36,6 +42,11 @@ def manage_request():
         user_utterance = get_utterance(req)
         print("INTENT: ", intent, file=sys.stdout)
         print("USER UTT: ", user_utterance, file=sys.stdout)
+
+        if gc.is_grammatical(user_utterance):
+            response = handle_intent(intent) #todo
+        else:
+            response = give_grammatical_utterance(intent)
 
     except:  # in case something goes wrong, give a response to let the user know to try again
         response = "Hmm. Something went wrong. What would you like to do?"
