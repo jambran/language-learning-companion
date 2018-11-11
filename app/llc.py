@@ -13,7 +13,7 @@ import pandas as pd
 
 app = Flask(__name__)
 
-fulfillmentText = 'fulfillmentText'
+fulfillmentText = 'final_response'
 
 def get_intent():
     """Returns the intent name as defined in the DialogFlow app"""
