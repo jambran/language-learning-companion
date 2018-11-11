@@ -100,9 +100,9 @@ def manage_request():
         req = request.get_json(silent=True, force=True)
         print((req), file=sys.stdout)
         intent = get_intent(req)
-        print("\nINTENT: ", intent, file=sys.stdout)
+        print("INTENT: ", intent, file=sys.stdout)
         user_utterance = get_utterance(req)
-        print("\nUSER UTT: ", user_utterance, file=sys.stdout)
+        print("USER UTT: ", user_utterance, file=sys.stdout)
 
         #if grammatical, congratulate and proceed with success message
         if gc.is_grammatical(user_utterance):
