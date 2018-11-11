@@ -133,6 +133,7 @@ def manage_request():
     try:
         req = request.get_json(silent=True, force=True)
         language = get_language(req)
+        print((language), file = sys.stdout)
         print((req), file=sys.stdout)
         intent = get_intent(req)
         print("INTENT: ", intent, file=sys.stdout)
