@@ -18,7 +18,7 @@ def get_intent():
     """Returns the intent name as defined in the DialogFlow app"""
     req = request.get_json(silent=True, force=True)
     print((req), file=sys.stdout)
-    return req.get('queryResult').get('intent').get('displayName')
+    return req#.get('queryResult').get('intent').get('displayName')
 
 
 
@@ -28,13 +28,13 @@ def manage_request():
     print("THIS IS IN THE HEROKU LOGS", file=sys.stdout)
 
     response = "You're in llc.py!"
-    # try:
-    #     # retrieve the intent
-    #     intent = get_intent()
-    #
-    #
-    # except:  # in case something goes wrong, give a response to let the user know to try again
-    #     response = "Hmm. Something went wrong. What would you like to do?"
+    try:
+        # retrieve the intent
+        intent = get_intent()
+
+
+    except:  # in case something goes wrong, give a response to let the user know to try again
+        response = "Hmm. Something went wrong. What would you like to do?"
     dct = {
           "fulfillmentText": response,
           "source": "example.com",
