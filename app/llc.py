@@ -14,12 +14,13 @@ app = Flask(__name__)
 
 fulfillmentText = 'final_response'
 
-def get_intent():
+def get_intent(req):
     """Returns the intent name as defined in the DialogFlow app"""
-    req = request.get_json(silent=True, force=True)
-    print((req), file=sys.stdout)
-    return req#.get('queryResult').get('intent').get('displayName')
+    return req.get('queryResult').get('intent').get('displayName')
 
+
+def get_utterance(req):
+    return req.get('queryResult').get('arguments')[0].get('rawText')
 
 
 @app.route("/", methods=['POST'])
@@ -29,9 +30,12 @@ def manage_request():
 
     response = "You're in llc.py!"
     try:
-        # retrieve the intent
-        intent = get_intent()
-
+        req = request.get_json(silent=True, force=True)
+        print((req), file=sys.stdout)
+        intent = get_intent(req)
+        user_utterance = get_utterance(req)
+        print("INTENT: ", intent, file=sys.stdout)
+        print("USER UTT: ", user_utterance, file=sys.stdout)
 
     except:  # in case something goes wrong, give a response to let the user know to try again
         response = "Hmm. Something went wrong. What would you like to do?"
