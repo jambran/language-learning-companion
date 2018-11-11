@@ -90,26 +90,65 @@ def give_corrected_response(intent):
 
     return response
 
+
+def get_language(req):
+    return req.get('queryResult').get('intent').get('languageCode')
+
+
+def handle_english_intent(intent):
+    if intent == 'Alarmas':
+        responses = ['Por favor, dime "Pon la alarma para las cinco y media"',
+                     'Puedes decir "Crea una alarma a las tres cuarenta y cinco"']
+
+    elif intent == 'Calendario':
+        responses = ['You can say: "Crea una nota para el cinco de marzo"',
+                     'You could say: "Pon una nota el quince de abril"']
+
+    elif intent == 'ElTiempo':
+        responses = ['You could say: "Cual es el tiempo en Waltham"',
+                     'You can ask me: "Que tiempo hace en Boston"']
+
+    elif intent == 'LaHora':
+        responses = ['You could ask me: "Que hora es"',
+                     'You can say: "Dime la hora"',
+                     'You can say: "Dime que hora es"',
+                     'You could ask me: "Me dices la hora"']
+
+    elif intent == 'Luces':
+        responses = ['You can ask me: "Enciende las luces"',
+                     'You could say: "Apaga la luz"']
+
+    elif intent == 'Restaurantes':
+        responses = ['You can say: "Muestrame restaurantes en Waltham"',
+                     'You can ask: "Enseñame bares chulos en Boston"']
+
+    return random.choice(responses)
+
+
 @app.route("/", methods=['POST'])
 def manage_request():
     """Main method that determines how to proceed based on the kind of intent detected"""
 
     response = "You're in webhook_fulfillment.py!"
     try:
-
         req = request.get_json(silent=True, force=True)
+        language = get_language(req)
         print((req), file=sys.stdout)
         intent = get_intent(req)
         print("INTENT: ", intent, file=sys.stdout)
-        user_utterance = get_utterance(req)
-        print("USER UTT: ", user_utterance, file=sys.stdout)
 
-        #if grammatical, congratulate and proceed with success message
-        if gc.is_grammatical(user_utterance):
-            response = handle_intent(intent)
+        if language.startswith('en'):
+            response = handle_english_intent(intent)
         else:
-            #if ungrammatical, say how they should have said it
-            response = give_corrected_response(intent)
+            user_utterance = get_utterance(req)
+            print("USER UTT: ", user_utterance, file=sys.stdout)
+
+            #if grammatical, congratulate and proceed with success message
+            if gc.is_grammatical(user_utterance):
+                response = handle_intent(intent)
+            else:
+                #if ungrammatical, say how they should have said it
+                response = give_corrected_response(intent)
 
     except:  # in case something goes wrong, give a response to let the user know to try again
         response = "No te he entendido. Por favor intentalo de nuevo."
