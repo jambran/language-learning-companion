@@ -146,6 +146,7 @@ def manage_request():
             print("USER UTT: ", user_utterance, file=sys.stdout)
 
             #if grammatical, congratulate and proceed with success message
+            print("CHECKING GRAMMATICALITY", file=sys.stdout)
             if gc.is_grammatical(user_utterance):
                 response = handle_intent(intent)
             else:
