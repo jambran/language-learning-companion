@@ -12,6 +12,7 @@ import random
 import datetime
 from flask import Flask, request, jsonify, make_response
 from GrammarChecker import GrammarChecker
+from langdetect import detect
 
 app = Flask(__name__)
 
@@ -92,7 +93,7 @@ def give_corrected_response(intent):
 
 
 def get_language(req):
-    return req.get('queryResult').get('languageCode')
+    return detect(get_utterance(req))
 
 
 def handle_english_intent(intent):

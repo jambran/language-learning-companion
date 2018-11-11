@@ -3,6 +3,7 @@ Click==7.0
 Flask==1.0.2
 itsdangerous==1.1.0
 Jinja2==2.10
+langdetect==1.0.7
 MarkupSafe==1.0
 python-dateutil==2.7.5
 pytz==2018.7
