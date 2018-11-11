@@ -36,7 +36,8 @@ def manage_request():
     # except:  # in case something goes wrong, give a response to let the user know to try again
     #     response = "Hmm. Something went wrong. What would you like to do?"
 
-    return make_response(jsonify({fulfillmentText: response}))
+    return make_response(jsonify({fulfillmentText: response,
+                                  }))
 
 
 if __name__ == "__main__":

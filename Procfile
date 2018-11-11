@@ -1,1 +1,1 @@
-web: python llc.py
+web: python app/llc.py
