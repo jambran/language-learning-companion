@@ -18,6 +18,22 @@ class GrammarCheckerTest(unittest.TestCase):
                 print(line + ': ' + str(truth_val))
                 self.assertTrue(gc.is_grammatical(line))
 
+    def test_1(self):
+        gc = GrammarChecker()
+        self.assertTrue(gc.is_grammatical("pon la alarma para las dos"))
+
+    def test_2(self):
+        gc = GrammarChecker()
+        self.assertTrue(gc.is_grammatical("pon una alarma a las tres cincuenta y dos"))
+
+    # def test_3(self):
+    #     gc = GrammarChecker()
+    #     self.assertTrue(gc.is_grammatical("crea una nota"))
+
+    def test_4(self):
+        gc = GrammarChecker()
+        self.assertTrue(gc.is_grammatical("crea una nota para el cinco de marzo de dos mil diecinueve"))
+
     def test_ungrammatical(self):
         print("TESTING UNGRAMMATICAL")
         gc = GrammarChecker()

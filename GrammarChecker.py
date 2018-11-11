@@ -73,9 +73,9 @@ class GrammarChecker():
 
         # base case: we have a terminal node, e.g. NNP > Elaine
         if symbol in self.lexicon:  # if this is a POS, terminal node, no rewrite rule
-            possible_words = set( [lexeme.word for lexeme in self.lexicon[symbol]] )
             if index >= len(sentence):
-                return "YIKES"
+                return "YIKES: parse index is longer than sentence"
+            possible_words = set( [lexeme.word for lexeme in self.lexicon[symbol]] )
             word = sentence[index]
             if word in possible_words:
                 return ([symbol], index + 1)
@@ -99,8 +99,8 @@ class GrammarChecker():
                     subtree, tempindex = return_value
                     tempchildren.append(subtree)
 
-            if symbol == 'CNP':
-                x='hello'
+            # if symbol == 'CNP':
+            #     x='hello'
             if not failure:
                 if symbol == 'TOP' and tempindex == len(sentence): # we've finished parsing the whole sentence!
                     tree.extend(tempchildren)
@@ -113,7 +113,7 @@ class GrammarChecker():
                 return (tree, tempindex)
 
          # we tried all the rules, and none of them worked. No good
-        return "YIKES"
+        return "YIKES: no production rule satisfied"
 
 
 if __name__ == '__main__':
@@ -121,5 +121,5 @@ if __name__ == '__main__':
     gc = GrammarChecker()
     # print(gc.is_grammatical(sentence))
 
-    print(gc.recursive_parse("dime que tiempo hace en Waltham".split(), "TOP", 0, debug=True))
+    print(gc.recursive_parse("pon una alarma a las tres cincuenta y dos".split(), "TOP", 0, debug=True))
 

@@ -1,4 +1,3 @@
-#S > ALEXA S
 TOP > S
 
 #S > NP VP CC S
@@ -21,10 +20,9 @@ CNP-num:~x > DT-num:~x NPMonth PP
 #que hora es
 UCNP-num:~x > NN-num:~x
 
+VP-num:~x > VB-comp:s-num:~x S
 VP-num:~x > VB-comp:np-num:~x NP
 VP-num:~x > VB-comp:null-num:~x
-VP-num:~x > VB-comp:s-num:~x S
-
 VP > VB-comp:np-num:~x NP PP
 
 

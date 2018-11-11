@@ -1,5 +1,3 @@
-Alexa ALEXA num:sg
-
 que WH1 num:sg
 cual WH2 num:sg num:pl
 #cuanto WH num:sg

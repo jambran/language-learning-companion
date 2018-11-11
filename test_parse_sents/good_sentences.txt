@@ -1,10 +1,10 @@
-#dime que tiempo hace en Waltham
+dime que tiempo hace en Waltham
 que tiempo hace en Waltham
 cual es el tiempo en Waltham
 enciende las luces
 muestrame restaurantes en Cambridge
 enseñame restaurantes en Boston
-pon la alarma para las dos
+#pon la alarma para las dos
 #pon una alarma a las tres cincuenta y dos
 #crea una nota
 #crea una nota para el cinco de marzo de dos mil diecinueve
