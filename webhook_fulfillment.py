@@ -104,6 +104,11 @@ def manage_request():
         user_utterance = get_utterance(req)
         print("USER UTT: ", user_utterance, file=sys.stdout)
 
+        #if lang is english
+
+
+        #else lang is spanish (the if-statements below are embedded in this one
+
         #if grammatical, congratulate and proceed with success message
         if gc.is_grammatical(user_utterance):
             response = handle_intent(intent)
