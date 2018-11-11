@@ -49,8 +49,8 @@ class GrammarChecker():
 
     def __init__(self):
         # lexicon maps POS to list of Lexemes with that POS, vocab is list of all lexemes
-        self.lexicon, self.vocab = load_lexicon(filename=os.path.join('app', 'language_rules', 'lexicon.txt'))
-        self.grammar = load_grammar(filename=os.path.join('app', 'language_rules', 'grammar.txt'))# dict of POS to rewrite rule
+        self.lexicon, self.vocab = load_lexicon(filename=os.path.join('language_rules', 'lexicon.txt'))
+        self.grammar = load_grammar(filename=os.path.join('language_rules', 'grammar.txt'))# dict of POS to rewrite rule
         # self.vocab = [word[0] for word in self.lexicon[symbol]]
 
     def get_parse(self, sentence):
