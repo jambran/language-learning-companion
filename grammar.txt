@@ -23,7 +23,7 @@ UCNP-num:~x > NN-num:~x
 
 VP-num:~x > VB-comp:np-num:~x NP
 VP-num:~x > VB-comp:null-num:~x
-#VP-num:~x > VB-comp:s-num:~x S
+VP-num:~x > VB-comp:s-num:~x S
 
 VP > VB-comp:np-num:~x NP PP
 

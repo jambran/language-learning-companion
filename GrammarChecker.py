@@ -130,5 +130,5 @@ if __name__ == '__main__':
     gc = GrammarChecker()
     # print(gc.is_grammatical(sentence))
 
-    print(gc.recursive_parse("pon la alarma para las dos".split(), "TOP", 0, debug=True))
+    print(gc.recursive_parse("dime que tiempo hace en Waltham".split(), "TOP", 0, debug=True))
 
