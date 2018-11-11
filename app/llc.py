@@ -8,6 +8,8 @@ ASR PA5
 # ! /usr/bin/env python3
 import os
 import sys
+import random
+import datetime
 from flask import Flask, request, jsonify, make_response
 from GrammarChecker import GrammarChecker
 
@@ -29,18 +31,25 @@ def get_utterance(req):
 def handle_intent(intent):
     response = ""
     if intent == 'Alarmas':
-        response += "Bien.  "
+        response += "¡Muy bien! The alarm is set now!"
 
     elif intent == 'Calendario':
+        response += "¡Muy bien! The event is in your calendar!"
 
     elif intent == 'ElTiempo':
+        weather_list = ["Parece que va a hacer buen tiempo", "¡Hace sol!", "Esta despejado", "Hace un poco de frio"]
+        response += random.choice(weather_list)
 
     elif intent == 'LaHora':
-
+        response += "Ahora son las:\n"
+        response += datetime.datetime.time(datetime.datetime.now())
+        
     elif intent == 'Luces':
+        response += "¡Perfecto! The lights are set now."
 
     elif intent == 'Restaurantes':
-        response += ""
+        response += "¡Tu español es perfecto! I sent you some restaurants to your email account."
+
     return response
 
 
