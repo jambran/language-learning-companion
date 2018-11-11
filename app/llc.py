@@ -33,9 +33,11 @@ def give_grammatical_utterance(intent):
 @app.route("/", methods=['POST'])
 def manage_request():
     """Main method that determines how to proceed based on the kind of intent detected"""
+    print("THIS IS IN THE HEROKU LOGS", file=sys.stdout)
 
     response = "You're in llc.py!"
     try:
+
         req = request.get_json(silent=True, force=True)
         print((req), file=sys.stdout)
         intent = get_intent(req)
@@ -43,10 +45,25 @@ def manage_request():
         print("INTENT: ", intent, file=sys.stdout)
         print("USER UTT: ", user_utterance, file=sys.stdout)
 
-        if gc.is_grammatical(user_utterance):
-            response = handle_intent(intent) #todo
-        else:
-            response = give_grammatical_utterance(intent)
+        #if grammatical, congratulate and proceed with success message
+
+        #if ungrammatical, say how they should have said it
+        #begin ungrammatical part:
+        if intent == 'Alarmas':
+            response = "That was almost correct!\n"
+            response += "A better way would be: 'Pon la alarma a las diez y media'\n"
+            response += "Or: 'Crea una alarma a las cuatro menos veinticinco'.\n"
+            response += "Please try again! :)"
+
+        elif intent == 'Calendario':
+
+        elif intent == 'ElTiempo':
+
+        elif intent == 'LaHora':
+
+        elif intent == 'Luces':
+
+        elif intent == 'Restaurantes':
 
     except:  # in case something goes wrong, give a response to let the user know to try again
         response = "Hmm. Something went wrong. What would you like to do?"
