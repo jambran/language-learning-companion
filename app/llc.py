@@ -37,6 +37,18 @@ def manage_request():
         print("INTENT: ", intent, file=sys.stdout)
         print("USER UTT: ", user_utterance, file=sys.stdout)
 
+        if intent == 'Alarmas':
+
+        elif intent == 'Calendario':
+
+        elif intent == 'ElTiempo':
+
+        elif intent == 'LaHora':
+
+        elif intent == 'Luces':
+
+        elif intent == 'Restaurantes':
+
     except:  # in case something goes wrong, give a response to let the user know to try again
         response = "Hmm. Something went wrong. What would you like to do?"
     dct = {
