@@ -88,10 +88,11 @@ def give_corrected_response(intent):
         response += "A better way would be: 'Muestrame restaurantes en Waltham'\n"
         response += "Please try again! :)"
 
+    return response
+
 @app.route("/", methods=['POST'])
 def manage_request():
     """Main method that determines how to proceed based on the kind of intent detected"""
-    print("THIS IS IN THE HEROKU LOGS", file=sys.stdout)
 
     response = "You're in llc.py!"
     try:
@@ -108,7 +109,7 @@ def manage_request():
             response = handle_intent(intent)
         else:
             #if ungrammatical, say how they should have said it
-            give_corrected_response(intent)
+            response = give_corrected_response(intent)
 
     except:  # in case something goes wrong, give a response to let the user know to try again
         response = "Hmm. Something went wrong. What would you like to do?"
