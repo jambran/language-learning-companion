@@ -148,11 +148,14 @@ def manage_request():
             #if grammatical, congratulate and proceed with success message
             print("CHECKING GRAMMATICALITY", file=sys.stdout)
             if gc.is_grammatical(user_utterance):
+                print("THE RESPONSE IS GRAMMATICAL")
                 response = handle_intent(intent)
+                print("RESPOSNE RETRIEVED OKay")
             else:
+                print('THE RESPONSE IS UNGRAMMATICAL')
                 #if ungrammatical, say how they should have said it
                 response = give_corrected_response(intent)
-
+                print("RESPOSNE RETRIEVED OKAY")
     except:  # in case something goes wrong, give a response to let the user know to try again
         response = "No te he entendido. Por favor intentalo de nuevo."
     print("RESPONSE: ", response, file=sys.stdout)
