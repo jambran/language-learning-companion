@@ -29,6 +29,40 @@ def give_grammatical_utterance(intent):
     if intent ==
     pass
 
+def give_corrected_response(intent):
+    if intent == 'Alarmas':
+        response = "That was almost correct!\n"
+        response += "A better way would be: 'Pon la alarma a las diez y media'.\n"
+        response += "Or: 'Crea una alarma a las cuatro menos veinticinco'.\n"
+        response += "Please try again! :)"
+
+    elif intent == 'Calendario':
+        response = "That was almost correct!\n"
+        response += "A better way would be: 'Pon una nota para el cinco de marzo'.\n"
+        response += "Please try again! :)"
+
+    elif intent == 'ElTiempo':
+        response = "That was almost correct!\n"
+        response += "A better way would be: 'Dime que tiempo hace en Waltham'\n"
+        response += "Or: 'Cual es el tiempo en Boston'.\n"
+        response += "Please try again! :)"
+
+    elif intent == 'LaHora':
+        response = "That was almost correct!\n"
+        response += "A better way would be: 'Que hora es'\n"
+        response += "Or: 'Me dices la hora'.\n"
+        response += "Please try again! :)"
+
+    elif intent == 'Luces':
+        response = "That was almost correct!\n"
+        response += "A better way would be: 'Enciende las luces'\n"
+        response += "Or: 'Apaga la luz'.\n"
+        response += "Please try again! :)"
+
+    elif intent == 'Restaurantes':
+        response = "That was almost correct!\n"
+        response += "A better way would be: 'Muestrame restaurantes en Waltham'\n"
+        response += "Please try again! :)"
 
 @app.route("/", methods=['POST'])
 def manage_request():
@@ -48,40 +82,8 @@ def manage_request():
         #if grammatical, congratulate and proceed with success message
 
         #if ungrammatical, say how they should have said it
-        #begin ungrammatical part:
-        if intent == 'Alarmas':
-            response = "That was almost correct!\n"
-            response += "A better way would be: 'Pon la alarma a las diez y media'.\n"
-            response += "Or: 'Crea una alarma a las cuatro menos veinticinco'.\n"
-            response += "Please try again! :)"
+        give_corrected_response()
 
-        elif intent == 'Calendario':
-            response = "That was almost correct!\n"
-            response += "A better way would be: 'Pon una nota para el cinco de marzo'.\n"
-            response += "Please try again! :)"
-
-        elif intent == 'ElTiempo':
-            response = "That was almost correct!\n"
-            response += "A better way would be: 'Dime que tiempo hace en Waltham'\n"
-            response += "Or: 'Cual es el tiempo en Boston'.\n"
-            response += "Please try again! :)"
-
-        elif intent == 'LaHora':
-            response = "That was almost correct!\n"
-            response += "A better way would be: 'Que hora es'\n"
-            response += "Or: 'Me dices la hora'.\n"
-            response += "Please try again! :)"
-
-        elif intent == 'Luces':
-            response = "That was almost correct!\n"
-            response += "A better way would be: 'Enciende las luces'\n"
-            response += "Or: 'Apaga la luz'.\n"
-            response += "Please try again! :)"
-
-        elif intent == 'Restaurantes':
-            response = "That was almost correct!\n"
-            response += "A better way would be: 'Muestrame restaurantes en Waltham'\n"
-            response += "Please try again! :)"
 
        
     except:  # in case something goes wrong, give a response to let the user know to try again
