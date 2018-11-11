@@ -1,5 +1,6 @@
 from collections import defaultdict
 from Lexeme import Lexeme
+import os
 
 def load_lexicon(filename):
     lexicon = defaultdict(lambda: [])  # maps POS to the Lexemes
@@ -28,15 +29,6 @@ def load_lexicon(filename):
     return lexicon, vocab
 
 
-def load_templates(filename):
-    with open(filename) as f:
-        templates=[]
-        for line in f:
-            if line.startswith('#') or line == "":  # ignore comment lines or empty lines in files
-                continue
-            templates.append(line.split())
-    return templates
-
 def load_grammar(filename):
     grammar = defaultdict(list)
     with open(filename) as f:
@@ -57,9 +49,8 @@ class GrammarChecker():
 
     def __init__(self):
         # lexicon maps POS to list of Lexemes with that POS, vocab is list of all lexemes
-        self.lexicon, self.vocab = load_lexicon(filename='lexicon.txt')
-        self.templates = load_templates(filename='templates.txt')  # list of lists of possible sentences
-        self.grammar = load_grammar(filename='grammar.txt')  # dict of POS to rewrite rule
+        self.lexicon, self.vocab = load_lexicon(filename=os.path.join('language_rules', 'lexicon.txt'))
+        self.grammar = load_grammar(filename=os.path.join('language_rules', 'grammar.txt'))# dict of POS to rewrite rule
         # self.vocab = [word[0] for word in self.lexicon[symbol]]
 
     def get_parse(self, sentence):
