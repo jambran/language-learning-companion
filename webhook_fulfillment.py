@@ -1,7 +1,6 @@
 """
 Jamie Brandon
 David Rubio Vallejo
-ASR PA5
 11/09/2018
 """
 
