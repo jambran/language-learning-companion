@@ -1,0 +1,39 @@
+{
+  "id": "b3a8479a-d2bd-4460-acdb-d99a983ac546",
+  "name": "LaHora",
+  "auto": true,
+  "contexts": [],
+  "responses": [
+    {
+      "resetContexts": false,
+      "affectedContexts": [
+        {
+          "name": "LaHora-followup",
+          "parameters": {},
+          "lifespan": 2
+        }
+      ],
+      "parameters": [],
+      "messages": [
+        {
+          "type": 0,
+          "lang": "en",
+          "speech": [
+            "You could ask me: \"Que hora es\"",
+            "You can say: \"Dime la hora\"",
+            "You can say: \"Dime que hora es\"",
+            "You could ask me: \"Me dices la hora\""
+          ]
+        }
+      ],
+      "defaultResponsePlatforms": {},
+      "speech": []
+    }
+  ],
+  "priority": 500000,
+  "webhookUsed": true,
+  "webhookForSlotFilling": false,
+  "lastUpdate": 1541951614,
+  "fallbackIntent": false,
+  "events": []
+}

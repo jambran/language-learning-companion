@@ -1,0 +1,62 @@
+[
+  {
+    "id": "d79fc970-a4bd-4b80-b5f4-61d6ad20ac5f",
+    "data": [
+      {
+        "text": "Dime la hora",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 1541951614
+  },
+  {
+    "id": "b788bf35-91f0-4bdd-81fd-38d6a7b2d3d0",
+    "data": [
+      {
+        "text": "Me dices la hora",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 1541951614
+  },
+  {
+    "id": "2ee24a74-541c-4b81-ae7d-554ba9494618",
+    "data": [
+      {
+        "text": "Que hora es",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 1541951614
+  },
+  {
+    "id": "a1efbb1e-84cf-4a22-9203-5cd641b9679e",
+    "data": [
+      {
+        "text": "Can you tell me the time",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 1541948809
+  },
+  {
+    "id": "4d5ad45d-8ace-4410-9247-669a898175ef",
+    "data": [
+      {
+        "text": "What\u0027s the time",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 1541948809
+  }
+]

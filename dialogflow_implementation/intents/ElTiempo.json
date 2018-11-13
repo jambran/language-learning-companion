@@ -1,0 +1,54 @@
+{
+  "id": "b1d0ec93-ec9c-4bb8-be70-d7d2aac9e892",
+  "name": "ElTiempo",
+  "auto": true,
+  "contexts": [],
+  "responses": [
+    {
+      "resetContexts": false,
+      "affectedContexts": [
+        {
+          "name": "ElTiempo-followup",
+          "parameters": {},
+          "lifespan": 2
+        }
+      ],
+      "parameters": [
+        {
+          "id": "236f18cd-76c7-4517-93c0-4bd321db747e",
+          "required": false,
+          "dataType": "@City",
+          "name": "City",
+          "value": "$City",
+          "isList": false
+        },
+        {
+          "id": "17d89979-e3ac-4cdc-a491-52f6996f103f",
+          "required": false,
+          "dataType": "@sys.geo-city",
+          "name": "geo-city",
+          "value": "$geo-city",
+          "isList": false
+        }
+      ],
+      "messages": [
+        {
+          "type": 0,
+          "lang": "en",
+          "speech": [
+            "You could say: \"Cual es el tiempo en Waltham\"",
+            "You can ask me: \"Que tiempo hace en Boston\""
+          ]
+        }
+      ],
+      "defaultResponsePlatforms": {},
+      "speech": []
+    }
+  ],
+  "priority": 500000,
+  "webhookUsed": true,
+  "webhookForSlotFilling": false,
+  "lastUpdate": 1541951665,
+  "fallbackIntent": false,
+  "events": []
+}

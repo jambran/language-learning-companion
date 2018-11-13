@@ -1,0 +1,117 @@
+[
+  {
+    "id": "f854c840-4ed1-429c-bb7c-3f05bfcc06d5",
+    "data": [
+      {
+        "text": "Pon una alarma a ",
+        "userDefined": false
+      },
+      {
+        "text": "la",
+        "meta": "@sys.ignore",
+        "userDefined": false
+      },
+      {
+        "text": " una menos cuarto",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 1541951591
+  },
+  {
+    "id": "23ac0246-b158-4387-a9ee-04d099afa453",
+    "data": [
+      {
+        "text": "Crea una alarma a las tres cuarenta y cinco",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 1541951591
+  },
+  {
+    "id": "1ad72008-852f-41f7-be39-065aeb5a469c",
+    "data": [
+      {
+        "text": "Pon la alarma a las dos",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 1541951591
+  },
+  {
+    "id": "2ebfad0e-5d5e-487d-95c0-3f4db49fba8c",
+    "data": [
+      {
+        "text": "Pon la alarma para las cinco y media",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 1541951591
+  },
+  {
+    "id": "5083c3e4-9561-43fd-9dff-66a34e404257",
+    "data": [
+      {
+        "text": "Wake me up ",
+        "userDefined": false
+      },
+      {
+        "text": "at 6 am",
+        "alias": "time",
+        "meta": "@sys.time",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 1541915802
+  },
+  {
+    "id": "5b8db820-9842-46a8-bb9c-26ec60a0001a",
+    "data": [
+      {
+        "text": "Could you set an alarm for ",
+        "userDefined": false
+      },
+      {
+        "text": "2 pm",
+        "alias": "time",
+        "meta": "@sys.time",
+        "userDefined": false
+      },
+      {
+        "text": " please?",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 1541915802
+  },
+  {
+    "id": "9bbe562a-e559-41d1-a43e-925c9d290f82",
+    "data": [
+      {
+        "text": "Set an alarm for ",
+        "userDefined": false
+      },
+      {
+        "text": "noon",
+        "alias": "time",
+        "meta": "@sys.time",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 1541915802
+  }
+]

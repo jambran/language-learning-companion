@@ -1,0 +1,59 @@
+[
+  {
+    "id": "b5a54a5b-5dc5-48a5-8550-c38e3322636b",
+    "data": [
+      {
+        "text": "Que hora es",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 1541903414
+  },
+  {
+    "id": "1cee5609-36e7-49b6-9489-28b3bb5aecd2",
+    "data": [
+      {
+        "text": "Dime que hora es",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 1541903414
+  },
+  {
+    "id": "a30891b8-9f88-4fcd-b48f-6915f4f44618",
+    "data": [
+      {
+        "text": "Me ",
+        "userDefined": false
+      },
+      {
+        "text": "dices",
+        "meta": "@sys.ignore",
+        "userDefined": false
+      },
+      {
+        "text": " la hora",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 1541903414
+  },
+  {
+    "id": "3fc8ae57-f062-4e0f-b128-d07998900fa5",
+    "data": [
+      {
+        "text": "Dime la hora",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 1541903414
+  }
+]

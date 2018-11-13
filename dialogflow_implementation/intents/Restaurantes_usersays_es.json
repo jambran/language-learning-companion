@@ -1,0 +1,65 @@
+[
+  {
+    "id": "8031f8de-221b-4dbf-80fc-776b1849c92d",
+    "data": [
+      {
+        "text": "Que bares chulos ",
+        "userDefined": false
+      },
+      {
+        "text": "hay",
+        "meta": "@sys.ignore",
+        "userDefined": false
+      },
+      {
+        "text": " en ",
+        "userDefined": false
+      },
+      {
+        "text": "Cambridge",
+        "alias": "geo-city1",
+        "meta": "@sys.geo-city",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 1541949802
+  },
+  {
+    "id": "b6836953-6289-46af-85b8-8aab06f398a0",
+    "data": [
+      {
+        "text": "Enseñame restaurantes en ",
+        "userDefined": false
+      },
+      {
+        "text": "Boston",
+        "alias": "geo-city",
+        "meta": "@sys.geo-city",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 1541949802
+  },
+  {
+    "id": "3195cad5-1912-4fb2-885d-71f3461dd13b",
+    "data": [
+      {
+        "text": "Muestrame restaurantes en ",
+        "userDefined": false
+      },
+      {
+        "text": "Waltham",
+        "alias": "geo-city",
+        "meta": "@sys.geo-city",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 1541903492
+  }
+]

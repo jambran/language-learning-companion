@@ -1,0 +1,45 @@
+{
+  "id": "57ff7f8d-c1e3-4d29-9b74-60a15d111e87",
+  "name": "Bienvenido",
+  "auto": true,
+  "contexts": [],
+  "responses": [
+    {
+      "resetContexts": false,
+      "action": "input.welcome",
+      "affectedContexts": [],
+      "parameters": [],
+      "messages": [
+        {
+          "type": 0,
+          "lang": "es",
+          "speech": [
+            "Bienvenido a Fluency Friend",
+            "Quiero ayudarte con tu español"
+          ]
+        },
+        {
+          "type": 0,
+          "lang": "en",
+          "speech": [
+            "Hi! Ask me to do something in Spanish, and I\u0027ll correct your mistakes",
+            "Hello!  Talk to me in English, and I\u0027ll give you the proper response in Spanish",
+            "Good day! What can I do for you today? Ask me in Spanish, so I can help you learn what to do better"
+          ]
+        }
+      ],
+      "defaultResponsePlatforms": {},
+      "speech": []
+    }
+  ],
+  "priority": 500000,
+  "webhookUsed": false,
+  "webhookForSlotFilling": false,
+  "lastUpdate": 1541949635,
+  "fallbackIntent": false,
+  "events": [
+    {
+      "name": "WELCOME"
+    }
+  ]
+}

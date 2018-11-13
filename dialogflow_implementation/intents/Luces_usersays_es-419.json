@@ -1,0 +1,60 @@
+[
+  {
+    "id": "ae6f25a9-c3bb-4306-909e-ed280f1499be",
+    "data": [
+      {
+        "text": "Enciende las ",
+        "userDefined": false
+      },
+      {
+        "text": "luces",
+        "meta": "@sys.ignore",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 1541903474
+  },
+  {
+    "id": "e23a355f-5c29-449f-af5f-0df36482ec93",
+    "data": [
+      {
+        "text": "Enciende la luz",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 1541903474
+  },
+  {
+    "id": "5dcbf95a-f620-4c9f-b34b-fe5b82170da9",
+    "data": [
+      {
+        "text": "Apaga la luz",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 1541903474
+  },
+  {
+    "id": "f5946993-575b-41c5-8e80-a58ac89189c9",
+    "data": [
+      {
+        "text": "Apaga las ",
+        "userDefined": false
+      },
+      {
+        "text": "luces",
+        "meta": "@sys.ignore",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 1541903474
+  }
+]

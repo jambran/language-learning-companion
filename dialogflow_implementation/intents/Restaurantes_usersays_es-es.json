@@ -1,0 +1,20 @@
+[
+  {
+    "id": "0314dde8-ca6b-4614-bc3e-e949b5b81e62",
+    "data": [
+      {
+        "text": "Muestrame restaurantes en ",
+        "userDefined": false
+      },
+      {
+        "text": "Waltham",
+        "alias": "geo-city",
+        "meta": "@sys.geo-city",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 1541903492
+  }
+]

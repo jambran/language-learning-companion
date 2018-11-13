@@ -1,0 +1,29 @@
+[
+  {
+    "id": "d620c0ef-9a90-49d7-9ec1-bc4cbeaf725f",
+    "data": [
+      {
+        "text": "Pon ",
+        "userDefined": false
+      },
+      {
+        "text": "una",
+        "meta": "@sys.ignore",
+        "userDefined": false
+      },
+      {
+        "text": " nota ",
+        "userDefined": false
+      },
+      {
+        "text": "para el cinco de marzo",
+        "alias": "date",
+        "meta": "@sys.date",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 1541903142
+  }
+]

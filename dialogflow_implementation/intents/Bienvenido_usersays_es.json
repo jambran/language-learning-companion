@@ -1,0 +1,26 @@
+[
+  {
+    "id": "cef65a34-2971-4649-a9ea-2d776750e625",
+    "data": [
+      {
+        "text": "como estas",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 1541918488
+  },
+  {
+    "id": "4555f94a-fc3a-49a9-a74c-37342da6c688",
+    "data": [
+      {
+        "text": "Hola",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 1541918488
+  }
+]

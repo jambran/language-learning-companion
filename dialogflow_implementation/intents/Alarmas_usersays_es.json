@@ -1,0 +1,92 @@
+[
+  {
+    "id": "c11151dd-957e-4932-a993-39557ce0a0cd",
+    "data": [
+      {
+        "text": "Pon la alarma ",
+        "userDefined": false
+      },
+      {
+        "text": "para las cinco y media",
+        "alias": "time",
+        "meta": "@sys.time",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 1541903281
+  },
+  {
+    "id": "b312c3af-efac-4b69-9459-1f525f1cc923",
+    "data": [
+      {
+        "text": "Pon la alarma ",
+        "userDefined": false
+      },
+      {
+        "text": "a las dos",
+        "alias": "time",
+        "meta": "@sys.time",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 1541903281
+  },
+  {
+    "id": "7349ad02-25ad-428c-9211-06b4e1dc9480",
+    "data": [
+      {
+        "text": "Crea ",
+        "userDefined": false
+      },
+      {
+        "text": "una",
+        "meta": "@sys.ignore",
+        "userDefined": false
+      },
+      {
+        "text": " alarma ",
+        "userDefined": false
+      },
+      {
+        "text": "a las tres cuarenta y cinco",
+        "alias": "time1",
+        "meta": "@sys.time",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 1541903281
+  },
+  {
+    "id": "f2d733e1-459b-44ba-8223-a580f1520b65",
+    "data": [
+      {
+        "text": "Pon ",
+        "userDefined": false
+      },
+      {
+        "text": "una",
+        "meta": "@sys.ignore",
+        "userDefined": false
+      },
+      {
+        "text": " alarma a ",
+        "userDefined": false
+      },
+      {
+        "text": "la una menos cuarto",
+        "alias": "time",
+        "meta": "@sys.time",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 1541903281
+  }
+]

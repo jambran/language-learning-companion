@@ -1,0 +1,110 @@
+[
+  {
+    "id": "2953a483-286b-4536-9a21-9288a5964722",
+    "data": [
+      {
+        "text": "Quiero restaurantes en ",
+        "userDefined": false
+      },
+      {
+        "text": "Boston",
+        "alias": "City",
+        "meta": "@City",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 1541951551
+  },
+  {
+    "id": "036cc214-d9ce-4502-b317-e4b34f6f339c",
+    "data": [
+      {
+        "text": "Enseñame bares chulos en ",
+        "userDefined": false
+      },
+      {
+        "text": "Cambridge",
+        "alias": "City",
+        "meta": "@City",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 1541951551
+  },
+  {
+    "id": "5ff79029-0b3e-4f51-bd02-19ad7ec1c5c5",
+    "data": [
+      {
+        "text": "Muestrame restaurantes en ",
+        "userDefined": false
+      },
+      {
+        "text": "Waltham",
+        "alias": "City",
+        "meta": "@City",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 1541951551
+  },
+  {
+    "id": "6651ba42-04da-49e9-a315-10661999ebd4",
+    "data": [
+      {
+        "text": "What bars are cool in ",
+        "userDefined": false
+      },
+      {
+        "text": "Cambridge",
+        "alias": "City",
+        "meta": "@City",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 1541949180
+  },
+  {
+    "id": "50ea7c7f-a38e-45b4-91af-241e605910bc",
+    "data": [
+      {
+        "text": "I want to get restaurants in ",
+        "userDefined": false
+      },
+      {
+        "text": "Boston",
+        "alias": "City",
+        "meta": "@City",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 1541949180
+  },
+  {
+    "id": "f3a62118-bc5c-4baa-afff-c0afeb5c291d",
+    "data": [
+      {
+        "text": "Show me restaurants in ",
+        "userDefined": false
+      },
+      {
+        "text": "Waltham",
+        "alias": "City",
+        "meta": "@City",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 1541949180
+  }
+]

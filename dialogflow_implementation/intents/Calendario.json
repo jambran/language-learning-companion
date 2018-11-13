@@ -1,0 +1,61 @@
+{
+  "id": "738e249a-d526-43f1-9c30-08c3a0e95321",
+  "name": "Calendario",
+  "auto": true,
+  "contexts": [],
+  "responses": [
+    {
+      "resetContexts": false,
+      "affectedContexts": [
+        {
+          "name": "Calendario-followup",
+          "parameters": {},
+          "lifespan": 2
+        }
+      ],
+      "parameters": [
+        {
+          "id": "49388c08-fb36-4cfb-a9f3-065a43d437ba",
+          "required": false,
+          "dataType": "@sys.date",
+          "name": "date",
+          "value": "$date",
+          "isList": false
+        },
+        {
+          "id": "a57fd747-ec5f-4628-ba9f-fe451262bd66",
+          "required": false,
+          "dataType": "@sys.date-period",
+          "name": "date-period",
+          "value": "$date-period",
+          "isList": false
+        },
+        {
+          "id": "0feac2ad-caac-4aa3-850c-f5facc45d754",
+          "dataType": "@sys.given-name",
+          "name": "given-name",
+          "value": "$given-name",
+          "isList": false
+        }
+      ],
+      "messages": [
+        {
+          "type": 0,
+          "lang": "en",
+          "speech": [
+            "You can say: \"Crea una nota para el cinco de marzo\"",
+            "You could say: \"Pon una nota el quince de abril\""
+          ]
+        }
+      ],
+      "defaultResponsePlatforms": {},
+      "speech": []
+    }
+  ],
+  "priority": 500000,
+  "webhookUsed": true,
+  "webhookForSlotFilling": false,
+  "lastUpdate": 1541951614,
+  "fallbackIntent": false,
+  "events": []
+}

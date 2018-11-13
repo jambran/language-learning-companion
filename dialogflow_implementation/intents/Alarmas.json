@@ -1,0 +1,54 @@
+{
+  "id": "e05fff00-b290-4a8c-9f5e-1f98897ecca6",
+  "name": "Alarmas",
+  "auto": true,
+  "contexts": [],
+  "responses": [
+    {
+      "resetContexts": false,
+      "affectedContexts": [
+        {
+          "name": "Alarmas-followup",
+          "parameters": {},
+          "lifespan": 2
+        }
+      ],
+      "parameters": [
+        {
+          "id": "08d4c6c9-4533-4a4f-baa4-a2988b2a8574",
+          "required": false,
+          "dataType": "@sys.time",
+          "name": "time",
+          "value": "$time",
+          "isList": false
+        },
+        {
+          "id": "de97194b-e382-4bd5-ab35-64e5d452f68b",
+          "required": false,
+          "dataType": "@sys.time",
+          "name": "time1",
+          "value": "$time1",
+          "isList": false
+        }
+      ],
+      "messages": [
+        {
+          "type": 0,
+          "lang": "en",
+          "speech": [
+            "Por favor, dime \"Pon la alarma para las cinco y media\"",
+            "Puedes decir \"Crea una alarma a las tres cuarenta y cinco\""
+          ]
+        }
+      ],
+      "defaultResponsePlatforms": {},
+      "speech": []
+    }
+  ],
+  "priority": 500000,
+  "webhookUsed": true,
+  "webhookForSlotFilling": false,
+  "lastUpdate": 1541951591,
+  "fallbackIntent": false,
+  "events": []
+}

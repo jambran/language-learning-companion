@@ -1,0 +1,84 @@
+[
+  {
+    "id": "ff9212eb-a58a-4566-a11b-f958c6794a2c",
+    "data": [
+      {
+        "text": "Pon una nota para el cinco ",
+        "userDefined": false
+      },
+      {
+        "text": "de",
+        "alias": "given-name",
+        "meta": "@sys.given-name",
+        "userDefined": false
+      },
+      {
+        "text": " marzo",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 1541951614
+  },
+  {
+    "id": "24ff357e-82db-4985-a745-90eb49379fba",
+    "data": [
+      {
+        "text": "Add a note for ",
+        "userDefined": false
+      },
+      {
+        "text": "tomorrow",
+        "alias": "date",
+        "meta": "@sys.date",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 1541948571
+  },
+  {
+    "id": "788d5a18-6197-46c5-89f7-4fb2a4d62539",
+    "data": [
+      {
+        "text": "Make a note for June 12th",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 1541948571
+  },
+  {
+    "id": "b66f3e32-df6d-40d5-9662-92260375573d",
+    "data": [
+      {
+        "text": "Make an appointment for ",
+        "userDefined": false
+      },
+      {
+        "text": "later this week",
+        "alias": "date-period",
+        "meta": "@sys.date-period",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 1541948571
+  },
+  {
+    "id": "fd6daa57-6be6-4051-b454-72265c467fc1",
+    "data": [
+      {
+        "text": "Set an appointment for the 23th of March",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 1541900384
+  }
+]

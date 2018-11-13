@@ -1,0 +1,74 @@
+[
+  {
+    "id": "79794823-dbce-49e9-92cb-05ce44e40f6b",
+    "data": [
+      {
+        "text": "Que tiempo hace en ",
+        "userDefined": false
+      },
+      {
+        "text": "Waltham",
+        "alias": "geo-city",
+        "meta": "@sys.geo-city",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 1541903363
+  },
+  {
+    "id": "8219d21c-264f-45b4-8baf-da8169dfa33e",
+    "data": [
+      {
+        "text": "Dime que tiempo hace en ",
+        "userDefined": false
+      },
+      {
+        "text": "Cambridge",
+        "alias": "geo-city",
+        "meta": "@sys.geo-city",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 1541903363
+  },
+  {
+    "id": "ec69c598-d870-4bc9-8ee4-386a6bbb70a2",
+    "data": [
+      {
+        "text": "Dime cual es el tiempo en ",
+        "userDefined": false
+      },
+      {
+        "text": "Boston",
+        "alias": "geo-city",
+        "meta": "@sys.geo-city",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 1541903363
+  },
+  {
+    "id": "db0d012d-dd3a-4789-b4e1-964ef59e0199",
+    "data": [
+      {
+        "text": "Cual es el tiempo en ",
+        "userDefined": false
+      },
+      {
+        "text": "Waltham",
+        "alias": "geo-city",
+        "meta": "@sys.geo-city",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 1541903363
+  }
+]

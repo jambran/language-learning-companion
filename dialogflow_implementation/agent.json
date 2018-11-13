@@ -1,0 +1,72 @@
+{
+  "description": "",
+  "language": "en",
+  "disableInteractionLogs": false,
+  "disableStackdriverLogs": true,
+  "googleAssistant": {
+    "googleAssistantCompatible": true,
+    "project": "language-learning-companion",
+    "welcomeIntentSignInRequired": false,
+    "startIntents": [
+      {
+        "intentId": "738e249a-d526-43f1-9c30-08c3a0e95321",
+        "signInRequired": false
+      },
+      {
+        "intentId": "e05fff00-b290-4a8c-9f5e-1f98897ecca6",
+        "signInRequired": false
+      },
+      {
+        "intentId": "bcf32b8d-7286-4436-a52f-7ecfb891aa56",
+        "signInRequired": false
+      },
+      {
+        "intentId": "b1d0ec93-ec9c-4bb8-be70-d7d2aac9e892",
+        "signInRequired": false
+      },
+      {
+        "intentId": "b3a8479a-d2bd-4460-acdb-d99a983ac546",
+        "signInRequired": false
+      },
+      {
+        "intentId": "ccdec330-530c-4f79-a8e5-81948d626827",
+        "signInRequired": false
+      }
+    ],
+    "systemIntents": [],
+    "endIntentIds": [],
+    "oAuthLinking": {
+      "required": false,
+      "grantType": "AUTH_CODE_GRANT"
+    },
+    "voiceType": "MALE_1",
+    "capabilities": [],
+    "protocolVersion": "V2",
+    "autoPreviewEnabled": true,
+    "isDeviceAgent": false
+  },
+  "defaultTimezone": "America/New_York",
+  "webhook": {
+    "url": "https://language-learning-companion.herokuapp.com/",
+    "headers": {
+      "": ""
+    },
+    "available": true,
+    "useForDomains": true,
+    "cloudFunctionsEnabled": false,
+    "cloudFunctionsInitialized": false
+  },
+  "isPrivate": true,
+  "customClassifierMode": "use.after",
+  "mlMinConfidence": 0.3,
+  "supportedLanguages": [
+    "es",
+    "es-419",
+    "es-es"
+  ],
+  "onePlatformApiVersion": "v2",
+  "analyzeQueryTextSentiment": false,
+  "enabledKnowledgeBaseNames": [],
+  "knowledgeServiceConfidenceAdjustment": -0.4,
+  "dialogBuilderMode": false
+}

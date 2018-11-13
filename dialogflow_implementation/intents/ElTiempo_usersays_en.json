@@ -1,0 +1,86 @@
+[
+  {
+    "id": "e5b9ace1-86cb-40c8-9040-afa7f4fd0dcf",
+    "data": [
+      {
+        "text": "Cual es el tiempo en Boston",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 1541951665
+  },
+  {
+    "id": "ab32e318-a9bc-4225-9eca-5a7a60bb5bcc",
+    "data": [
+      {
+        "text": "Que tiempo hace en ",
+        "userDefined": false
+      },
+      {
+        "text": "Cambridge",
+        "alias": "City",
+        "meta": "@City",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 1541951665
+  },
+  {
+    "id": "6a54ac64-4c75-4a50-9959-726301e629be",
+    "data": [
+      {
+        "text": "How is the weather in ",
+        "userDefined": false
+      },
+      {
+        "text": "Cambridge",
+        "alias": "City",
+        "meta": "@City",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 1541948685
+  },
+  {
+    "id": "856b0216-36a4-4f09-96dc-09ee5ce8f880",
+    "data": [
+      {
+        "text": "Tell me the weather in ",
+        "userDefined": false
+      },
+      {
+        "text": "Boston",
+        "alias": "City",
+        "meta": "@City",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 1541948685
+  },
+  {
+    "id": "078c8b58-d1cf-4d74-934a-231aa3348612",
+    "data": [
+      {
+        "text": "What\u0027s the weather in ",
+        "userDefined": false
+      },
+      {
+        "text": "Waltham",
+        "alias": "City",
+        "meta": "@City",
+        "userDefined": true
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 1541948685
+  }
+]

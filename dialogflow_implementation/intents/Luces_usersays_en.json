@@ -1,0 +1,50 @@
+[
+  {
+    "id": "99c6d1d0-0770-4f56-81cf-8d93551a10e0",
+    "data": [
+      {
+        "text": "Apaga la luz",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 1541951578
+  },
+  {
+    "id": "2d81c835-7b87-4b68-a8af-f3f14c5e45ef",
+    "data": [
+      {
+        "text": "Enciende las luces",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 1541951578
+  },
+  {
+    "id": "99af36a0-afdc-49fd-97a8-9d1ccf09035e",
+    "data": [
+      {
+        "text": "Turn off the light",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 1541948344
+  },
+  {
+    "id": "33545db3-5a2e-481a-9f38-fb0fefe78858",
+    "data": [
+      {
+        "text": "Turn on the lights",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 1541948344
+  }
+]

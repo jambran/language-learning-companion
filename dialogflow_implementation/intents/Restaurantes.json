@@ -1,0 +1,62 @@
+{
+  "id": "bcf32b8d-7286-4436-a52f-7ecfb891aa56",
+  "name": "Restaurantes",
+  "auto": true,
+  "contexts": [],
+  "responses": [
+    {
+      "resetContexts": false,
+      "affectedContexts": [
+        {
+          "name": "Restaurantes-followup",
+          "parameters": {},
+          "lifespan": 2
+        }
+      ],
+      "parameters": [
+        {
+          "id": "86159bac-b4d1-455b-9770-0f6893ece107",
+          "required": false,
+          "dataType": "@sys.geo-city",
+          "name": "geo-city",
+          "value": "$geo-city",
+          "isList": false
+        },
+        {
+          "id": "991cf14f-c2a1-4278-9efa-7e0022a3fd5f",
+          "required": false,
+          "dataType": "@City",
+          "name": "City",
+          "value": "$City",
+          "isList": false
+        },
+        {
+          "id": "1fff9e90-ea7e-4c3d-8e12-d77bae8427c5",
+          "required": false,
+          "dataType": "@sys.geo-city",
+          "name": "geo-city1",
+          "value": "$geo-city1",
+          "isList": false
+        }
+      ],
+      "messages": [
+        {
+          "type": 0,
+          "lang": "en",
+          "speech": [
+            "You can say: \"Muestrame restaurantes en Waltham\"",
+            "You can ask: \"Enseñame bares chulos en Boston\""
+          ]
+        }
+      ],
+      "defaultResponsePlatforms": {},
+      "speech": []
+    }
+  ],
+  "priority": 500000,
+  "webhookUsed": true,
+  "webhookForSlotFilling": false,
+  "lastUpdate": 1541951551,
+  "fallbackIntent": false,
+  "events": []
+}
