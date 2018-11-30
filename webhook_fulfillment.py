@@ -18,17 +18,26 @@ app = Flask(__name__)
 gc = GrammarChecker()
 
 
-def get_intent(req):
+def get_df_intent(req):
     """Returns the intent name as defined in the DialogFlow app"""
     return req.get('queryResult').get('intent').get('displayName')
 
 
-def get_utterance(req):
+def get_df_utterance(req):
+    """
+    original user utterance
+    :param req: request object from DF
+    :return: string, user utterance
+    """
     return req.get('originalDetectIntentRequest').get('payload').get('inputs')[0].get('rawInputs')[0].get('query')
 
 
-
 def handle_intent(intent):
+    """
+    provide the response string given the user's intent
+    :param intent: string, whatever intent DF matched
+    :return: response string
+    """
     response = ""
     if intent == 'Alarmas':
         response += "¡Muy bien! The alarm is set now!"
@@ -94,7 +103,7 @@ def give_corrected_response(intent):
 
 
 def get_language(req):
-    return detect(get_utterance(req))
+    return detect(get_df_utterance(req))
 
 
 def handle_english_intent(intent):
@@ -127,6 +136,24 @@ def handle_english_intent(intent):
     return random.choice(responses)
 
 
+def make_df_dct(response):
+    return {"fulfillmentText": response,
+            "source": "example.com",
+            "payload": {
+                "google": {
+                    "richResponse": {
+                        "items": [
+                            {"simpleResponse": {
+                                "textToSpeech": response
+                            }
+                            }
+                        ]
+                    }
+                }
+            }
+            }
+
+
 @app.route("/", methods=['POST'])
 def manage_request():
     """Main method that determines how to proceed based on the kind of intent detected"""
@@ -135,18 +162,18 @@ def manage_request():
     try:
         req = request.get_json(silent=True, force=True)
         language = get_language(req)
-        print((language), file = sys.stdout)
+        print((language), file=sys.stdout)
         print((req), file=sys.stdout)
-        intent = get_intent(req)
+        intent = get_df_intent(req)
         print("INTENT: ", intent, file=sys.stdout)
 
-        if language.startswith('en'):
+        if language.startswith('en'):  # utterance in english
             response = handle_english_intent(intent)
         else:
-            user_utterance = get_utterance(req)
+            user_utterance = get_df_utterance(req)
             print("USER UTT: ", user_utterance, file=sys.stdout)
 
-            #if grammatical, congratulate and proceed with success message
+            # if grammatical, congratulate and proceed with success message
             print("CHECKING GRAMMATICALITY", file=sys.stdout)
             if gc.is_grammatical(user_utterance):
                 print("THE RESPONSE IS GRAMMATICAL")
@@ -154,29 +181,14 @@ def manage_request():
                 print("RESPOSNE RETRIEVED OKay")
             else:
                 print('THE RESPONSE IS UNGRAMMATICAL')
-                #if ungrammatical, say how they should have said it
+                # if ungrammatical, say how they should have said it
                 response = give_corrected_response(intent)
                 print("RESPOSNE RETRIEVED OKAY")
     except:  # in case something goes wrong, give a response to let the user know to try again
         response = "No te he entendido. Por favor intentalo de nuevo."
     print("RESPONSE: ", response, file=sys.stdout)
-    dct = {
-          "fulfillmentText": response,
-          "source": "example.com",
-          "payload": {
-            "google": {
-              "richResponse": {
-                "items": [
-                  {
-                    "simpleResponse": {
-                      "textToSpeech": response
-                    }
-                  }
-                ]
-              }
-            }
-          }
-        }
+    dct = make_df_dct(response)
+
     return make_response(jsonify(dct))
 
 
