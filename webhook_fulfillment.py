@@ -24,11 +24,21 @@ def get_intent(req):
 
 
 def get_utterance(req):
+    """
+    original user utterance
+    :param req: request object from DF
+    :return: string, user utterance
+    """
     return req.get('originalDetectIntentRequest').get('payload').get('inputs')[0].get('rawInputs')[0].get('query')
 
 
 
 def handle_intent(intent):
+    """
+    provide the response string given the user's intent
+    :param intent: string, whatever intent DF matched
+    :return: response string
+    """
     response = ""
     if intent == 'Alarmas':
         response += "¡Muy bien! The alarm is set now!"
@@ -140,7 +150,7 @@ def manage_request():
         intent = get_intent(req)
         print("INTENT: ", intent, file=sys.stdout)
 
-        if language.startswith('en'):
+        if language.startswith('en'):  # utterance in english
             response = handle_english_intent(intent)
         else:
             user_utterance = get_utterance(req)
