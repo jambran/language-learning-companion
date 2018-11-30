@@ -1,5 +1,5 @@
-from tree import *
-from util import *
+from CKY_tree import *
+from CKY_util import *
 
 
 class RHS:

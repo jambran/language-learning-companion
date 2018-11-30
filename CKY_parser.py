@@ -1,6 +1,6 @@
 
 from math import *
-from grammar import *
+from CKY_grammar import *
 
 class Item:
     def __init__(self, i, j, label, logProb=0, backPtrLeft=None, backPtrRight=None):
