@@ -237,3 +237,22 @@ if __name__ == "__main__":
 
     for sent in good_list:
         print(check_wellformed(sent))
+
+    print('###################')
+
+    bad_list = ["pon alarma a las tres y cincuenta y ocho".split(),
+                     "que hora".split(),
+                     "dime hora".split(),
+                     "cual hora es".split(),
+                     "que tiempo Boston".split(),
+                     "enciende luz".split(),
+                     "enciende luces".split(),
+                     "apaga luz".split(),
+                     "apaga  luces".split(),
+                     "muestrame restaurantes Waltham".split(),
+                     "un evento el veintitres de enero".split(),
+                "pon una alarma a las tres y cincuenta y".split()
+                ]
+
+    for sent in bad_list:
+        print(check_wellformed(sent))

@@ -30,6 +30,25 @@ class TestParsing(unittest.TestCase):
             self.assertTrue( check_wellformed(good_sent) )
 
 
+    def test_bad_sents(self):
+        """Tests whether bad sentences are rejected by our grammar"""
+
+        bad_list = ["pon alarma a las tres y cincuenta y ocho".split(),
+                    "pon una alarma a las tres y cincuenta y".split(),
+                     "que hora".split(),
+                     "dime hora".split(),
+                     "cual hora es".split(),
+                     "que tiempo Boston".split(),
+                     "enciende luz".split(),
+                     "enciende luces".split(),
+                     "apaga luz".split(),
+                     "apaga  luces".split(),
+                     "muestrame restaurantes Waltham".split(),
+                     "un evento el veintitres de enero".split()]
+
+        for bad_sent in bad_list:
+            # print(bad_sent)
+            self.assertFalse(check_wellformed(bad_sent))
 
 if __name__ == '__main__':
     unittest.main()

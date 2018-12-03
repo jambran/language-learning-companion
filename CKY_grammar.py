@@ -142,41 +142,52 @@ fluencyFriendPCFG = PCFG({
     "S": {RHS("NP", "VP"): 1.0,
           RHS("VP", "NP"): 1.0,
           RHS("VP", "NP_NP"): 1.0,
+          RHS("VP", "NP_PP"): 1.0,
+          RHS("VP-UNC", "NP-UNC"): 1.0,
           RHS("NP", "VP_PP"): 1.0,
           RHS("WH2", "VB-ES"): 1.0,
           RHS("WH1", "NP_VB-ES"): 1.0,
           RHS("WH1", "NP_VB-HACE"): 1.0,
           RHS("VP", "PP"): 1.0},
 
-    "NP_VB-ES": {RHS("NP", "VBes"): 1.0},
+    "VP-UNC": {RHS("VB-UNC"): 1.0},
+
+    "NP_VB-ES": {RHS("NP-UNC", "VBes"): 1.0},
+
     "VB-ES": {RHS("VBes", "NP_PP"): 1.0,
               RHS("VBes", "NP"): 1.0},
 
-    "NP_VB-HACE": {RHS("NP", "VB-HACE"): 1.0},
+    "NP_VB-HACE": {RHS("NP-UNC", "VB-HACE"): 1.0},
+
     "VB-HACE": {RHS("VBhace", "PP"): 1.0},
 
     # "VP_PP": { RHS("VP", "PP")     : 1.0 },
 
     "NP_NP": {RHS("NP", "NP"): 0.2},
 
-    "NP": {RHS("CNP"): 0.2,
-           RHS("NNP"): 0.2,
-           RHS("CNP", "PP"): 0.2,
-           RHS("UCNP", "PP"): 0.2,
-           RHS("UCNP"): 0.2},
-
-    "CNP": {RHS("DT", "NN"): 1.0,
+    "NP": {#RHS("CNP"): 0.2,
+            RHS("DT", "NN"): 1.0,
             RHS("DT", "AP_NN"): 1.0,
             RHS("DT", "NPMonth_PP"): 1.0,
-            RHS("DT", "NPMonth"): 1.0},
+            RHS("DT", "NPMonth"): 1.0,
+           RHS("NNP"): 0.2},
+           # RHS("CNP", "PP"): 0.2},
+
+    "NP-UNC": {RHS("UCNP", "PP"): 0.2,
+               RHS("UCNP"): 0.2},
+
+    # "CNP": {RHS("DT", "NN"): 1.0,
+    #         RHS("DT", "AP_NN"): 1.0,
+    #         RHS("DT", "NPMonth_PP"): 1.0,
+    #         RHS("DT", "NPMonth"): 1.0},
 
     "AP_NN": {RHS("AP", "NN"): 1.0},
     "NPMonth_PP": {RHS("NPMonth", "PP"): 1.0},
 
-    "UCNP": {RHS("NN"): 1.0},
+    "UCNP": {RHS("NN-UNC"): 1.0},
 
     "VP": {#RHS("VB", "NP"): 1.0,
-           RHS("VB", "NP_PP"): 1.0,
+           # RHS("VB", "NP_PP"): 1.0,
            RHS("VB"): 1.0,
            RHS("VB", "S"): 1.0},
 
@@ -233,15 +244,16 @@ fluencyFriendPCFG = PCFG({
     # quien WH num:sg
     # quienes WH num:pl
 
-    "VB": {RHS('muestrame'): 1.0,
-           RHS('enseñame'): 1.0,
-           RHS('dime'): 1.0,
+    "VB": {RHS('dime'): 1.0,
            RHS('enciende'): 1.0,
            RHS('apaga'): 1.0,
-           RHS('recomiendame'): 1.0,
            RHS('escribe'): 1.0,
            RHS('pon'): 1.0,
            RHS('crea'): 1.0},
+
+    "VB-UNC": {RHS('muestrame'): 1.0,
+                RHS('enseñame'): 1.0,
+               RHS('recomiendame'): 1.0},
 
     "VBes": {RHS('es'): 1.0},
     "VBhace": {RHS('hace'): 1.0},
@@ -252,8 +264,14 @@ fluencyFriendPCFG = PCFG({
            RHS('hora'): 1.0,
            RHS('luz'): 1.0,
            RHS('luces'): 1.0,
-           RHS('evento'): 1.0,
-           RHS('restaurantes'): 1.0},
+           RHS('evento'): 1.0},
+
+    "NN-UNC": {RHS('restaurantes'): 1.0,
+               RHS('bares'): 1.0,
+               RHS('tiendas'): 1.0,
+               RHS('tiempo'): 1.0,
+               RHS('hora'): 1.0},
+
 
     "DT": {RHS('las'): 1.0,
            RHS('la'): 1.0,
