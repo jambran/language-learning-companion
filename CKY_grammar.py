@@ -146,7 +146,6 @@ fluencyFriendPCFG = PCFG({
           RHS("WH2", "VB-ES"): 1.0,
           RHS("WH1", "NP_VB-ES"): 1.0,
           RHS("WH1", "NP_VB-HACE"): 1.0,
-          # RHS("VP", "NP_PP"): 1.0,
           RHS("VP", "PP"): 1.0},
 
     "NP_VB-ES": {RHS("NP", "VBes"): 1.0},
