@@ -140,7 +140,8 @@ fluencyFriendPCFG = PCFG({
     "TOP": {RHS("S"): 1.0},
 
     "S": {RHS("NP", "VP"): 1.0,
-          RHS("VP"): 1.0,
+          RHS("VP", "NP"): 1.0,
+          RHS("VP", "NP_NP"): 1.0,
           RHS("NP", "VP_PP"): 1.0,
           RHS("WH2", "VB-ES"): 1.0,
           RHS("WH1", "NP_VB-ES"): 1.0,
@@ -149,29 +150,33 @@ fluencyFriendPCFG = PCFG({
           RHS("VP", "PP"): 1.0},
 
     "NP_VB-ES": {RHS("NP", "VBes"): 1.0},
-    "VB-ES": {RHS("VBes", "NP_PP"): 1.0},
+    "VB-ES": {RHS("VBes", "NP_PP"): 1.0,
+              RHS("VBes", "NP"): 1.0},
 
     "NP_VB-HACE": {RHS("NP", "VB-HACE"): 1.0},
     "VB-HACE": {RHS("VBhace", "PP"): 1.0},
 
     # "VP_PP": { RHS("VP", "PP")     : 1.0 },
 
-    "NP": {RHS("CNP"): 1.0,
-           RHS("NNP"): 1.0,
-           RHS("CNP", "PP"): 1.0,
-           RHS("UCNP", "PP"): 1.0,
-           RHS("UCNP"): 1.0},
+    "NP_NP": {RHS("NP", "NP"): 0.2},
+
+    "NP": {RHS("CNP"): 0.2,
+           RHS("NNP"): 0.2,
+           RHS("CNP", "PP"): 0.2,
+           RHS("UCNP", "PP"): 0.2,
+           RHS("UCNP"): 0.2},
 
     "CNP": {RHS("DT", "NN"): 1.0,
             RHS("DT", "AP_NN"): 1.0,
-            RHS("DT", "NPMonth_PP"): 1.0},
+            RHS("DT", "NPMonth_PP"): 1.0,
+            RHS("DT", "NPMonth"): 1.0},
 
     "AP_NN": {RHS("AP", "NN"): 1.0},
     "NPMonth_PP": {RHS("NPMonth", "PP"): 1.0},
 
     "UCNP": {RHS("NN"): 1.0},
 
-    "VP": {RHS("VB", "NP"): 1.0,
+    "VP": {#RHS("VB", "NP"): 1.0,
            RHS("VB", "NP_PP"): 1.0,
            RHS("VB"): 1.0,
            RHS("VB", "S"): 1.0},
@@ -182,7 +187,8 @@ fluencyFriendPCFG = PCFG({
            RHS("Pin", "NNP"): 1.0,
            RHS("Pfor", "NPHour"): 1.0,
            RHS("Pof", "NPYear"): 1.0,
-           RHS("Pof", "NPMonth"): 1.0},
+           RHS("Pof", "NPMonth"): 1.0,
+           RHS("Pof", "NMonth"): 1.0},
 
     "NPMonth": {RHS("NB1", "PP"): 1.0},
     "NPYear": {RHS("NB1", "Mil_NB1"): 1.0},
@@ -247,13 +253,15 @@ fluencyFriendPCFG = PCFG({
            RHS('hora'): 1.0,
            RHS('luz'): 1.0,
            RHS('luces'): 1.0,
+           RHS('evento'): 1.0,
            RHS('restaurantes'): 1.0},
 
     "DT": {RHS('las'): 1.0,
            RHS('la'): 1.0,
            RHS('los'): 1.0,
            RHS('el'): 1.0,
-           RHS('una'): 1.0},
+           RHS('una'): 1.0,
+           RHS('un'): 1.0},
 
     "Num": {RHS('uno'): 1.0,
             RHS('una'): 1.0,
