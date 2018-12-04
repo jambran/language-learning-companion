@@ -216,7 +216,7 @@ def manage_request():
                 ssml = "<speak> Hello, welcome to Fluency Friend! If you ask me to do something in English, I can teach you to say it in Spanish. Ask me in Spanish and I can correct you! </speak>"
             else:
                 language = get_language(req)
-                intent = get_al_intent(req)
+                intent = reqType
                 if language.startswith('en'):
                     response = handle_english_intent(intent)
                     ssml = get_english_intent_ssml(intent)
