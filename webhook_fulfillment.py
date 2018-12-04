@@ -209,6 +209,7 @@ def manage_request():
     response = "You're in webhook fulfillment!"
     ssml = ""
     try:
+        response = "You're in the try loop!"
         req = request.get_json(silent=True, force=True)
         if 'request' in req.keys():
             if req.get('request').get('type') is 'LaunchRequest':
