@@ -218,7 +218,7 @@ def manage_request():
             else:
                 response = "looking for intent"
                 language = get_language(req)
-                intent = reqType
+                intent = req.get('request').get('intent').get('name')
                 if language.startswith('en'):
                     response = handle_english_intent(intent)
                     ssml = get_english_intent_ssml(intent)
