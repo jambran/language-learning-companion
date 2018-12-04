@@ -158,6 +158,7 @@ def give_corrected_ssml(intent):
     :param intent:
     :return:
     """
+    return ""
 
 def get_english_intent_ssml(intent):
     """
@@ -165,7 +166,7 @@ def get_english_intent_ssml(intent):
     :param intent:
     :return:
     """
-
+    return ""
 
 def make_df_dct(response):
     return {"fulfillmentText": response,
@@ -205,7 +206,7 @@ def make_al_dct(response, ssml):
 def manage_request():
     """Main method that determines how to proceed based on the kind of intent detected"""
 
-    response = "You're in webhook fulfillment!"
+    response = ""
     ssml = ""
     try:
         req = request.get_json(silent=True, force=True)
@@ -215,6 +216,7 @@ def manage_request():
                 response = "Hello, welcome to Fluency Friend! If you ask me to do something in English, I can teach you to say it in Spanish. Ask me in Spanish and I can correct you!"
                 ssml = "<speak> Hello, welcome to Fluency Friend! If you ask me to do something in English, I can teach you to say it in Spanish. Ask me in Spanish and I can correct you! </speak>"
             else:
+                response = "looking for intent"
                 language = get_language(req)
                 intent = reqType
                 if language.startswith('en'):
