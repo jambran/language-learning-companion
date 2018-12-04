@@ -212,6 +212,7 @@ def manage_request():
         response = "You're in the try loop!"
         req = request.get_json(silent=True, force=True)
         if 'request' in req.keys():
+            response = "looking at the right json...."
             if req.get('request').get('type') is 'LaunchRequest':
                 response = "Hello, welcome to Fluency Friend! If you ask me to do something in English, I can teach you to say it in Spanish. Ask me in Spanish and I can correct you!"
                 ssml = "<speak> Hello, welcome to Fluency Friend! If you ask me to do something in English, I can teach you to say it in Spanish. Ask me in Spanish and I can correct you! </speak>"
