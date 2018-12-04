@@ -211,6 +211,7 @@ def manage_request():
     try:
         req = request.get_json(silent=True, force=True)
         launch = False
+        response = "try"
         if 'request' in req:
             response = "correct json"
             if req.get('request').get('type') is 'LaunchRequest':
