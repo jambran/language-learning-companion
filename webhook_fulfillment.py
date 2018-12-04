@@ -210,8 +210,9 @@ def manage_request():
     try:
         req = request.get_json(silent=True, force=True)
         if 'queryResult' not in req.keys():
-            print("correct json")
+            print('correct json')
             if req.get('request').get('type') is 'LaunchRequest':
+                print('launch request')
                 response = "Hello, welcome to Fluency Friend! If you ask me to do something in English, I can teach you to say it in Spanish. Ask me in Spanish and I can correct you!"
                 ssml = "<speak> Hello, welcome to Fluency Friend! If you ask me to do something in English, I can teach you to say it in Spanish. Ask me in Spanish and I can correct you! </speak>"
             else:
