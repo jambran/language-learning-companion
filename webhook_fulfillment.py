@@ -31,6 +31,13 @@ def get_df_utterance(req):
     """
     return req.get('originalDetectIntentRequest').get('payload').get('inputs')[0].get('rawInputs')[0].get('query')
 
+def get_al_utterance(req):
+    """
+    original user utterance -- alexa
+    :param req: request object from ALEXA
+    :return: string, user utterance
+    """
+    return req.get('request')
 
 def handle_intent(intent):
     """
@@ -101,9 +108,19 @@ def give_corrected_response(intent):
 
     return response
 
+def handle_intent_ssml(intent):
+    """
+    SSML for spanish intent
+    :param intent:
+    :return:
+    """
+
 
 def get_language(req):
-    return detect(get_df_utterance(req))
+    if "queryResult" in req:
+        return detect(get_df_utterance(req))
+    else:
+        return detect(get_al_utterance(req))
 
 
 def handle_english_intent(intent):
@@ -135,6 +152,20 @@ def handle_english_intent(intent):
 
     return random.choice(responses)
 
+def give_corrected_ssml(intent):
+    """
+    ssml for corrected langauge
+    :param intent:
+    :return:
+    """
+
+def get_english_intent_ssml(intent):
+    """
+    ssml for english intent handling
+    :param intent:
+    :return:
+    """
+
 
 def make_df_dct(response):
     return {"fulfillmentText": response,
@@ -153,6 +184,23 @@ def make_df_dct(response):
             }
             }
 
+def make_al_dct(response, ssml):
+    """
+    make dictionary for alexa fulfillment
+    :param response:
+    :param ssml:
+    :return:
+    """
+    dct = {"version": "1.0",
+           "response": {
+               "outputSpeech": {
+                   "type": "PlainText",
+                   "text": response,
+                   "ssml": ssml,
+               }
+           }
+    }
+    return dct
 
 @app.route("/", methods=['POST'])
 def manage_request():
@@ -162,32 +210,44 @@ def manage_request():
     try:
         req = request.get_json(silent=True, force=True)
         language = get_language(req)
-        print((language), file=sys.stdout)
-        print((req), file=sys.stdout)
+        if 'queryResponse' not in req:
+            if req.get('context').get('type') is 'LaunchRequest'
+                response = "Hello, welcome to Fluency Friend! If you ask me to do something in English, I can teach you to say it in Spanish. Ask me in Spanish and I can correct you!"
+                ssml = "<speak> Hello, welcome to Fluency Friend! If you ask me to do something in English, I can teach you to say it in Spanish. Ask me in Spanish and I can correct you! </speak>"
         intent = get_df_intent(req)
-        print("INTENT: ", intent, file=sys.stdout)
 
         if language.startswith('en'):  # utterance in english
+
             response = handle_english_intent(intent)
+            if 'queryResponse' not in req:
+                ssml = get_english_intent_ssml(intent)
+
         else:
-            user_utterance = get_df_utterance(req)
-            print("USER UTT: ", user_utterance, file=sys.stdout)
+
+            if 'queryResponse' in req:
+                user_utterance = get_df_utterance(req)
+            else:
+                user_utterance = get_al_utterance(req)
 
             # if grammatical, congratulate and proceed with success message
-            print("CHECKING GRAMMATICALITY", file=sys.stdout)
+
             if gc.is_grammatical(user_utterance):
-                print("THE RESPONSE IS GRAMMATICAL")
                 response = handle_intent(intent)
-                print("RESPOSNE RETRIEVED OKay")
+                ssml = handle_intent_ssml(intent)
+
             else:
-                print('THE RESPONSE IS UNGRAMMATICAL')
                 # if ungrammatical, say how they should have said it
                 response = give_corrected_response(intent)
-                print("RESPOSNE RETRIEVED OKAY")
+                ssml = give_corrected_ssml(intent)
+
+
     except:  # in case something goes wrong, give a response to let the user know to try again
         response = "No te he entendido. Por favor intentalo de nuevo."
-    print("RESPONSE: ", response, file=sys.stdout)
-    dct = make_df_dct(response)
+
+    if 'queryResponse' in req:
+        dct = make_df_dct(response)
+    else:
+        dct = make_al_dct(response,ssml)
 
     return make_response(jsonify(dct))
 
