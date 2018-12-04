@@ -215,7 +215,9 @@ def manage_request():
             if req.get('request').get('type') is 'LaunchRequest':
                 response = "Hello, welcome to Fluency Friend! If you ask me to do something in English, I can teach you to say it in Spanish. Ask me in Spanish and I can correct you!"
                 ssml = "<speak> Hello, welcome to Fluency Friend! If you ask me to do something in English, I can teach you to say it in Spanish. Ask me in Spanish and I can correct you! </speak>"
-
+                dct = make_al_dct(response, ssml)
+                return jsonify(dct)
+            
         language = get_language(req)
         intent = get_df_intent(req)
 
