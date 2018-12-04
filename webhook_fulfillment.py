@@ -212,7 +212,7 @@ def manage_request():
         req = request.get_json(silent=True, force=True)
         launch = False
         response = "try"
-        if 'request' in req:
+        if 'queryResult' not in req.keys():
             response = "correct json"
             if req.get('request').get('type') is 'LaunchRequest':
                 response = "Hello, welcome to Fluency Friend! If you ask me to do something in English, I can teach you to say it in Spanish. Ask me in Spanish and I can correct you!"
@@ -250,7 +250,7 @@ def manage_request():
 
     except:  # in case something goes wrong, give a response to let the user know to try again
         response = "No te he entendido. Por favor intentalo de nuevo."
-        ssml = "<speak><lang xml:lang='es'>No te he entendido. Por favor intentalo de nuevo</lang></speak>"
+        ssml = "<speak><lang xml:lang='es-ES'>No te he entendido. Por favor intentalo de nuevo</lang></speak>"
 
     if 'queryResponse' in req.keys():
         dct = make_df_dct(response)
