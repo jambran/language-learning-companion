@@ -194,8 +194,8 @@ def make_al_dct(response, ssml):
     dct = {"version": "1.0",
            "response": {
                "outputSpeech": {
-                   "type": "SSML",
-                   "text": ssml
+                   "type": "PlainText",
+                   "text": response
                },
            }
            }
