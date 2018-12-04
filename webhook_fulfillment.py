@@ -246,10 +246,10 @@ def manage_request():
 
     if 'queryResponse' in req:
         dct = make_df_dct(response)
-        return jsonify(dct)
+        return make_response(jsonify(dct))
     else:
         dct = make_al_dct(response,ssml)
-        return make_response(jsonify(dct))
+        return jsonify(dct)
 
 
 if __name__ == "__main__":
