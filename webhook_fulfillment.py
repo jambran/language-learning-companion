@@ -212,7 +212,6 @@ def manage_request():
         if 'queryResult' not in req.keys():
             reqType= req.get('request').get('type')
             if reqType == 'LaunchRequest':
-                print('launch request')
                 response = "Hello, welcome to Fluency Friend! If you ask me to do something in English, I can teach you to say it in Spanish. Ask me in Spanish and I can correct you!"
                 ssml = "<speak> Hello, welcome to Fluency Friend! If you ask me to do something in English, I can teach you to say it in Spanish. Ask me in Spanish and I can correct you! </speak>"
             else:
