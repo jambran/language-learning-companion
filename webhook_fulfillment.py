@@ -194,7 +194,7 @@ def make_al_dct(response, ssml):
     dct = {"version": "1.0",
            "response": {
                "outputSpeech": {
-                   "type": "SSML",
+                   "type": "PlainText",
                    "text": response,
                    "ssml": ssml,
                }
@@ -214,10 +214,9 @@ def manage_request():
             response = "correct json"
             if req.get('request').get('type') is 'LaunchRequest':
                 response = "Hello, welcome to Fluency Friend! If you ask me to do something in English, I can teach you to say it in Spanish. Ask me in Spanish and I can correct you!"
-                ssml = "<speak> Hello, welcome to Fluency Friend! If you ask me to do something in English, I can teach you to say it in Spanish. Ask me in Spanish and I can correct you! </speak>"
                 dct = make_al_dct(response, ssml)
                 return jsonify(dct)
-            
+
         language = get_language(req)
         intent = get_df_intent(req)
 
@@ -248,7 +247,6 @@ def manage_request():
 
     except:  # in case something goes wrong, give a response to let the user know to try again
         response = "No te he entendido. Por favor intentalo de nuevo."
-        ssml = "<speak> <lang xml:lang="es"> No te he entendido. Por favor intentalo de nuevo </lang> </speak>"
 
     if 'queryResponse' in req.keys():
         dct = make_df_dct(response)
