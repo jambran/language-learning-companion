@@ -206,7 +206,7 @@ def make_al_dct(response, ssml):
 def manage_request():
     """Main method that determines how to proceed based on the kind of intent detected"""
 
-    response = "You're in webhook_fulfillment.py!"
+    response = ""
     ssml = ""
     try:
         req = request.get_json(silent=True, force=True)
