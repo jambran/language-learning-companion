@@ -247,6 +247,7 @@ def manage_request():
 
     except:  # in case something goes wrong, give a response to let the user know to try again
         response = "No te he entendido. Por favor intentalo de nuevo."
+        ssml = "<speak> <lang xml:lang="es" No te he entendido. Por favor intentalo de nuevo </lang> </speak>"
 
     if 'queryResponse' in req.keys():
         dct = make_df_dct(response)
