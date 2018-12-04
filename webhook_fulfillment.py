@@ -194,7 +194,7 @@ def make_al_dct(response, ssml):
     dct = {"version": "1.0",
            "response": {
                "outputSpeech": {
-                   "type": "PlainText",
+                   "type": "ssml",
                    "ssml": ssml,
                    "text": response
                }
@@ -255,6 +255,7 @@ def manage_request():
     if 'queryResponse' in req.keys():
         dct = make_df_dct(response)
         return make_response(jsonify(dct))
+
     else:
         dct = make_al_dct(response,ssml)
         return jsonify(dct)
