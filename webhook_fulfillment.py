@@ -251,6 +251,7 @@ def manage_request():
         return make_response(jsonify(dct))
     else:
         dct = make_al_dct(response,ssml)
+        print(dct)
         return jsonify(dct)
 
 
