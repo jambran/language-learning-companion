@@ -195,11 +195,14 @@ def make_al_dct(response, ssml):
            "response": {
                "outputSpeech": {
                    "type": "PlainText",
-                   "ssml": ssml,
                    "text": response
+               },
+               "outputSpeech":{
+                   "type": "SSML",
+                   "text": ssml
                }
            }
-    }
+           }
     return dct
 
 @app.route("/", methods=['POST'])
