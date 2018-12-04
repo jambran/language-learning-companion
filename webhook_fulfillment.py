@@ -206,48 +206,48 @@ def make_al_dct(response, ssml):
 def manage_request():
     """Main method that determines how to proceed based on the kind of intent detected"""
 
-    response = "You're in webhook fulfillment!"
+    response = ""
     ssml = ""
-    try:
-        response = "in try"
-        req = request.get_json(silent=True, force=True)
-        if 'request' in req.keys():
-            response = "correct json"
-            if req.get('request').get('type') is 'LaunchRequest':
-                response = "Hello, welcome to Fluency Friend! If you ask me to do something in English, I can teach you to say it in Spanish. Ask me in Spanish and I can correct you!"
-                ssml = "<speak> Hello, welcome to Fluency Friend! If you ask me to do something in English, I can teach you to say it in Spanish. Ask me in Spanish and I can correct you! </speak>"
+    req = request.get_json(silent=True, force=True)
+    if 'request' in req.keys():
+        response = "correct json"
+        if req.get('request').get('type') is 'LaunchRequest':
+            response = "Hello, welcome to Fluency Friend! If you ask me to do something in English, I can teach you to say it in Spanish. Ask me in Spanish and I can correct you!"
+            ssml = "<speak> Hello, welcome to Fluency Friend! If you ask me to do something in English, I can teach you to say it in Spanish. Ask me in Spanish and I can correct you! </speak>"
 
-        language = get_language(req)
-        intent = get_df_intent(req)
+    if response is "":
+        try:
+            language = get_language(req)
+            intent = get_df_intent(req)
 
-        if language.startswith('en'):  # utterance in english
+            if language.startswith('en'):  # utterance in english
 
-            response = handle_english_intent(intent)
-            if 'queryResponse' not in req.keys():
-                ssml = get_english_intent_ssml(intent)
-
-        else:
-
-            if 'queryResponse' in req.keys():
-                user_utterance = get_df_utterance(req)
-            else:
-                user_utterance = get_al_utterance(req)
-
-            # if grammatical, congratulate and proceed with success message
-
-            if gc.is_grammatical(user_utterance):
-                response = handle_intent(intent)
-                ssml = handle_intent_ssml(intent)
+                response = handle_english_intent(intent)
+                if 'queryResponse' not in req.keys():
+                    ssml = get_english_intent_ssml(intent)
 
             else:
-            # if ungrammatical, say how they should have said it
-                response = give_corrected_response(intent)
-                ssml = give_corrected_ssml(intent)
+
+                if 'queryResponse' in req.keys():
+                    user_utterance = get_df_utterance(req)
+                else:
+                    user_utterance = get_al_utterance(req)
+
+                # if grammatical, congratulate and proceed with success message
+
+                if gc.is_grammatical(user_utterance):
+                    response = handle_intent(intent)
+                    ssml = handle_intent_ssml(intent)
+
+                else:
+                # if ungrammatical, say how they should have said it
+                    response = give_corrected_response(intent)
+                    ssml = give_corrected_ssml(intent)
 
 
-    except:  # in case something goes wrong, give a response to let the user know to try again
-        response = "No te he entendido. Por favor intentalo de nuevo."
-        ssml = "<speak><lang xml:lang='es'>No te he entendido. Por favor intentalo de nuevo</lang></speak>"
+        except:  # in case something goes wrong, give a response to let the user know to try again
+            response = "No te he entendido. Por favor intentalo de nuevo."
+            ssml = "<speak><lang xml:lang='es'>No te he entendido. Por favor intentalo de nuevo</lang></speak>"
 
     if 'queryResponse' in req.keys():
         dct = make_df_dct(response)
