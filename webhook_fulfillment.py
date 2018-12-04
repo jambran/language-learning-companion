@@ -215,35 +215,42 @@ def manage_request():
             if req.get('request').get('type') is 'LaunchRequest':
                 response = "Hello, welcome to Fluency Friend! If you ask me to do something in English, I can teach you to say it in Spanish. Ask me in Spanish and I can correct you!"
                 ssml = "<speak> Hello, welcome to Fluency Friend! If you ask me to do something in English, I can teach you to say it in Spanish. Ask me in Spanish and I can correct you! </speak>"
-                dct = make_al_dct(response, ssml)
-                return jsonify(dct)
+            else:
+                language = get_language(req)
+                intent = get_al_intent(req)
+                if language.startswith('en'):
+                    response = handle_english_intent(intent)
+                    ssml = get_english_intent_ssml(intent)
+                else:
+                    user_utterance = get_al_utterance(req)
+                    if gc.is_grammatical(user_utterance):
+                        response = handle_intent(intent)
+                        ssml = handle_intent_ssml(intent)
 
-        language = get_language(req)
-        intent = get_df_intent(req)
+                    else:
+                        # if ungrammatical, say how they should have said it
+                        response = give_corrected_response(intent)
+                        ssml = give_corrected_ssml(intent)
 
-        if language.startswith('en'):  # utterance in english
-
-            response = handle_english_intent(intent)
-            if 'queryResponse' not in req.keys():
-                ssml = get_english_intent_ssml(intent)
 
         else:
+            language = get_language(req)
+            intent = get_df_intent(req)
 
-            if 'queryResponse' in req.keys():
+            if language.startswith('en'):  # utterance in english
+                response = handle_english_intent(intent)
+
+            else:
                 user_utterance = get_df_utterance(req)
-            else:
-                user_utterance = get_al_utterance(req)
 
-        # if grammatical, congratulate and proceed with success message
+            # if grammatical, congratulate and proceed with success message
 
-            if gc.is_grammatical(user_utterance):
-                response = handle_intent(intent)
-                ssml = handle_intent_ssml(intent)
+                if gc.is_grammatical(user_utterance):
+                    response = handle_intent(intent)
 
-            else:
-            # if ungrammatical, say how they should have said it
-                response = give_corrected_response(intent)
-                ssml = give_corrected_ssml(intent)
+                else:
+                # if ungrammatical, say how they should have said it
+                    response = give_corrected_response(intent)
 
 
     except:  # in case something goes wrong, give a response to let the user know to try again
