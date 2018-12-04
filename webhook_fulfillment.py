@@ -210,6 +210,7 @@ def manage_request():
     ssml = ""
     try:
         req = request.get_json(silent=True, force=True)
+        response = "in try"
         if 'request' in req.keys():
             response = "correct json"
             if req.get('request').get('type') is 'LaunchRequest':
