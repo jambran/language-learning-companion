@@ -123,29 +123,29 @@ def get_language(req):
 
 def handle_english_intent(intent):
     print(intent)
-    if intent == ('Alarmas' or 'Alarm'):
+    if intent == 'Alarmas' or intent == 'Alarm':
         responses = ['Por favor, dime "Pon la alarma para las cinco y media"',
                      'Puedes decir "Crea una alarma a las tres cuarenta y cinco"']
 
-    elif intent == ('Calendario' or 'Calendar'):
+    elif intent == 'Calendario' or intent == 'Calendar':
         responses = ['You can say: "Crea una nota para el cinco de marzo"',
                      'You could say: "Pon una nota el quince de abril"']
 
-    elif intent == ('ElTiempo' or 'Weather'):
+    elif intent == 'ElTiempo' or intent == 'Weather':
         responses = ['You could say: "Cual es el tiempo en Waltham"',
                      'You can ask me: "Que tiempo hace en Boston"']
 
-    elif intent == ('LaHora' or 'Time)':
+    elif intent == 'LaHora' or intent == 'Time':
         responses = ['You could ask me: "Que hora es"',
                      'You can say: "Dime la hora"',
                      'You can say: "Dime que hora es"',
                      'You could ask me: "Me dices la hora"']
 
-    elif intent == ('Luces' or 'Lights'):
+    elif intent == 'Luces' or intent == 'Lights':
         responses = ['You can ask me: "Enciende las luces"',
                      'You could say: "Apaga la luz"']
 
-    elif intent == ('Restaurantes' or 'Restaurant'):
+    elif intent == 'Restaurantes' or intent == 'Restaurant':
         responses = ['You can say: "Muestrame restaurantes en Waltham"',
                      'You can ask: "Enseñame bares chulos en Boston"']
 
