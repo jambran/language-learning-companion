@@ -37,7 +37,7 @@ def get_al_utterance(req):
     :param req: request object from ALEXA
     :return: string, user utterance
     """
-    return req.get('request')
+    return req.get('request').get('intent').get('name')
 
 def handle_intent(intent):
     """
@@ -115,6 +115,7 @@ def handle_intent_ssml(intent):
     :return:
     """
 
+    return ""
 
 def get_language(req):
     if "queryResult" in req:
@@ -215,11 +216,11 @@ def manage_request():
             if reqType == 'LaunchRequest':
                 response = "Hello, welcome to Fluency Friend! If you ask me to do something in English, I can teach you to say it in Spanish. Ask me in Spanish and I can correct you!"
                 ssml = "<speak> Hello, welcome to Fluency Friend! If you ask me to do something in English, I can teach you to say it in Spanish. Ask me in Spanish and I can correct you! </speak>"
+
             else:
-                response = "testing"
-                """response = "looking for intent"
+                response = "looking for intent"
                 language = get_language(req)
-                intent = req.get('request').get('intent').get('name')
+                intent = get_al_utterance(req)
                 if language.startswith('en'):
                     response = handle_english_intent(intent)
                     ssml = get_english_intent_ssml(intent)
@@ -232,7 +233,7 @@ def manage_request():
                     else:
                         # if ungrammatical, say how they should have said it
                         response = give_corrected_response(intent)
-                        ssml = give_corrected_ssml(intent)"""
+                        ssml = give_corrected_ssml(intent)
 
 
         else:
