@@ -218,6 +218,7 @@ def manage_request():
                 response = "looking for intent"
                 Spanish = ['Calendario','Eltiempo', 'Lahora', 'Restaurantes', 'Luces', 'Alarmas' ]
                 intent = get_al_utterance(req)
+                print(intent)
                 if intent not in Spanish:
                     response = handle_english_intent(intent)
                     ssml = get_english_intent_ssml(intent)
