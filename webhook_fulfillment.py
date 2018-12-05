@@ -232,7 +232,7 @@ def manage_request():
                         # if ungrammatical, say how they should have said it
                         response = give_corrected_response(intent)
                         ssml = give_corrected_ssml(intent)
-
+                intent = ""
 
         else:
             language = get_language(req)
