@@ -118,10 +118,7 @@ def handle_intent_ssml(intent):
     return ""
 
 def get_language(req):
-    if "queryResult" in req:
-        return detect(get_df_utterance(req))
-    else:
-        return detect(get_al_utterance(req))
+    return detect(get_df_utterance(req))
 
 
 def handle_english_intent(intent):
@@ -219,9 +216,9 @@ def manage_request():
 
             else:
                 response = "looking for intent"
-                language = get_language(req)
+                Spanish = ['Calendario','Eltiempo', 'Lahora', 'Restaurantes', 'Luces', 'Alarmas' ]
                 intent = get_al_utterance(req)
-                if language.startswith('en'):
+                if intent not in Spanish:
                     response = handle_english_intent(intent)
                     ssml = get_english_intent_ssml(intent)
                 else:
