@@ -145,7 +145,7 @@ def handle_english_intent(intent):
         responses = ['You can ask me: "Enciende las luces"',
                      'You could say: "Apaga la luz"']
 
-    elif intent == ('Restaurantes' or 'Restaurant')s:
+    elif intent == ('Restaurantes' or 'Restaurant'):
         responses = ['You can say: "Muestrame restaurantes en Waltham"',
                      'You can ask: "Enseñame bares chulos en Boston"']
 
