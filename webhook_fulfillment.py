@@ -216,7 +216,8 @@ def manage_request():
                 response = "Hello, welcome to Fluency Friend! If you ask me to do something in English, I can teach you to say it in Spanish. Ask me in Spanish and I can correct you!"
                 ssml = "<speak> Hello, welcome to Fluency Friend! If you ask me to do something in English, I can teach you to say it in Spanish. Ask me in Spanish and I can correct you! </speak>"
             else:
-                response = "looking for intent"
+                response = "testing"
+                """response = "looking for intent"
                 language = get_language(req)
                 intent = req.get('request').get('intent').get('name')
                 if language.startswith('en'):
@@ -231,7 +232,7 @@ def manage_request():
                     else:
                         # if ungrammatical, say how they should have said it
                         response = give_corrected_response(intent)
-                        ssml = give_corrected_ssml(intent)
+                        ssml = give_corrected_ssml(intent)"""
 
 
         else:
