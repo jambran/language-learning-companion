@@ -122,6 +122,7 @@ def get_language(req):
 
 
 def handle_english_intent(intent):
+    print(intent)
     if intent == 'Alarmas' or 'Alarm':
         responses = ['Por favor, dime "Pon la alarma para las cinco y media"',
                      'Puedes decir "Crea una alarma a las tres cuarenta y cinco"']
@@ -218,7 +219,6 @@ def manage_request():
                 response = "looking for intent"
                 Spanish = ['Calendario','Eltiempo', 'Lahora', 'Restaurantes', 'Luces', 'Alarmas' ]
                 intent = get_al_utterance(req)
-                print(intent)
                 if intent not in Spanish:
                     response = handle_english_intent(intent)
                     ssml = get_english_intent_ssml(intent)
