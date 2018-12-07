@@ -213,7 +213,7 @@ def manage_request():
             reqType= req.get('request').get('type')
             if reqType == 'LaunchRequest':
                 response = "Hello, welcome to Fluency Friend! If you ask me to do something in English, I can teach you to say it in Spanish. Ask me in Spanish and I can correct you!"
-                ssml = "<speak> Hello, welcome to Fluency Friend! If you ask me to do something in English, I can teach you to say it in Spanish. Ask me in Spanish and I can correct you! </speak>"
+                ssml = "<speak> <lang xml:lang = 'es-ES'> Hola </lang>, welcome to Fluency Friend! If you ask me to do something in English, I can teach you to say it in Spanish. Ask me in Spanish and I can correct you! </speak>"
 
             else:
                 response = "looking for intent"
