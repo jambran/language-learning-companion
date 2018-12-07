@@ -166,15 +166,15 @@ def get_english_intent_ssml(intent, req):
     """
     if intent == 'Alarm':
         # GET SLOT INFO FOR TIME
-        time = 9
+        time = req.get('request').get('intent').get('slots').get('timeslot').get('value')
         ssml = "<speak> You can say: <lang xml:lang ='es-ES'>Pon la almarma para <say-as interpret-as = 'cardinal'>"+time+"</say-as></lang></speak>"
     elif intent == 'Calendar':
         # GET SLOT INFO FOR DATE
-        date = 10/10
+        date = req.get('request').get('intent').get('slots').get('dateslot').get('value')
         ssml = "<speak> You could say: <lang xml:lang = 'es-ES'>Crea una nota para <say-as interpret-as = 'date' format = 'md'>"+date+"</say-as></lang></speak"
     elif intent == 'Weather':
         #GET SLOT INFO FOR CITY
-        city =  "Waltham"
+        city =  req.get('request').get('intent').get('slots').get('city').get('value')
         ssml = "<speak> You can ask me: <lang xml:lang = 'es-ES'>Cual es el tiempo en "+ city +"</lang></speak>"
     elif intent == 'Time':
         ssml = "<speak> Ask me: <lang xml:lang = 'es-ES'> Que hora es </lang> </speak>"
@@ -184,7 +184,7 @@ def get_english_intent_ssml(intent, req):
         ssml = "<speak> Try saying: <lang xml:lang = 'es-ES'>Apaga la luz</lang></speak>"
     elif intent == 'Restaurant':
         #GET SLOT INFO FOR CITY
-        city = "boston"
+        city = req.get('request').get('intent').get('slots').get('cityslot').get('value')
         ssml = "<speak> You could ask: <lang xml:lang = 'es-ES'>Muestrame restaurantes en" + city + "</lang></speak>"
 
     return ssml
