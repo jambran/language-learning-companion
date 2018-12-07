@@ -122,7 +122,6 @@ def get_language(req):
 
 
 def handle_english_intent(intent):
-    print(intent)
     if intent == 'Alarmas' or intent == 'Alarm':
         responses = ['Por favor, dime "Pon la alarma para las cinco y media"',
                      'Puedes decir "Crea una alarma a las tres cuarenta y cinco"']
@@ -159,13 +158,30 @@ def give_corrected_ssml(intent):
     """
     return ""
 
-def get_english_intent_ssml(intent):
+def get_english_intent_ssml(intent, req):
     """
     ssml for english intent handling
     :param intent:
     :return:
     """
-    return ""
+    if intent == 'Alarm':
+        # GET SLOT INFO FOR TIME
+        time = 9
+        ssml = "<speak> You can say: <lang xml:lang ='es-ES'>Pon la almarma para <say-as interpret-as = 'cardinal'>"+time+"</say-as></lang></speak>"
+    elif intent == 'Calendar':
+        # GET SLOT INFO FOR DATE
+        date = 10/11
+        ssml = "<speak> You could say: <lang xml:lang = 'es-ES'>Crea una nota para <say-as interpret-as = 'date' format = 'md'>"+date+"</say-as></lang></speak"
+    elif intent == 'Weather':
+        #GET SLOT INFO FOR CITY
+        city =  "Waltham"
+        ssml = "<speak> You can ask me <lang xml:lang = 'es-ES'> Cual es el tiempo en "+ city +"</lang></speak>"
+    elif intent == 'Time':
+        ssml= "<speak> Ask me <lang xml:lang = 'es-ES'> Que hora es </lang> </speak>"
+    elif intent == 'Lights':
+    elif intent == 'Restaurant':
+
+    return ssml
 
 def make_df_dct(response):
     return {"fulfillmentText": response,
@@ -184,7 +200,7 @@ def make_df_dct(response):
             }
             }
 
-def make_al_dct(response, ssml):
+def make_al_dct(ssml):
     """
     make dictionary for alexa fulfillment
     :param response:
@@ -220,8 +236,7 @@ def manage_request():
                 Spanish = ['Calendario','Eltiempo', 'Lahora', 'Restaurantes', 'Luces', 'Alarmas' ]
                 intent = get_al_utterance(req)
                 if intent not in Spanish:
-                    response = handle_english_intent(intent)
-                    ssml = get_english_intent_ssml(intent)
+                    ssml = get_english_intent_ssml(intent, req)
                 else:
                     user_utterance = get_al_utterance(req)
                     if gc.is_grammatical(user_utterance):
@@ -263,7 +278,7 @@ def manage_request():
         return make_response(jsonify(dct))
 
     else:
-        dct = make_al_dct(response,ssml)
+        dct = make_al_dct(ssml)
         return jsonify(dct)
 
 
