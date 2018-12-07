@@ -1,6 +1,6 @@
 
 from math import *
-from grammar import *
+from CKY_grammar import *
 
 class Item:
     def __init__(self, i, j, label, logProb=0, backPtrLeft=None, backPtrRight=None):
@@ -163,6 +163,9 @@ def cky(pcfg, sent, pruningPercent=None):
 
 def parse(pcfg, sent, pruningPercent=None):
     N = len(sent)
+
+    sent = [word.lower() for word in sent]
+
     chart = cky(pcfg, sent, pruningPercent)
     top = chart.best_in_cell(0, N, 'TOP')
     if top is None:
@@ -209,8 +212,47 @@ def runParserOnTest(pcfg, testFilename, outputFilename, pruningPercent=None, hor
 
 if __name__ == "__main__":
 
-    testSent = "crea una alarma para las seis menos cinco".split()
+    # testSent = "crea un evento el veintitres de enero".split()
+    #
+    # print(testSent)
+    # print()
+    # print(parse(fluencyFriendPCFG, testSent))
 
-    print(testSent)
-    print()
-    print(parse(fluencyFriendPCFG, testSent))
+
+    def check_wellformed(split_sent):
+        return parse(fluencyFriendPCFG, split_sent) is not None
+
+
+    good_list = ["pon una alarma a las tres y cincuenta y ocho".split(),
+                 "que hora es".split(),
+                 "dime la hora".split(),
+                 "cual es la hora".split(),
+                 "que tiempo hace en Boston".split(),
+                 "enciende la luz".split(),
+                 "enciende las luces".split(),
+                 "apaga la luz".split(),
+                 "apaga las luces".split(),
+                 "muestrame restaurantes en Waltham".split(),
+                 "crea un evento el veintitres de enero".split()]
+
+    for sent in good_list:
+        print(check_wellformed(sent))
+
+    print('###################')
+
+    bad_list = ["pon alarma a las tres y cincuenta y ocho".split(),
+                     "que hora".split(),
+                     "dime hora".split(),
+                     "cual hora es".split(),
+                     "que tiempo Boston".split(),
+                     "enciende luz".split(),
+                     "enciende luces".split(),
+                     "apaga luz".split(),
+                     "apaga  luces".split(),
+                     "muestrame restaurantes Waltham".split(),
+                     "un evento el veintitres de enero".split(),
+                "pon una alarma a las tres y cincuenta y".split()
+                ]
+
+    for sent in bad_list:
+        print(check_wellformed(sent))
