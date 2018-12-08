@@ -231,6 +231,7 @@ def manage_request():
     ssml = ""
     try:
         req = request.get_json(silent=True, force=True)
+        print(req, file=sys.stdout)
         if 'queryResult' not in req.keys():
             reqType= req.get('request').get('type')
             if reqType == 'LaunchRequest':
