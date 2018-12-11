@@ -259,7 +259,7 @@ def make_al_dct(ssml):
            "response": {
                "outputSpeech": {
                    "type": "SSML",
-                   "SSML": ssml
+                   "ssml": ssml
                },
            }
            }
