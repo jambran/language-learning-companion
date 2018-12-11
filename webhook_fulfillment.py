@@ -281,10 +281,12 @@ def manage_request():
 
             else:
                 response = "looking for intent"
+                English = ['Calendar', 'Weather', 'Time', 'Restaurants', 'LightsOn', 'LightsOff', 'Alarms']
                 SpanishCorrect = ['Calendario','Eltiempo', 'Lahora', 'Restaurantes', 'LucesOn','LucesOff', 'Alarmas' ]
                 SpanishIncorrect = ['CalendariIncorrect', 'EltiempoIncorrect', 'LahoraIncorrect', 'RestaurantesIncorrect', 'AlarmasIncorrect', 'LucesOnIncorrect', 'LucesOffIncorrect']
+
                 intent = get_al_utterance(req)
-                if intent not in (SpanishCorrect or SpanishIncorrect):
+                if intent in English:
                     ssml = get_english_intent_ssml(intent, req)
                 else:
                     if intent in SpanishCorrect:
