@@ -1,6 +1,7 @@
 """
 Jamie Brandon
 David Rubio Vallejo
+Micaela Kaplan
 11/09/2018
 """
 
@@ -58,9 +59,7 @@ def handle_intent(intent):
 
     elif intent == 'LaHora':
         response += "Ahora son las:\n"
-        print("EN INTENT LaHora", file=sys.stdout)
         response += str(datetime.datetime.time(datetime.datetime.now()))[:5]
-        print("THE ERROR IS NOT WIITH DATETIME", file=sys.stdout)
 
     elif intent == 'Luces':
         response += "¡Perfecto! The lights are set now."
@@ -114,8 +113,29 @@ def handle_intent_ssml(intent):
     :param intent:
     :return:
     """
+    ssml = ""
+    if intent == 'Alarmas':
+        ssml += "<speak> <lang xml:lang='es-ES'>Muy bien!</lang> The alarm is set now!</speak>"
 
-    return ""
+    elif intent == 'Calendario':
+        ssml += "<speak> <lang xml:lang='es-ES'>Muy bien!</lang> The event is in your calendar!</speak>"
+
+    elif intent == 'ElTiempo':
+        ssml += "<speak> <lang xml:lang='es-ES'>Muy bien! Espero que hace sol, pero la verdad es que no se</lang></speak>"
+
+    elif intent == 'LaHora':
+        ssml += "Ahora son las:\n"
+        ssml += str(datetime.datetime.time(datetime.datetime.now()))[:5]
+
+
+    elif intent == 'LucesOn' or intent == 'LucesOff':
+        ssml += "<speak?<lang xml:lang='es-ES'>Perfecto!</lang> The lights are set now.</speak>8"
+
+    elif intent == 'Restaurantes':
+        ssml += "<speak><lang xml:lang='es-ES'>Tu español es perfecto!</lang> I sent you some restaurants to your email account.</speak>"
+
+    return response
+
 
 def get_language(req):
     return detect(get_df_utterance(req))
@@ -156,8 +176,30 @@ def give_corrected_ssml(intent):
     :param intent:
     :return:
     """
-    return ""
+    if intent == 'AlarmasIncorrect':
+        # GET SLOT INFO FOR TIME
+        time = req.get('request').get('intent').get('slots').get('timeslot').get('value')
+        ssml = "<speak> Almost! try: <lang xml:lang ='es-ES'>Pon la almarma para <say-as interpret-as = 'cardinal'>"+time+"</say-as></lang></speak>"
+    elif intent == 'CalendariIncorrect':
+        # GET SLOT INFO FOR DATE
+        date = req.get('request').get('intent').get('slots').get('dateslot').get('value')
+        ssml = "<speak> You were close!: <lang xml:lang = 'es-ES'>Crea una nota para <say-as interpret-as = 'date' format = 'md'>"+date+"</say-as></lang></speak"
+    elif intent == 'EltiempoIncorrect':
+        #GET SLOT INFO FOR CITY
+        city = req.get('request').get('intent').get('slots').get('city').get('value')
+        ssml = "<speak> That was close!: <lang xml:lang = 'es-ES'>Cual es el tiempo en "+ city +"</lang></speak>"
+    elif intent == 'LahoraIncorrect':
+        ssml = "<speak> Good try! The proper way to ask is: <lang xml:lang = 'es-ES'> Que hora es </lang> </speak>"
+    elif intent == 'LucesOnIncorrect':
+        ssml = "<speak> Very close! Try: <lang xml:lang = 'es-ES'>Enciende las luces </lang></speak>"
+    elif intent == 'LucesOffIncorect':
+        ssml = "<speak> Almost! Instead, say: <lang xml:lang = 'es-ES'>Apaga la luz</lang></speak>"
+    elif intent == 'RestaurantesIncorrect':
+        #GET SLOT INFO FOR CITY
+        city = req.get('request').get('intent').get('slots').get('cityslot').get('value')
+        ssml = "<speak> Good try! Instead, say: <lang xml:lang = 'es-ES'>Muestrame restaurantes en" + city + "</lang></speak>"
 
+    return ssml
 def get_english_intent_ssml(intent, req):
     """
     ssml for english intent handling
@@ -239,21 +281,18 @@ def manage_request():
 
             else:
                 response = "looking for intent"
-                Spanish = ['Calendario','Eltiempo', 'Lahora', 'Restaurantes', 'Luces', 'Alarmas' ]
+                SpanishCorrect = ['Calendario','Eltiempo', 'Lahora', 'Restaurantes', 'LucesOn','LucesOff', 'Alarmas' ]
+                SpanishIncorrect = ['CalendariIncorrect', 'EltiempoIncorrect', 'LahoraIncorrect', 'RestaurantesIncorrect', 'AlarmasIncorrect', 'LucesOnIncorrect', 'LucesOffIncorrect']
                 intent = get_al_utterance(req)
-                if intent not in Spanish:
+                if intent not in (SpanishCorrect or SpanishIncorrect):
                     ssml = get_english_intent_ssml(intent, req)
                 else:
-                    user_utterance = get_al_utterance(req)
-                    if gc.is_grammatical(user_utterance):
-                        response = handle_intent(intent)
+                    if intent in SpanishCorrect:
                         ssml = handle_intent_ssml(intent)
 
                     else:
                         # if ungrammatical, say how they should have said it
-                        response = give_corrected_response(intent)
                         ssml = give_corrected_ssml(intent)
-                intent = ""
 
         else:
             language = get_language(req)
