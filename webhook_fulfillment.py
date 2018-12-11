@@ -281,7 +281,7 @@ def manage_request():
 
             else:
                 response = "looking for intent"
-                English = ['Calendar', 'Weather', 'Time', 'Restaurants', 'LightsOn', 'LightsOff', 'Alarms']
+                English = ['Calendar', 'Weather', 'Time', 'Restaurant', 'LightsOn', 'LightsOff', 'Alarm']
                 SpanishCorrect = ['Calendario','Eltiempo', 'Lahora', 'Restaurantes', 'LucesOn','LucesOff', 'Alarmas' ]
                 SpanishIncorrect = ['CalendariIncorrect', 'EltiempoIncorrect', 'LahoraIncorrect', 'RestaurantesIncorrect', 'AlarmasIncorrect', 'LucesOnIncorrect', 'LucesOffIncorrect']
 
