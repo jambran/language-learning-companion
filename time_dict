@@ -1,4 +1,3 @@
-time_dict = 
 { 
 'one' : 'una',
 'two' : 'dos',
@@ -65,5 +64,4 @@ time_dict =
 'past' : 'y',
 'after' : 'y',
 'to' : 'menos'           
-
 }
