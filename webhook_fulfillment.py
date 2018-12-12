@@ -11,12 +11,15 @@ import sys
 import random
 import datetime
 from flask import Flask, request, jsonify, make_response
-from GrammarChecker import GrammarChecker
+# from GrammarChecker import GrammarChecker
 from langdetect import detect
+
+from CKY_parser import parse
+from CKY_grammar import fluencyFriendPCFG as PCFG
 
 app = Flask(__name__)
 
-gc = GrammarChecker()
+# gc = GrammarChecker()
 
 
 def get_df_intent(req):
@@ -308,7 +311,10 @@ def manage_request():
 
             # if grammatical, congratulate and proceed with success message
 
-                if gc.is_grammatical(user_utterance):
+                # Old grammar substituted by CKY grammar
+                # if gc.is_grammatical(user_utterance):
+                #     response = handle_intent(intent)
+                if parse(PCFG, user_utterance.split()) is not None:
                     response = handle_intent(intent)
 
                 else:
