@@ -76,6 +76,10 @@ def handle_intent(intent):
     return response
 
 
+def df_get_city(req):
+    return req.get('queryResult').get('parameters').get('City')
+
+
 def give_corrected_response(intent, req):
     response = ""
     if intent == 'Alarmas':
@@ -87,15 +91,16 @@ def give_corrected_response(intent, req):
 
     elif intent == 'Calendario':
         # todo slot fill
+        date = 'el cinco de marzo'
         response = "That was almost correct!\n"
-        response += "A better way would be: 'Pon una nota para el cinco de marzo'.\n"
+        response += "A better way would be: 'Pon una nota para %s'.\n" % date
         response += "Please try again! :)"
 
     elif intent == 'ElTiempo':
-        # todo slot fill...?
+        city = df_get_city()
         response = "That was almost correct!\n"
-        response += "A better way would be: 'Dime que tiempo hace en Waltham'\n"
-        response += "Or: 'Cual es el tiempo en Boston'.\n"
+        response += "A better way would be: 'Dime que tiempo hace en %s'\n" % city
+        response += "Or: 'Cual es el tiempo en %s'.\n" % city
         response += "Please try again! :)"
 
     elif intent == 'LaHora':
@@ -111,9 +116,9 @@ def give_corrected_response(intent, req):
         response += "Please try again! :)"
 
     elif intent == 'Restaurantes':
-        # todo slot fill
+        city = df_get_city(req)
         response = "That was almost correct!\n"
-        response += "A better way would be: 'Muestrame restaurantes en Waltham'\n"
+        response += "A better way would be: 'Muestrame restaurantes en %s'\n" % city
         response += "Please try again! :)"
 
     return response
@@ -198,6 +203,7 @@ def translate_timestring_to_spanish(time_string):
             minute == '01m'
         return article + time_dict[hour] + ' ' + time_dict[minute]
 
+
 def get_spanish_time_in_words(req):
     return translate_timestring_to_spanish(df_get_time(req))
 
@@ -215,9 +221,11 @@ def handle_english_intent(intent, req):
                      'You could say: "Pon una nota el quince de abril"']
 
     elif intent == 'ElTiempo' or intent == 'Weather':
-        # todo slot fill
-        responses = ['You could say: "Cual es el tiempo en Waltham"',
-                     'You can ask me: "Que tiempo hace en Boston"']
+        city = df_get_city(req)
+        if intent == 'ElTiempo':
+            responses = ['You could say: "Cual es el tiempo en &s"' % city]
+        else:
+            responses = ['You can ask me: "Que tiempo hace en %s"' % city]
 
     elif intent == 'LaHora' or intent == 'Time':
         responses = ['You could ask me: "Que hora es"',
@@ -230,9 +238,9 @@ def handle_english_intent(intent, req):
                      'You could say: "Apaga la luz"']
 
     elif intent == 'Restaurantes' or intent == 'Restaurant':
-        # todo slot fill
-        responses = ['You can say: "Muestrame restaurantes en Waltham"',
-                     'You can ask: "Enseñame bares chulos en Boston"']
+        city = df_get_city(req)
+        responses = ['You can say: "Muestrame restaurantes en %s"' % city,
+                     'You can ask: "Enseñame bares chulos en %s"' % city]
 
     return random.choice(responses)
 
