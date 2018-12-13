@@ -76,13 +76,13 @@ def handle_intent(intent):
     return response
 
 
-def give_corrected_response(intent):
+def give_corrected_response(intent, req):
     response = ""
     if intent == 'Alarmas':
-        # todo slot fill
+        spanish_time = get_spanish_time_in_words(req)
         response = "That was almost correct!\n"
-        response += "A better way would be: 'Pon la alarma a las diez y media'.\n"
-        response += "Or: 'Crea una alarma a las cuatro menos veinticinco'.\n"
+        response += "A better way would be: 'Pon la alarma a %s'.\n" % spanish_time
+        response += "Or: 'Crea una alarma a %s'.\n" % spanish_time
         response += "Please try again! :)"
 
     elif intent == 'Calendario':
@@ -198,12 +198,14 @@ def translate_timestring_to_spanish(time_string):
             minute == '01m'
         return article + time_dict[hour] + ' ' + time_dict[minute]
 
+def get_spanish_time_in_words(req):
+    return translate_timestring_to_spanish(df_get_time(req))
+
 
 def handle_english_intent(intent, req):
     responses = []
     if intent == 'Alarmas' or intent == 'Alarm':
-        alarm_time = df_get_time(req)
-        spanish_time = translate_timestring_to_spanish(alarm_time)
+        spanish_time = get_spanish_time_in_words(req)
         responses = ['Por favor, dime "Pon la alarma para ' + spanish_time + '"',
                      'Puedes decir "Crea una alarma a ' + spanish_time + '"']
 
@@ -399,7 +401,7 @@ def manage_request():
 
                 else:
                     # if ungrammatical, say how they should have said it
-                    response = give_corrected_response(intent)
+                    response = give_corrected_response(intent, req)
 
     except:  # in case something goes wrong, give a response to let the user know to try again
         response = "No te he entendido. Por favor intentalo de nuevo."
