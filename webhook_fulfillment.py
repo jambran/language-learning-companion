@@ -6,6 +6,7 @@ Micaela Kaplan
 """
 
 # ! /usr/bin/env python3
+import json
 import os
 import sys
 import random
@@ -56,7 +57,10 @@ def handle_intent(intent):
         response += "¡Muy bien! The event is in your calendar!"
 
     elif intent == 'ElTiempo':
-        weather_list = ["Parece que va a hacer buen tiempo", "¡Hace sol!", "Esta despejado", "Hace un poco de frio"]
+        weather_list = ["Parece que va a hacer buen tiempo",
+                        "¡Hace sol!",
+                        "Esta despejado",
+                        "Hace un poco de frio"]
         response += random.choice(weather_list)
 
     elif intent == 'LaHora':
@@ -75,17 +79,20 @@ def handle_intent(intent):
 def give_corrected_response(intent):
     response = ""
     if intent == 'Alarmas':
+        # todo slot fill
         response = "That was almost correct!\n"
         response += "A better way would be: 'Pon la alarma a las diez y media'.\n"
         response += "Or: 'Crea una alarma a las cuatro menos veinticinco'.\n"
         response += "Please try again! :)"
 
     elif intent == 'Calendario':
+        # todo slot fill
         response = "That was almost correct!\n"
         response += "A better way would be: 'Pon una nota para el cinco de marzo'.\n"
         response += "Please try again! :)"
 
     elif intent == 'ElTiempo':
+        # todo slot fill...?
         response = "That was almost correct!\n"
         response += "A better way would be: 'Dime que tiempo hace en Waltham'\n"
         response += "Or: 'Cual es el tiempo en Boston'.\n"
@@ -104,6 +111,7 @@ def give_corrected_response(intent):
         response += "Please try again! :)"
 
     elif intent == 'Restaurantes':
+        # todo slot fill
         response = "That was almost correct!\n"
         response += "A better way would be: 'Muestrame restaurantes en Waltham'\n"
         response += "Please try again! :)"
@@ -146,17 +154,66 @@ def get_language(req):
     return detect(get_df_utterance(req))
 
 
-def handle_english_intent(intent):
+def df_get_time(req):
+    '''
+    :param req: the request from DialogueFlow
+    :return: string,  6am is "2018-12-14T06:00:00-05:00"
+    '''
+    time_string = req.get('queryResult').get('parameters').get('time')
+    return time_string
+
+
+def translate_timestring_to_spanish(time_string):
+    """
+
+    :param time_string: string, 6am is "2018-12-14T06:00:00-05:00"
+    :return: string, the spanish words for this time
+    """
+    # note that these are strings, not ints!
+    date = time_string[0:11]
+    hour = time_string[11:13]
+    minute = time_string[14:16]
+    with open('time_dict') as f:
+        time_dict = json.load(f)
+    if hour == '01':
+        aritcle = 'la '
+    else:
+        article = 'las '
+    if minute == '00':
+        return article + time_dict[hour]
+    elif minute == '15':
+        return article + time_dict[hour] + ' y cuarto'
+    elif minute == '30':
+        return article + time_dict[hour] + 'y media'
+    elif minute == '45':
+        h = int(hour) + 1
+        if h < 10:
+            h = '0' + str(h)
+        else:
+            h = str(h)
+        return article + time_dict[h] + ' menos cuarto'
+    else:
+        # get the right gender for the minutes
+        if minute == '01':
+            minute == '01m'
+        return article + time_dict[hour] + ' ' + time_dict[minute]
+
+
+def handle_english_intent(intent, req):
     responses = []
     if intent == 'Alarmas' or intent == 'Alarm':
-        responses = ['Por favor, dime "Pon la alarma para las cinco y media"',
-                     'Puedes decir "Crea una alarma a las tres cuarenta y cinco"']
+        alarm_time = df_get_time(req)
+        spanish_time = translate_timestring_to_spanish(alarm_time)
+        responses = ['Por favor, dime "Pon la alarma para ' + spanish_time + '"',
+                     'Puedes decir "Crea una alarma a ' + spanish_time + '"']
 
     elif intent == 'Calendario' or intent == 'Calendar':
+        # todo slot fill
         responses = ['You can say: "Crea una nota para el cinco de marzo"',
                      'You could say: "Pon una nota el quince de abril"']
 
     elif intent == 'ElTiempo' or intent == 'Weather':
+        # todo slot fill
         responses = ['You could say: "Cual es el tiempo en Waltham"',
                      'You can ask me: "Que tiempo hace en Boston"']
 
@@ -171,6 +228,7 @@ def handle_english_intent(intent):
                      'You could say: "Apaga la luz"']
 
     elif intent == 'Restaurantes' or intent == 'Restaurant':
+        # todo slot fill
         responses = ['You can say: "Muestrame restaurantes en Waltham"',
                      'You can ask: "Enseñame bares chulos en Boston"']
 
@@ -330,7 +388,7 @@ def manage_request():
             intent = get_df_intent(req)
 
             if language.startswith('en'):  # utterance in english
-                response = handle_english_intent(intent)
+                response = handle_english_intent(intent, req)
 
             else:
                 user_utterance = get_df_utterance(req)
