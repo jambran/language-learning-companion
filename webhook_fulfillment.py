@@ -11,15 +11,12 @@ import sys
 import random
 import datetime
 from flask import Flask, request, jsonify, make_response
-# from GrammarChecker import GrammarChecker
 from langdetect import detect
 
 from CKY_parser import parse
 from CKY_grammar import fluencyFriendPCFG as PCFG
 
 app = Flask(__name__)
-
-# gc = GrammarChecker()
 
 
 def get_df_intent(req):
@@ -35,6 +32,7 @@ def get_df_utterance(req):
     """
     return req.get('originalDetectIntentRequest').get('payload').get('inputs')[0].get('rawInputs')[0].get('query')
 
+
 def get_al_utterance(req):
     """
     original user utterance -- alexa
@@ -42,6 +40,7 @@ def get_al_utterance(req):
     :return: string, user utterance
     """
     return req.get('request').get('intent').get('name')
+
 
 def handle_intent(intent):
     """
@@ -74,6 +73,7 @@ def handle_intent(intent):
 
 
 def give_corrected_response(intent):
+    response = ""
     if intent == 'Alarmas':
         response = "That was almost correct!\n"
         response += "A better way would be: 'Pon la alarma a las diez y media'.\n"
@@ -110,6 +110,7 @@ def give_corrected_response(intent):
 
     return response
 
+
 def handle_intent_ssml(intent):
     """
     SSML for spanish intent
@@ -124,20 +125,21 @@ def handle_intent_ssml(intent):
         ssml += "<speak> <lang xml:lang='es-ES'>Muy bien!</lang> The event is in your calendar!</speak>"
 
     elif intent == 'ElTiempo':
-        ssml += "<speak> <lang xml:lang='es-ES'>Muy bien! Espero que hace sol, pero la verdad es que no se</lang></speak>"
+        ssml += "<speak> <lang xml:lang='es-ES'>Muy bien! Espero que hace sol, " \
+                "pero la verdad es que no se</lang></speak>"
 
     elif intent == 'LaHora':
         ssml += "Ahora son las:\n"
         ssml += str(datetime.datetime.time(datetime.datetime.now()))[:5]
 
-
     elif intent == 'LucesOn' or intent == 'LucesOff':
         ssml += "<speak?<lang xml:lang='es-ES'>Perfecto!</lang> The lights are set now.</speak>8"
 
     elif intent == 'Restaurantes':
-        ssml += "<speak><lang xml:lang='es-ES'>Tu español es perfecto!</lang> I sent you some restaurants to your email account.</speak>"
+        ssml += "<speak><lang xml:lang='es-ES'>Tu español es perfecto!</lang> " \
+                "I sent you some restaurants to your email account.</speak>"
 
-    return response
+    return ssml
 
 
 def get_language(req):
@@ -145,6 +147,7 @@ def get_language(req):
 
 
 def handle_english_intent(intent):
+    responses = []
     if intent == 'Alarmas' or intent == 'Alarm':
         responses = ['Por favor, dime "Pon la alarma para las cinco y media"',
                      'Puedes decir "Crea una alarma a las tres cuarenta y cinco"']
@@ -173,24 +176,29 @@ def handle_english_intent(intent):
 
     return random.choice(responses)
 
-def give_corrected_ssml(intent):
+
+def give_corrected_ssml(intent, req):
     """
     ssml for corrected langauge
     :param intent:
+    :param req:
     :return:
     """
+    ssml = ''
     if intent == 'AlarmasIncorrect':
         # GET SLOT INFO FOR TIME
         time = req.get('request').get('intent').get('slots').get('timeslot').get('value')
-        ssml = "<speak> Almost! try: <lang xml:lang ='es-ES'>Pon la almarma para <say-as interpret-as = 'cardinal'>"+time+"</say-as></lang></speak>"
+        ssml = "<speak> Almost! try: <lang xml:lang ='es-ES'>Pon la almarma para <say-as interpret-as = 'cardinal'>" \
+               + time + "</say-as></lang></speak>"
     elif intent == 'CalendariIncorrect':
         # GET SLOT INFO FOR DATE
         date = req.get('request').get('intent').get('slots').get('dateslot').get('value')
-        ssml = "<speak> You were close!: <lang xml:lang = 'es-ES'>Crea una nota para <say-as interpret-as = 'date' format = 'md'>"+date+"</say-as></lang></speak"
+        ssml = "<speak> You were close!: <lang xml:lang = 'es-ES'>Crea una nota para " \
+               "<say-as interpret-as = 'date' format = 'md'>" + date + "</say-as></lang></speak"
     elif intent == 'EltiempoIncorrect':
-        #GET SLOT INFO FOR CITY
+        # GET SLOT INFO FOR CITY
         city = req.get('request').get('intent').get('slots').get('city').get('value')
-        ssml = "<speak> That was close!: <lang xml:lang = 'es-ES'>Cual es el tiempo en "+ city +"</lang></speak>"
+        ssml = "<speak> That was close!: <lang xml:lang = 'es-ES'>Cual es el tiempo en " + city + "</lang></speak>"
     elif intent == 'LahoraIncorrect':
         ssml = "<speak> Good try! The proper way to ask is: <lang xml:lang = 'es-ES'> Que hora es </lang> </speak>"
     elif intent == 'LucesOnIncorrect':
@@ -198,29 +206,35 @@ def give_corrected_ssml(intent):
     elif intent == 'LucesOffIncorect':
         ssml = "<speak> Almost! Instead, say: <lang xml:lang = 'es-ES'>Apaga la luz</lang></speak>"
     elif intent == 'RestaurantesIncorrect':
-        #GET SLOT INFO FOR CITY
+        # GET SLOT INFO FOR CITY
         city = req.get('request').get('intent').get('slots').get('cityslot').get('value')
-        ssml = "<speak> Good try! Instead, say: <lang xml:lang = 'es-ES'>Muestrame restaurantes en" + city + "</lang></speak>"
+        ssml = "<speak> Good try! Instead, say: <lang xml:lang = 'es-ES'>Muestrame restaurantes en" + city + \
+               "</lang></speak>"
 
     return ssml
+
+
 def get_english_intent_ssml(intent, req):
     """
     ssml for english intent handling
     :param intent:
     :return:
     """
+    ssml = ''
     if intent == 'Alarm':
         # GET SLOT INFO FOR TIME
         time = req.get('request').get('intent').get('slots').get('timeslot').get('value')
-        ssml = "<speak> You can say: <lang xml:lang ='es-ES'>Pon la almarma para <say-as interpret-as = 'cardinal'>"+time+"</say-as></lang></speak>"
+        ssml = "<speak> You can say: <lang xml:lang ='es-ES'>Pon la almarma para <say-as interpret-as = 'cardinal'>" \
+               + time + "</say-as></lang></speak>"
     elif intent == 'Calendar':
         # GET SLOT INFO FOR DATE
         date = req.get('request').get('intent').get('slots').get('dateslot').get('value')
-        ssml = "<speak> You could say: <lang xml:lang = 'es-ES'>Crea una nota para <say-as interpret-as = 'date' format = 'md'>"+date+"</say-as></lang></speak"
+        ssml = "<speak> You could say: <lang xml:lang = 'es-ES'>Crea una nota para " \
+               "<say-as interpret-as = 'date' format = 'md'>" + date + "</say-as></lang></speak"
     elif intent == 'Weather':
-        #GET SLOT INFO FOR CITY
-        city =  req.get('request').get('intent').get('slots').get('city').get('value')
-        ssml = "<speak> You can ask me: <lang xml:lang = 'es-ES'>Cual es el tiempo en "+ city +"</lang></speak>"
+        # GET SLOT INFO FOR CITY
+        city = req.get('request').get('intent').get('slots').get('city').get('value')
+        ssml = "<speak> You can ask me: <lang xml:lang = 'es-ES'>Cual es el tiempo en " + city + "</lang></speak>"
     elif intent == 'Time':
         ssml = "<speak> Ask me: <lang xml:lang = 'es-ES'> Que hora es </lang> </speak>"
     elif intent == 'Lights-on':
@@ -228,11 +242,12 @@ def get_english_intent_ssml(intent, req):
     elif intent == 'Lights-off':
         ssml = "<speak> Try saying: <lang xml:lang = 'es-ES'>Apaga la luz</lang></speak>"
     elif intent == 'Restaurant':
-        #GET SLOT INFO FOR CITY
+        # GET SLOT INFO FOR CITY
         city = req.get('request').get('intent').get('slots').get('cityslot').get('value')
         ssml = "<speak> You could ask: <lang xml:lang = 'es-ES'>Muestrame restaurantes en" + city + "</lang></speak>"
 
     return ssml
+
 
 def make_df_dct(response):
     return {"fulfillmentText": response,
@@ -251,10 +266,10 @@ def make_df_dct(response):
             }
             }
 
+
 def make_al_dct(ssml):
     """
     make dictionary for alexa fulfillment
-    :param response:
     :param ssml:
     :return:
     """
@@ -268,25 +283,36 @@ def make_al_dct(ssml):
            }
     return dct
 
+
+def request_is_from_alexa(req):
+    return 'queryResult' not in req.keys()
+
+
 @app.route("/", methods=['POST'])
 def manage_request():
     """Main method that determines how to proceed based on the kind of intent detected"""
 
-    response = ""
     ssml = ""
     try:
         req = request.get_json(silent=True, force=True)
-        if 'queryResult' not in req.keys():
-            reqType= req.get('request').get('type')
+        print(req, file=sys.stdout)
+
+        if request_is_from_alexa(req):
+            reqType = req.get('request').get('type')
             if reqType == 'LaunchRequest':
-                response = "Hello, welcome to Fluency Friend! If you ask me to do something in English, I can teach you to say it in Spanish. Ask me in Spanish and I can correct you!"
-                ssml = "<speak> <lang xml:lang = 'es-ES'> Hola </lang>, welcome to Fluency Friend! If you ask me to do something in English, I can teach you to say it in Spanish. Ask me in Spanish and I can correct you! </speak>"
+                response = "Hello, welcome to Fluency Friend! If you ask me to do something in English, " \
+                           "I can teach you to say it in Spanish. Ask me in Spanish and I can correct you!"
+                ssml = "<speak> <lang xml:lang = 'es-ES'> Hola </lang>, welcome to Fluency Friend! " \
+                       "If you ask me to do something in English, I can teach you to say it in Spanish. " \
+                       "Ask me in Spanish and I can correct you! </speak>"
 
             else:
                 response = "looking for intent"
                 English = ['Calendar', 'Weather', 'Time', 'Restaurant', 'LightsOn', 'LightsOff', 'Alarm']
-                SpanishCorrect = ['Calendario','Eltiempo', 'Lahora', 'Restaurantes', 'LucesOn','LucesOff', 'Alarmas' ]
-                SpanishIncorrect = ['CalendariIncorrect', 'EltiempoIncorrect', 'LahoraIncorrect', 'RestaurantesIncorrect', 'AlarmasIncorrect', 'LucesOnIncorrect', 'LucesOffIncorrect']
+                SpanishCorrect = ['Calendario', 'Eltiempo', 'Lahora', 'Restaurantes', 'LucesOn', 'LucesOff', 'Alarmas']
+                SpanishIncorrect = ['CalendariIncorrect', 'EltiempoIncorrect', 'LahoraIncorrect',
+                                    'RestaurantesIncorrect', 'AlarmasIncorrect', 'LucesOnIncorrect',
+                                    'LucesOffIncorrect']
 
                 intent = get_al_utterance(req)
                 if intent in English:
@@ -297,9 +323,9 @@ def manage_request():
 
                     else:
                         # if ungrammatical, say how they should have said it
-                        ssml = give_corrected_ssml(intent)
+                        ssml = give_corrected_ssml(intent, req)
 
-        else:
+        else:  # request from google assistant
             language = get_language(req)
             intent = get_df_intent(req)
 
@@ -309,30 +335,24 @@ def manage_request():
             else:
                 user_utterance = get_df_utterance(req)
 
-            # if grammatical, congratulate and proceed with success message
-
-                # Old grammar substituted by CKY grammar
-                # if gc.is_grammatical(user_utterance):
-                #     response = handle_intent(intent)
+                # if grammatical, congratulate and proceed with success message
                 if parse(PCFG, user_utterance.split()) is not None:
                     response = handle_intent(intent)
 
                 else:
-                # if ungrammatical, say how they should have said it
+                    # if ungrammatical, say how they should have said it
                     response = give_corrected_response(intent)
-
 
     except:  # in case something goes wrong, give a response to let the user know to try again
         response = "No te he entendido. Por favor intentalo de nuevo."
         ssml = "<speak><lang xml:lang='es-ES'>No te he entendido. Por favor intentalo de nuevo</lang></speak>"
 
-    if 'queryResponse' in req.keys():
-        dct = make_df_dct(response)
-        return make_response(jsonify(dct))
-
-    else:
+    if request_is_from_alexa(req):
         dct = make_al_dct(ssml)
         return jsonify(dct)
+    else:
+        dct = make_df_dct(response)
+        return make_response(jsonify(dct))
 
 
 if __name__ == "__main__":
