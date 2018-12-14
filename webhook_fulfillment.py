@@ -179,7 +179,7 @@ def give_corrected_ssml(intent):
     if intent == 'AlarmasIncorrect':
         # GET SLOT INFO FOR TIME
         time = req.get('request').get('intent').get('slots').get('timeslot').get('value')
-        ssml = "<speak> Almost! try: <lang xml:lang ='es-ES'>Pon la almarma para <say-as interpret-as = 'cardinal'>"+time+"</say-as></lang></speak>"
+        ssml = "<speak> Almost! try: <lang xml:lang ='es-ES'>Pon la alarma para <say-as interpret-as = 'cardinal'>"+time+"</say-as></lang></speak>"
     elif intent == 'CalendariIncorrect':
         # GET SLOT INFO FOR DATE
         date = req.get('request').get('intent').get('slots').get('dateslot').get('value')
@@ -209,11 +209,11 @@ def get_english_intent_ssml(intent, req):
     if intent == 'Alarm':
         # GET SLOT INFO FOR TIME
         time = req.get('request').get('intent').get('slots').get('timeslot').get('value')
-        ssml = "<speak> You can say: <lang xml:lang ='es-ES'>Pon la almarma para <say-as interpret-as = 'cardinal'>"+time+"</say-as></lang></speak>"
+        ssml = "<speak> You can say: <lang xml:lang ='es-ES'>Pon la alarma para <say-as interpret-as = 'cardinal'>"+time+"</say-as></lang></speak>"
     elif intent == 'Calendar':
         # GET SLOT INFO FOR DATE
         date = req.get('request').get('intent').get('slots').get('dateslot').get('value')
-        ssml = "<speak> You could say: <lang xml:lang = 'es-ES'>Crea una nota para <say-as interpret-as = 'date' format = 'md'>"+date+"</say-as></lang></speak"
+        ssml = "<speak> You could say: <lang xml:lang = 'es-ES'>Crea una nota para <say-as interpret-as = 'date' format = 'md'>"+date+"</say-as></lang></speak>"
     elif intent == 'Weather':
         #GET SLOT INFO FOR CITY
         city =  req.get('request').get('intent').get('slots').get('city').get('value')
@@ -288,13 +288,11 @@ def manage_request():
                 intent = get_al_utterance(req)
                 if intent in English:
                     ssml = get_english_intent_ssml(intent, req)
+                elif intent in SpanishCorrect:
+                    ssml = handle_intent_ssml(intent)
                 else:
-                    if intent in SpanishCorrect:
-                        ssml = handle_intent_ssml(intent)
-
-                    else:
-                        # if ungrammatical, say how they should have said it
-                        ssml = give_corrected_ssml(intent)
+                    # if ungrammatical, say how they should have said it
+                    ssml = give_corrected_ssml(intent)
 
         else:
             language = get_language(req)
