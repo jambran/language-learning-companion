@@ -256,12 +256,9 @@ def give_corrected_ssml(intent, req):
     if intent == 'AlarmasIncorrect':
         # GET SLOT INFO FOR TIME
         time = req.get('request').get('intent').get('slots').get('timeslot').get('value')
-<<<<<<< HEAD
         ssml = "<speak> Almost! try: <lang xml:lang ='es-ES'>Pon la alarma para <say-as interpret-as = 'cardinal'>"+time+"</say-as></lang></speak>"
-=======
         ssml = "<speak> Almost! try: <lang xml:lang ='es-ES'>Pon la almarma para <say-as interpret-as = 'cardinal'>" \
                + time + "</say-as></lang></speak>"
->>>>>>> 124e1a92116f6e4cbff17502ecbaae26e696546e
     elif intent == 'CalendariIncorrect':
         # GET SLOT INFO FOR DATE
         date = req.get('request').get('intent').get('slots').get('dateslot').get('value')
@@ -296,13 +293,11 @@ def get_english_intent_ssml(intent, req):
     if intent == 'Alarm':
         # GET SLOT INFO FOR TIME
         time = req.get('request').get('intent').get('slots').get('timeslot').get('value')
-<<<<<<< HEAD
         ssml = "<speak> You can say: <lang xml:lang ='es-ES'>Pon la alarma para <say-as interpret-as = 'cardinal'>"+time+"</say-as></lang></speak>"
     elif intent == 'Calendar':
         # GET SLOT INFO FOR DATE
         date = req.get('request').get('intent').get('slots').get('dateslot').get('value')
         ssml = "<speak> You could say: <lang xml:lang = 'es-ES'>Crea una nota para <say-as interpret-as = 'date' format = 'md'>"+date+"</say-as></lang></speak>"
-=======
         ssml = "<speak> You can say: <lang xml:lang ='es-ES'>Pon la almarma para <say-as interpret-as = 'cardinal'>" \
                + time + "</say-as></lang></speak>"
     elif intent == 'Calendar':
@@ -310,7 +305,6 @@ def get_english_intent_ssml(intent, req):
         date = req.get('request').get('intent').get('slots').get('dateslot').get('value')
         ssml = "<speak> You could say: <lang xml:lang = 'es-ES'>Crea una nota para " \
                "<say-as interpret-as = 'date' format = 'md'>" + date + "</say-as></lang></speak"
->>>>>>> 124e1a92116f6e4cbff17502ecbaae26e696546e
     elif intent == 'Weather':
         # GET SLOT INFO FOR CITY
         city = req.get('request').get('intent').get('slots').get('city').get('value')
@@ -400,17 +394,9 @@ def manage_request():
                 elif intent in SpanishCorrect:
                     ssml = handle_intent_ssml(intent)
                 else:
-<<<<<<< HEAD
                     # if ungrammatical, say how they should have said it
                     ssml = give_corrected_ssml(intent)
-=======
-                    if intent in SpanishCorrect:
-                        ssml = handle_intent_ssml(intent)
 
-                    else:
-                        # if ungrammatical, say how they should have said it
-                        ssml = give_corrected_ssml(intent, req)
->>>>>>> 124e1a92116f6e4cbff17502ecbaae26e696546e
 
         else:  # request from google assistant
             language = get_language(req)
