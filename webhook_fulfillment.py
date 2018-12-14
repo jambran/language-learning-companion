@@ -146,7 +146,7 @@ def handle_intent_ssml(intent):
         ssml += str(datetime.datetime.time(datetime.datetime.now()))[:5]
 
     elif intent == 'LucesOn' or intent == 'LucesOff':
-        ssml += "<speak><lang xml:lang='es-ES'>Perfecto!</lang> The lights are set now.</speak>8"
+        ssml += "<speak><lang xml:lang='es-ES'>Perfecto!</lang> The lights are set now.</speak>"
 
     elif intent == 'Restaurantes':
         ssml += "<speak><lang xml:lang='es-ES'>Tu español es perfecto!</lang> " \
