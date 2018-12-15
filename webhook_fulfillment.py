@@ -313,7 +313,7 @@ def get_english_intent_ssml(intent, req):
     elif intent == 'Restaurant':
         # GET SLOT INFO FOR CITY
         city = req.get('request').get('intent').get('slots').get('cityslot').get('value')
-        ssml = "<speak> You could ask: <lang xml:lang = 'es-ES'>Muestrame restaurantes en" + city + "</lang></speak>"
+        ssml = "<speak> You could ask: <lang xml:lang = 'es-ES'>Muestrame restaurantes en " + city + "</lang></speak>"
 
     return ssml
 
@@ -379,16 +379,16 @@ def manage_request():
                 response = "looking for intent"
                 English = ['Calendar', 'Weather', 'Time', 'Restaurant', 'LightsOn', 'LightsOff', 'Alarm']
                 SpanishCorrect = ['Calendario', 'Eltiempo', 'Lahora', 'Restaurantes', 'LucesOn', 'LucesOff', 'Alarmas']
-                SpanishIncorrect = ['CalendariIncorrect', 'EltiempoIncorrect', 'LahoraIncorrect',
-                                    'RestaurantesIncorrect', 'AlarmasIncorrect', 'LucesOnIncorrect',
-                                    'LucesOffIncorrect']
+               # SpanishIncorrect = ['CalendariIncorrect', 'EltiempoIncorrect', 'LahoraIncorrect',
+                #                    'RestaurantesIncorrect', 'AlarmasIncorrect', 'LucesOnIncorrect',
+                 #                   'LucesOffIncorrect']
 
                 intent = get_al_utterance(req)
                 if intent in English:
                     ssml = get_english_intent_ssml(intent, req)
                 elif intent in SpanishCorrect:
                     ssml = handle_intent_ssml(intent)
-                elif intent in SpanishIncorrect:
+                else:
                     ssml = give_corrected_ssml(intent)
 
 
