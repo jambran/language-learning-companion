@@ -138,16 +138,14 @@ def handle_intent_ssml(intent):
     elif intent == 'Calendario':
         ssml += "<speak> <lang xml:lang='es-ES'>Muy bien!</lang> The event is in your calendar!</speak>"
 
-    elif intent == 'ElTiempo':
+    elif intent == 'Eltiempo':
         ssml += "<speak> <lang xml:lang='es-ES'>Muy bien! Espero que hace sol, "
         ssml +=  "pero la verdad es que no se</lang></speak>"
 
     elif intent == 'Lahora':
         print ("in la hora")
-        ssml += "Ahora son las:\n"
-        print(ssml)
-        ssml += str(datetime.datetime.time(datetime.datetime.now()))[:5]
-        print("issue with time")
+        ssml += "<speak><lang xml:lang='es-ES'>Ahora son las: <say-as interpret-as = 'time'> "
+        ssml += str(datetime.datetime.time(datetime.datetime.now()))[:5] +"</say-as></lang></speak>"
 
     elif intent == 'LucesOn' or intent == 'LucesOff':
         ssml += "<speak><lang xml:lang='es-ES'>Perfecto!</lang> The lights are set now.</speak>"
