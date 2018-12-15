@@ -374,10 +374,11 @@ def manage_request():
                 response = "looking for intent"
                 English = ['Calendar', 'Weather', 'Time', 'Restaurant', 'LightsOn', 'LightsOff', 'Alarm']
                 SpanishCorrect = ['Calendario', 'Eltiempo', 'Lahora', 'Restaurantes', 'LucesOn', 'LucesOff', 'Alarmas']
-                SpanishIncorrect = ['CalendariIncorrect', 'EltiempoIncorrect', 'LahoraIncorrect', 'RestaurantesIncorrect',
-                                    'AlarmasIncorrect', 'LucesOnIncorrect', 'LucesOffIncorrect']
+                """SpanishIncorrect = ['CalendariIncorrect', 'EltiempoIncorrect', 'LahoraIncorrect', 'RestaurantesIncorrect',
+                                    'AlarmasIncorrect', 'LucesOnIncorrect', 'LucesOffIncorrect']"""
 
                 intent = get_al_utterance(req)
+                print(intent)
                 if intent in English:
                     ssml = get_english_intent_ssml(intent, req)
 
