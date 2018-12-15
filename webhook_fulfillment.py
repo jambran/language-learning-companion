@@ -394,6 +394,7 @@ def manage_request():
                     ssml = get_english_intent_ssml(intent, req)
 
                 else:
+                    print("in else")
                     if intent in SpanishCorrect:
                         ssml = handle_intent_ssml(intent)
 
