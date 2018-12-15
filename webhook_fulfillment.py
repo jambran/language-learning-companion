@@ -257,7 +257,7 @@ def give_corrected_ssml(intent, req):
         # GET SLOT INFO FOR TIME
         print("in AlarmasIncorrect")
         time = req.get('request').get('intent').get('slots').get('timeslot').get('value')
-        ssml += "<speak> Almost! try: <lang xml:lang ='es-ES'>Pon la alarma para <say-as interpret-as = 'cardinal'>" + time +"</say-as></lang></speak>"
+        ssml += "<speak> Almost! try: <lang xml:lang ='es-ES'>Pon la alarma para <say-as interpret-as = 'time'>" + time +"</say-as></lang></speak>"
     elif intent == 'CalendariIncorrect':
         print("in CalendariIncorrect")
         # GET SLOT INFO FOR DATE
@@ -298,7 +298,7 @@ def get_english_intent_ssml(intent, req):
     if intent == 'Alarm':
         # GET SLOT INFO FOR TIME
         time = req.get('request').get('intent').get('slots').get('timeslot').get('value')
-        ssml += "<speak> You can say: <lang xml:lang ='es-ES'>Pon la alarma para <say-as interpret-as = 'cardinal'>"+time+"</say-as></lang></speak>"
+        ssml += "<speak> You can say: <lang xml:lang ='es-ES'>Pon la alarma para <say-as interpret-as = 'time'>"+time+"</say-as></lang></speak>"
     elif intent == 'Calendar':
         # GET SLOT INFO FOR DATE
         time = req.get('request').get('intent').get('slots').get('timeslot').get('value')
