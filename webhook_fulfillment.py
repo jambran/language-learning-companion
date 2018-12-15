@@ -294,7 +294,7 @@ def get_english_intent_ssml(intent, req):
     elif intent == 'Calendar':
         # GET SLOT INFO FOR DATE
         time = req.get('request').get('intent').get('slots').get('timeslot').get('value')
-        ssml += "<speak> You can say: <lang xml:lang ='es-ES'>Pon una nota <say-as interpret-as = 'date'>"+time+"</say-as></lang></speak>">"
+        ssml += "<speak> You can say: <lang xml:lang ='es-ES'>Pon una nota <say-as interpret-as = 'date'>"+time+"</say-as></lang></speak>"
     elif intent == 'Weather':
         # GET SLOT INFO FOR CITY
         city = req.get('request').get('intent').get('slots').get('city').get('value')
@@ -383,6 +383,7 @@ def manage_request():
 
                 elif intent in SpanishCorrect:
                     ssml = handle_intent_ssml(intent)
+
                 elif intent in SpanishIncorrect:
                     ssml = give_corrected_ssml(intent)
 
