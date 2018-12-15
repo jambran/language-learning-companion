@@ -130,6 +130,7 @@ def handle_intent_ssml(intent):
     :param intent:
     :return:
     """
+    print("handling intent")
     ssml = ""
     if intent == 'Alarmas':
         ssml += "<speak> <lang xml:lang='es-ES'>Muy bien!</lang> The alarm is set now!</speak>"
@@ -142,8 +143,11 @@ def handle_intent_ssml(intent):
         ssml +=  "pero la verdad es que no se</lang></speak>"
 
     elif intent == 'LaHora':
+        print ("in la hora")
         ssml += "Ahora son las:\n"
+        print(ssml)
         ssml += str(datetime.datetime.time(datetime.datetime.now()))[:5]
+        print("issue with time")
 
     elif intent == 'LucesOn' or intent == 'LucesOff':
         ssml += "<speak><lang xml:lang='es-ES'>Perfecto!</lang> The lights are set now.</speak>"
