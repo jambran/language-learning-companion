@@ -381,11 +381,12 @@ def manage_request():
                 if intent in English:
                     ssml = get_english_intent_ssml(intent, req)
 
-                elif intent in SpanishCorrect:
-                    ssml = handle_intent_ssml(intent)
+                else:
+                    if intent in SpanishCorrect:
+                        ssml = handle_intent_ssml(intent)
 
-                elif intent in SpanishIncorrect:
-                    ssml = give_corrected_ssml(intent)
+                    else:
+                        ssml = give_corrected_ssml(intent)
 
 
         else:  # request from google assistant
