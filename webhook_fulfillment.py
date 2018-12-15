@@ -281,7 +281,7 @@ def give_corrected_ssml(intent, req):
         print("in restaurantes incorrect")
         # GET SLOT INFO FOR CITY
         city = req.get('request').get('intent').get('slots').get('cityslot').get('value')
-        ssml += "<speak> Good try! Instead, say: <lang xml:lang = 'es-ES'>Muestrame restaurantes en"+ city +"</lang></speak>"
+        ssml += "<speak> Good try! Instead, say: <lang xml:lang = 'es-ES'>Muestrame restaurantes en " + city + "</lang></speak>"
 
     print ("returning: "+ ssml)
     return ssml
