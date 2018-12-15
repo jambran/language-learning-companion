@@ -391,9 +391,9 @@ def manage_request():
                 intent = get_al_utterance(req)
                 if intent in English:
                     ssml = get_english_intent_ssml(intent, req)
-                elif intent in SpanishCorrect:
+                if intent in SpanishCorrect:
                     ssml = handle_intent_ssml(intent)
-                else:
+                if intent in SpanishIncorrect:
                     # if ungrammatical, say how they should have said it
                     ssml = give_corrected_ssml(intent)
 
