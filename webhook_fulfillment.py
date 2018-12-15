@@ -387,7 +387,7 @@ def manage_request():
                         ssml = handle_intent_ssml(intent)
 
                     else:
-                        ssml = give_corrected_ssml(intent)
+                        ssml = give_corrected_ssml(intent, req)
 
 
         else:  # request from google assistant
