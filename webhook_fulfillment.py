@@ -293,12 +293,8 @@ def get_english_intent_ssml(intent, req):
         ssml += "<speak> You can say: <lang xml:lang ='es-ES'>Pon la alarma para <say-as interpret-as = 'cardinal'>"+time+"</say-as></lang></speak>"
     elif intent == 'Calendar':
         # GET SLOT INFO FOR DATE
-        date = req.get('request').get('intent').get('slots').get('dateslot').get('value')
-        ssml += "<speak> You could say: <lang xml:lang = 'es-ES'>Crea una nota para <say-as interpret-as = 'date' format = 'md'>"+date+"</say-as></lang></speak>"
-    elif intent == 'Calendar':
-        # GET SLOT INFO FOR DATE
-        date = req.get('request').get('intent').get('slots').get('dateslot').get('value')
-        ssml += "<speak> You could say: <lang xml:lang = 'es-ES'>Crea una nota para <say-as interpret-as = 'date' format = 'md'>" + date + "</say-as></lang></speak"
+        time = req.get('request').get('intent').get('slots').get('timeslot').get('value')
+        ssml += "<speak> You can say: <lang xml:lang ='es-ES'>Pon una nota <say-as interpret-as = 'date'>"+time+"</say-as></lang></speak>">"
     elif intent == 'Weather':
         # GET SLOT INFO FOR CITY
         city = req.get('request').get('intent').get('slots').get('city').get('value')
