@@ -277,6 +277,7 @@ def give_corrected_ssml(intent, req):
         city = req.get('request').get('intent').get('slots').get('cityslot').get('value')
         ssml += "<speak> Good try! Instead, say: <lang xml:lang = 'es-ES'>Muestrame restaurantes en" + city +"</lang></speak>"
 
+    print ("returning: "+ ssml)
     return ssml
 
 
@@ -389,6 +390,7 @@ def manage_request():
 
                     else:
                         ssml = give_corrected_ssml(intent, req)
+                        print("ssml is:" + ssml)
 
 
         else:  # request from google assistant
@@ -416,6 +418,7 @@ def manage_request():
     if request_is_from_alexa(req):
         dct = make_al_dct(ssml)
         return jsonify(dct)
+
     else:
         dct = make_df_dct(response)
         return make_response(jsonify(dct))
