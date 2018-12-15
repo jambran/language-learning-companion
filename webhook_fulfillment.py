@@ -396,6 +396,7 @@ def manage_request():
                 else:
                     print("in else")
                     if intent in SpanishCorrect:
+                        print("in spanish correct")
                         ssml = handle_intent_ssml(intent)
 
                     else:
