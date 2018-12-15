@@ -142,7 +142,7 @@ def handle_intent_ssml(intent):
         ssml += "<speak> <lang xml:lang='es-ES'>Muy bien! Espero que hace sol, "
         ssml +=  "pero la verdad es que no se</lang></speak>"
 
-    elif intent == 'LaHora':
+    elif intent == 'Lahora':
         print ("in la hora")
         ssml += "Ahora son las:\n"
         print(ssml)
