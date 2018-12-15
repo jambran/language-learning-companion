@@ -256,22 +256,22 @@ def give_corrected_ssml(intent, req):
     if intent == 'AlarmasIncorrect':
         # GET SLOT INFO FOR TIME
         time = req.get('request').get('intent').get('slots').get('timeslot').get('value')
-        ssml = "<speak> Almost! try: <lang xml:lang ='es-ES'>Pon la alarma para <say-as interpret-as = 'cardinal'>"+time+"</say-as></lang></speak>"
+        ssml += "<speak> Almost! try: <lang xml:lang ='es-ES'>Pon la alarma para <say-as interpret-as = 'cardinal'>"+time+"</say-as></lang></speak>"
     elif intent == 'CalendariIncorrect':
         print("in correct intent")
         # GET SLOT INFO FOR DATE
         date = req.get('request').get('intent').get('slots').get('dateslot').get('value')
-        ssml = "<speak> You were close!: <lang xml:lang = 'es-ES'>Crea una nota para "+date+"<say-as interpret-as = 'date' format = 'md'>" + date + "</say-as></lang></speak"
+        ssml += "<speak> You were close!: <lang xml:lang = 'es-ES'>Crea una nota para "+date+"<say-as interpret-as = 'date' format = 'md'>" + date + "</say-as></lang></speak"
     elif intent == 'EltiempoIncorrect':
         # GET SLOT INFO FOR CITY
         city = req.get('request').get('intent').get('slots').get('city').get('value')
-        ssml = "<speak> That was close!: <lang xml:lang = 'es-ES'>Cual es el tiempo en " + city + "</lang></speak>"
+        ssml += "<speak> That was close!: <lang xml:lang = 'es-ES'>Cual es el tiempo en " + city + "</lang></speak>"
     elif intent == 'LahoraIncorrect':
-        ssml = "<speak> Good try! The proper way to ask is: <lang xml:lang = 'es-ES'> Que hora es </lang> </speak>"
+        ssml += "<speak> Good try! The proper way to ask is: <lang xml:lang = 'es-ES'> Que hora es </lang> </speak>"
     elif intent == 'LucesOnIncorrect':
-        ssml = "<speak> Very close! Try: <lang xml:lang = 'es-ES'>Enciende las luces </lang></speak>"
+        ssml += "<speak> Very close! Try: <lang xml:lang = 'es-ES'>Enciende las luces </lang></speak>"
     elif intent == 'LucesOffIncorect':
-        ssml = "<speak> Almost! Instead, say: <lang xml:lang = 'es-ES'>Apaga la luz</lang></speak>"
+        ssml += "<speak> Almost! Instead, say: <lang xml:lang = 'es-ES'>Apaga la luz</lang></speak>"
     elif intent == 'RestaurantesIncorrect':
         # GET SLOT INFO FOR CITY
         city = req.get('request').get('intent').get('slots').get('cityslot').get('value')
