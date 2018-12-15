@@ -262,7 +262,7 @@ def give_corrected_ssml(intent, req):
         print("in CalendariIncorrect")
         # GET SLOT INFO FOR DATE
         date = req.get('request').get('intent').get('slots').get('dateslot').get('value')
-        ssml += "<speak> You were close!: <lang xml:lang = 'es-ES'>Crea una nota para " + date+"<say-as interpret-as = 'date' format = 'md'>"
+        ssml += "<speak> You were close!: <lang xml:lang = 'es-ES'>Crea una nota para " + date+"</say-as></lang></speak>"
     elif intent == 'EltiempoIncorrect':
         print("in EltiempoIncorrect")
         # GET SLOT INFO FOR CITY
@@ -283,7 +283,7 @@ def give_corrected_ssml(intent, req):
         city = req.get('request').get('intent').get('slots').get('cityslot').get('value')
         ssml += "<speak> Good try! Instead, say: <lang xml:lang = 'es-ES'>Muestrame restaurantes en " + city + "</lang></speak>"
 
-    print ("returning: "+ ssml)
+    print ("returning: " + ssml)
     return ssml
 
 
