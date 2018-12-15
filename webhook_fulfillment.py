@@ -138,8 +138,8 @@ def handle_intent_ssml(intent):
         ssml += "<speak> <lang xml:lang='es-ES'>Muy bien!</lang> The event is in your calendar!</speak>"
 
     elif intent == 'ElTiempo':
-        ssml += "<speak> <lang xml:lang='es-ES'>Muy bien! Espero que hace sol, " \
-                "pero la verdad es que no se</lang></speak>"
+        ssml += "<speak> <lang xml:lang='es-ES'>Muy bien! Espero que hace sol, "
+        ssml +=  "pero la verdad es que no se</lang></speak>"
 
     elif intent == 'LaHora':
         ssml += "Ahora son las:\n"
@@ -369,7 +369,7 @@ def manage_request():
     ssml = ""
     try:
         req = request.get_json(silent=True, force=True)
-        print(req, file=sys.stdout)
+        #print(req, file=sys.stdout)
 
         if request_is_from_alexa(req):
             reqType = req.get('request').get('type')
@@ -390,11 +390,13 @@ def manage_request():
 
                 intent = get_al_utterance(req)
                 if intent in English:
+                    print("in IF")
                     ssml = get_english_intent_ssml(intent, req)
-                if intent in SpanishCorrect:
+                elif intent in SpanishCorrect:
                     ssml = handle_intent_ssml(intent)
-                if intent in SpanishIncorrect:
-                    # if ungrammatical, say how they should have said it
+                    print("in IF")
+                elif intent in SpanishIncorrect:
+                    print("in IF")
                     ssml = give_corrected_ssml(intent)
 
 
