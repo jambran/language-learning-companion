@@ -130,6 +130,7 @@ def handle_intent_ssml(intent):
     :param intent:
     :return:
     """
+    print("handling intent")
     ssml = ""
     if intent == 'Alarmas':
         ssml += "<speak> <lang xml:lang='es-ES'>Muy bien!</lang> The alarm is set now!</speak>"
@@ -137,20 +138,20 @@ def handle_intent_ssml(intent):
     elif intent == 'Calendario':
         ssml += "<speak> <lang xml:lang='es-ES'>Muy bien!</lang> The event is in your calendar!</speak>"
 
-    elif intent == 'ElTiempo':
-        ssml += "<speak> <lang xml:lang='es-ES'>Muy bien! Espero que hace sol, " \
-                "pero la verdad es que no se</lang></speak>"
+    elif intent == 'Eltiempo':
+        ssml += "<speak> <lang xml:lang='es-ES'>Muy bien! Espero que hace sol, "
+        ssml +=  "pero la verdad es que no se</lang></speak>"
 
-    elif intent == 'LaHora':
-        ssml += "Ahora son las:\n"
-        ssml += str(datetime.datetime.time(datetime.datetime.now()))[:5]
+    elif intent == 'Lahora':
+        print ("in la hora")
+        ssml += "<speak><lang xml:lang='es-ES'>Ahora son las: <say-as interpret-as = 'time'> "
+        ssml += str(datetime.datetime.time(datetime.datetime.now()))[:5] +"</say-as></lang></speak>"
 
     elif intent == 'LucesOn' or intent == 'LucesOff':
-        ssml += "<speak?<lang xml:lang='es-ES'>Perfecto!</lang> The lights are set now.</speak>8"
+        ssml += "<speak><lang xml:lang='es-ES'>Perfecto!</lang> The lights are set now.</speak>"
 
     elif intent == 'Restaurantes':
-        ssml += "<speak><lang xml:lang='es-ES'>Tu español es perfecto!</lang> " \
-                "I sent you some restaurants to your email account.</speak>"
+        ssml += "<speak><lang xml:lang='es-ES'>Tu español es perfecto!</lang> I sent you some restaurants to your email account.</speak>"
 
     return ssml
 
@@ -252,33 +253,40 @@ def give_corrected_ssml(intent, req):
     :param req:
     :return:
     """
-    ssml = ''
+    print("in corrected ssml")
+    ssml = ""
     if intent == 'AlarmasIncorrect':
         # GET SLOT INFO FOR TIME
+        print("in AlarmasIncorrect")
         time = req.get('request').get('intent').get('slots').get('timeslot').get('value')
-        ssml = "<speak> Almost! try: <lang xml:lang ='es-ES'>Pon la almarma para <say-as interpret-as = 'cardinal'>" \
-               + time + "</say-as></lang></speak>"
+        ssml += "<speak> Almost! try: <lang xml:lang ='es-ES'>Pon la alarma para <say-as interpret-as = 'time'>" + time +"</say-as></lang></speak>"
     elif intent == 'CalendariIncorrect':
+        print("in CalendariIncorrect")
         # GET SLOT INFO FOR DATE
-        date = req.get('request').get('intent').get('slots').get('dateslot').get('value')
-        ssml = "<speak> You were close!: <lang xml:lang = 'es-ES'>Crea una nota para " \
-               "<say-as interpret-as = 'date' format = 'md'>" + date + "</say-as></lang></speak"
+        date = req.get('request').get('intent').get('slots').get('date').get('value')
+        ssml += "<speak> You were close! try: <lang xml:lang = 'es-ES'>Crea una nota para " + date+"</lang></speak>"
+        print("ssml set as" + ssml)
     elif intent == 'EltiempoIncorrect':
+        print("in EltiempoIncorrect")
         # GET SLOT INFO FOR CITY
         city = req.get('request').get('intent').get('slots').get('city').get('value')
-        ssml = "<speak> That was close!: <lang xml:lang = 'es-ES'>Cual es el tiempo en " + city + "</lang></speak>"
+        ssml += "<speak> That was close!: <lang xml:lang = 'es-ES'>Cual es el tiempo en " + city + "</lang></speak>"
     elif intent == 'LahoraIncorrect':
-        ssml = "<speak> Good try! The proper way to ask is: <lang xml:lang = 'es-ES'> Que hora es </lang> </speak>"
+        print("in LahoraIncorrect")
+        ssml += "<speak> Good try! The proper way to ask is: <lang xml:lang = 'es-ES'> Que hora es </lang> </speak>"
     elif intent == 'LucesOnIncorrect':
-        ssml = "<speak> Very close! Try: <lang xml:lang = 'es-ES'>Enciende las luces </lang></speak>"
-    elif intent == 'LucesOffIncorect':
-        ssml = "<speak> Almost! Instead, say: <lang xml:lang = 'es-ES'>Apaga la luz</lang></speak>"
+        print("in LucesOnIncorrect")
+        ssml += "<speak> Very close! Try: <lang xml:lang = 'es-ES'>Enciende las luces </lang></speak>"
+    elif intent == 'LucesOffIncorrect':
+        print("in luces off incorrect")
+        ssml += "<speak> Almost! Instead, say: <lang xml:lang = 'es-ES'>Apaga la luz</lang></speak>"
     elif intent == 'RestaurantesIncorrect':
+        print("in restaurantes incorrect")
         # GET SLOT INFO FOR CITY
-        city = req.get('request').get('intent').get('slots').get('cityslot').get('value')
-        ssml = "<speak> Good try! Instead, say: <lang xml:lang = 'es-ES'>Muestrame restaurantes en" + city + \
-               "</lang></speak>"
+        city = req.get('request').get('intent').get('slots').get('city').get('value')
+        ssml += "<speak> Good try! Instead, say: <lang xml:lang = 'es-ES'>Muestrame restaurantes en " + city + "</lang></speak>"
 
+    print ("returning: " + ssml)
     return ssml
 
 
@@ -288,32 +296,33 @@ def get_english_intent_ssml(intent, req):
     :param intent:
     :return:
     """
-    ssml = ''
+    print("in English Intent")
+    ssml = ""
     if intent == 'Alarm':
         # GET SLOT INFO FOR TIME
         time = req.get('request').get('intent').get('slots').get('timeslot').get('value')
-        ssml = "<speak> You can say: <lang xml:lang ='es-ES'>Pon la almarma para <say-as interpret-as = 'cardinal'>" \
-               + time + "</say-as></lang></speak>"
+        ssml += "<speak> You can say: <lang xml:lang ='es-ES'>Pon la alarma para <say-as interpret-as = 'time'>"+time+"</say-as></lang></speak>"
     elif intent == 'Calendar':
+        print("in calendar")
         # GET SLOT INFO FOR DATE
-        date = req.get('request').get('intent').get('slots').get('dateslot').get('value')
-        ssml = "<speak> You could say: <lang xml:lang = 'es-ES'>Crea una nota para " \
-               "<say-as interpret-as = 'date' format = 'md'>" + date + "</say-as></lang></speak"
+        time = req.get('request').get('intent').get('slots').get('date').get('value')
+        ssml += "<speak> You can say: <lang xml:lang ='es-ES'>Pon una nota <say-as interpret-as = 'date'>"+time+"</say-as></lang></speak>"
     elif intent == 'Weather':
         # GET SLOT INFO FOR CITY
         city = req.get('request').get('intent').get('slots').get('city').get('value')
-        ssml = "<speak> You can ask me: <lang xml:lang = 'es-ES'>Cual es el tiempo en " + city + "</lang></speak>"
+        ssml += "<speak> You can ask me: <lang xml:lang = 'es-ES'>Cual es el tiempo en " + city + "</lang></speak>"
     elif intent == 'Time':
-        ssml = "<speak> Ask me: <lang xml:lang = 'es-ES'> Que hora es </lang> </speak>"
-    elif intent == 'Lights-on':
-        ssml = "<speak> You can say: <lang xml:lang = 'es-ES'>Enciende las luces </lang></speak>"
-    elif intent == 'Lights-off':
-        ssml = "<speak> Try saying: <lang xml:lang = 'es-ES'>Apaga la luz</lang></speak>"
+        ssml += "<speak> Ask me: <lang xml:lang = 'es-ES'> Que hora es </lang> </speak>"
+    elif intent == 'LightsOn':
+        ssml += "<speak> You can say: <lang xml:lang = 'es-ES'>Enciende las luces </lang></speak>"
+    elif intent == 'LightsOff':
+        ssml += "<speak> Try saying: <lang xml:lang = 'es-ES'>Apaga la luz</lang></speak>"
     elif intent == 'Restaurant':
         # GET SLOT INFO FOR CITY
         city = req.get('request').get('intent').get('slots').get('cityslot').get('value')
-        ssml = "<speak> You could ask: <lang xml:lang = 'es-ES'>Muestrame restaurantes en" + city + "</lang></speak>"
+        ssml += "<speak> You could ask: <lang xml:lang = 'es-ES'>Muestrame restaurantes en " + city + "</lang></speak>"
 
+    print("returning" + ssml)
     return ssml
 
 
@@ -363,7 +372,7 @@ def manage_request():
     ssml = ""
     try:
         req = request.get_json(silent=True, force=True)
-        print(req, file=sys.stdout)
+        #print(req, file=sys.stdout)
 
         if request_is_from_alexa(req):
             reqType = req.get('request').get('type')
@@ -378,20 +387,24 @@ def manage_request():
                 response = "looking for intent"
                 English = ['Calendar', 'Weather', 'Time', 'Restaurant', 'LightsOn', 'LightsOff', 'Alarm']
                 SpanishCorrect = ['Calendario', 'Eltiempo', 'Lahora', 'Restaurantes', 'LucesOn', 'LucesOff', 'Alarmas']
-                SpanishIncorrect = ['CalendariIncorrect', 'EltiempoIncorrect', 'LahoraIncorrect',
-                                    'RestaurantesIncorrect', 'AlarmasIncorrect', 'LucesOnIncorrect',
-                                    'LucesOffIncorrect']
+                """SpanishIncorrect = ['CalendariIncorrect', 'EltiempoIncorrect', 'LahoraIncorrect', 'RestaurantesIncorrect',
+                                    'AlarmasIncorrect', 'LucesOnIncorrect', 'LucesOffIncorrect']"""
 
                 intent = get_al_utterance(req)
+                print(intent)
                 if intent in English:
                     ssml = get_english_intent_ssml(intent, req)
+
                 else:
+                    print("in else")
                     if intent in SpanishCorrect:
+                        print("in spanish correct")
                         ssml = handle_intent_ssml(intent)
 
                     else:
-                        # if ungrammatical, say how they should have said it
                         ssml = give_corrected_ssml(intent, req)
+                        print("ssml is:" + ssml)
+
 
         else:  # request from google assistant
             language = get_language(req)
@@ -418,6 +431,7 @@ def manage_request():
     if request_is_from_alexa(req):
         dct = make_al_dct(ssml)
         return jsonify(dct)
+
     else:
         dct = make_df_dct(response)
         return make_response(jsonify(dct))
