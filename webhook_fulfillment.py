@@ -181,7 +181,7 @@ def translate_timestring_to_spanish(time_string):
     with open('time_dict') as f:
         time_dict = json.load(f)
     if hour == '01':
-        aritcle = 'la '
+        article = 'la '
     else:
         article = 'las '
     if minute == '00':
@@ -189,7 +189,7 @@ def translate_timestring_to_spanish(time_string):
     elif minute == '15':
         return article + time_dict[hour] + ' y cuarto'
     elif minute == '30':
-        return article + time_dict[hour] + 'y media'
+        return article + time_dict[hour] + ' y media'
     elif minute == '45':
         h = int(hour) + 1
         if h < 10:
