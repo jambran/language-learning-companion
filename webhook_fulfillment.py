@@ -277,7 +277,7 @@ def give_corrected_ssml(intent, req):
     elif intent == 'LucesOnIncorrect':
         print("in LucesOnIncorrect")
         ssml += "<speak> Very close! Try: <lang xml:lang = 'es-ES'>Enciende las luces </lang></speak>"
-    elif intent == 'LucesOffIncorect':
+    elif intent == 'LucesOffIncorrect':
         print("in luces off incorrect")
         ssml += "<speak> Almost! Instead, say: <lang xml:lang = 'es-ES'>Apaga la luz</lang></speak>"
     elif intent == 'RestaurantesIncorrect':
@@ -322,7 +322,7 @@ def get_english_intent_ssml(intent, req):
         city = req.get('request').get('intent').get('slots').get('cityslot').get('value')
         ssml += "<speak> You could ask: <lang xml:lang = 'es-ES'>Muestrame restaurantes en " + city + "</lang></speak>"
 
-    print("returning"+ ssml)
+    print("returning" + ssml)
     return ssml
 
 
